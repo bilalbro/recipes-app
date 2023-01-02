@@ -1,0 +1,23 @@
+@use '../globals' as *;
+
+.table {
+   // background-color: yellow;
+   border-collapse: collapse;
+   width: 100%;
+   // max-width: 500px;
+   text-align: left;
+   margin-top: 40px;
+
+   tr {
+      border: 1px solid $colors-border;
+   }
+
+   th {
+      background-color: #f6f6f6;
+      padding: 12px 10px
+   }
+   
+   td {
+      padding: 10px
+   }
+}

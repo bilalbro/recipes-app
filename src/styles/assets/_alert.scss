@@ -1,0 +1,38 @@
+@use '../globals' as *;
+
+.alert {
+   position: fixed;
+   bottom: -50px;
+   transform: translateX(-50%);
+   left: 50%;
+   padding: 10px 20px;
+   border-radius: 3px;
+   background-color: $colors-secondary;
+   color: white;
+   z-index: 5;
+   box-sizing: border-box;
+   opacity: 0;
+   transition: 0.2s;
+   border: 1px solid $colors-border;
+   box-shadow: 0 0 30px 0 rgba(0,0,0,0.4);
+}
+
+.alert--shown {
+   opacity: 1;
+   bottom: 30px;
+}
+
+
+
+@include use-mobile {
+
+.alert {
+   width: 90%;
+   max-width: 400px;
+}
+
+.alert--shown {
+   bottom: 20px;
+}
+
+}

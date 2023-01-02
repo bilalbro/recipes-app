@@ -1,0 +1,30 @@
+h1, h2, h3, h4, h5, h6 {
+   margin: 0
+}
+
+ol, ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+}
+
+input, textarea {
+   border: none;
+   outline: none;
+   display: block;
+   font-family: inherit;
+   font-size: inherit;
+}
+
+button {
+   padding: 0;
+   background-color: transparent;
+   border: none;
+   outline: none;
+   font-size: inherit;
+}

@@ -1,0 +1,27 @@
+@use '../globals' as *;
+
+.modal {
+   position: fixed;
+   width: 90%;
+   max-width: 450px;
+   background-color: white;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 11;
+   border-radius: 4px;
+   box-sizing: border-box;
+   padding: 20px;
+}
+
+.modal_head {
+   border-bottom: 1px solid $colors-border;
+   margin: 0 -20px;
+   padding: 0 20px 20px;
+   margin-bottom: 20px;
+}
+
+.modal .input-group:last-child {
+   margin-bottom: 5px;
+   margin-top: 40px;
+}

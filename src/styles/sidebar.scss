@@ -1,0 +1,125 @@
+@use './globals' as *;
+
+.sidebar {
+   position: fixed;
+   // background-color: #eee;
+   padding: 0 40px;
+   // background-color: sandybrown;
+   width: 250px;
+   border-right: 1px solid $colors-border;
+   box-sizing: border-box;
+   top: 50px;
+   bottom: 40px;
+   overflow: auto;
+
+   &::-webkit-scrollbar {
+      appearance: none;
+      width: 5px;
+   }
+   &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #999;
+   }
+}
+
+.sidebar_logo {
+   font-size: 45px;
+   // padding: 15px 20px;
+   // background-color: black;
+   color: $colors-primary;
+   margin-top: 10px;
+   margin-bottom: 40px;
+   line-height: 0.9;
+}
+
+.sidebar_logo img {
+   width: 90%;
+   display: block;
+}
+
+.sidebar_entries {
+   margin-top: 50px;
+}
+
+.sidebar_entry {
+   display: block;
+   margin-bottom: 27px;
+   color: #222;
+}
+
+body .sidebar .sidebar_entry--sel {
+   color: $colors-primary;
+   font-weight: 700;
+}
+
+.sidebar_entry:hover {
+   color: #000
+}
+
+.sidebar .input-text {
+   font-size: inherit;
+   font-weight: 400;
+}
+
+.sidebar svg,
+.sidebar span {
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.sidebar p {
+   font-size: 14px;
+   margin-top: 90px;
+   line-height: 1.2em;
+   border-top: 1px solid $colors-border;
+   padding-top: 15px;
+}
+
+.sidebar p a {
+   color: $colors-primary;
+   text-decoration: underline;
+}
+
+
+
+
+@include use-tablet-small {
+
+.sidebar {
+   visibility: hidden;
+   transform: translateX(-200%);
+   transition: 0.3s;
+   z-index: 20;
+   bottom: 0;
+   top: 0;
+   background-color: $colors-lightyellow;
+   overflow: auto;
+   padding-bottom: 20px;
+}
+
+.sidebar--shown {
+   visibility: visible;
+   transform: translateX(0);
+}
+
+.sidebar p {
+   margin-top: 100px;
+}
+
+}
+
+
+
+
+@include use-tablet-small {
+
+.sidebar_logo {
+   margin-top: 40px;
+}
+
+.sidebar_logo img {
+   width: 70%;
+   display: block;
+}
+
+}

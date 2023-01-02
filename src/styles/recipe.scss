@@ -1,0 +1,178 @@
+@use './globals' as *;
+@use './text';
+
+.star {
+   color: $colors-lightgrey;
+}
+
+.star--sel {
+   color: $colors-secondary
+}
+
+/*******************************************************************************
+Recipe card
+*******************************************************************************/
+.recipe-cards {
+   margin: 0 -10px;
+}
+
+.recipe-card-wrapper {
+   float: left;
+   width: 50%;
+   // margin: -10px;
+   // background-color: blue;
+}
+
+.recipe-card {
+   background-color: white;
+   border-radius: 3px;
+   border: 1px solid #ddd;
+   margin: 10px;
+   padding: 20px;
+   display: block;
+   position: relative;
+   transition: 0.2s ease;
+}
+
+.recipe-card:hover {
+   transform: scale(1.03);
+   border-color: $colors-primary;
+}
+
+.recipe-card_category {
+   // letter-spacing: 1px;
+   background-color: $colors-primary;
+   color: white;
+   display: inline-block;
+   padding: 7px 9px;
+   position: absolute;
+   right: 0;
+   top: 0;
+   border-radius: 0 3px 0 3px;
+}
+
+.recipe-card_rating {
+   // margin-top: 5px;
+   color: $colors-lightgrey;
+}
+
+.recipe-card_date {
+   margin-top: 4px;
+   color: $colors-grey;
+}
+
+
+.recipe-card h2 {
+   font-size: 20px;
+   margin-top: 15px;
+   font-weight: 500;
+}
+/*******************************************************************************
+Recipe card
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Recipe view
+*******************************************************************************/
+.recipe {
+}
+
+.recipe h1 {
+   font-size: 30px;
+   font-weight: 500;
+   margin-top: 3px;
+   margin-bottom: 20px
+}
+
+.recipe h6 {
+   @extend .text--md;
+   margin: 0;
+   font-weight: 500;
+}
+
+.recipe_header {
+   position: relative;
+}
+
+.recipe_btns {
+   position: absolute;
+   right: 0;
+   top: 5px;   
+}
+
+.recipe_btn {
+   display: inline-block;
+   margin-left: 10px;
+}
+
+.recipe_rating {
+   margin-top: 0;
+}
+
+.recipe_group {
+   margin: 55px 0
+}
+
+.recipe_label {
+   margin: 10px 0 20px;
+   border-bottom: 1px solid $colors-border;
+   padding-bottom: 7px;
+   @extend .text--light;
+}
+
+%recipe-text {
+   font-size: 19px;
+}
+
+.recipe ol {
+   // margin: 0
+}
+
+.recipe li ol {
+   margin-top: 15px
+}
+
+.recipe li ol li {
+   @extend %recipe-text;
+   margin: 10px 0;
+   padding-left: 24px;
+   position: relative;
+
+   &:before {
+      content: '';
+      position: absolute;
+      padding: 3px;
+      background-color: $colors-primary;
+      left: 4px;
+      top: 11px;
+      border-radius: 3px
+   }
+}
+
+.recipe h4 {
+   @extend .text--md;
+   margin-top: 35px;
+}
+
+.recipe li:first-child h4 {
+   margin-top: 15px;
+}
+
+.recipe p {
+   @extend %recipe-text;
+}
+/*******************************************************************************
+Recipe view
+*******************************************************************************/
+
+
+
+@include use-tablet-large {
+
+.recipe-card-wrapper {
+   width: 100%;
+}
+
+}

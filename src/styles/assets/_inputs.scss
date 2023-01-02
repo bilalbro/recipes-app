@@ -1,0 +1,377 @@
+@use '../globals/' as *;
+@use '../text';
+
+$padding-small: 5px;
+
+.dist {
+   margin-top: 20px
+}
+
+.light {
+   opacity: 0.3;
+}
+
+%form-asset {
+   border: 1px solid transparent;
+   border-radius: 3px;
+   padding: 10px 14px;
+   font-family: inherit;
+   box-sizing: border-box;
+
+   &:focus-visible,
+   &:focus {
+      outline: 1px solid skyblue
+   }
+}
+
+
+/*******************************************************************************
+Buttons
+*******************************************************************************/
+.btn {
+   @extend %form-asset;
+   letter-spacing: 0.2px;
+   font-weight: 700;
+   cursor: pointer;
+
+   &:disabled {
+      opacity: 0.5;
+   }
+}
+
+.btn > svg {
+   vertical-align: middle;
+}
+.btn > span {
+   vertical-align: middle;
+}
+
+.btn--error {
+   background-color: $colors-secondary;
+   color: white;
+}
+
+.btn--primary {
+   background-color: $colors-primary;
+   color: white
+}
+
+.btn--secondary {
+   background-color: transparent;
+   color: $colors-primary;
+   border-color: $colors-primary;
+}
+
+.btn--light {
+   background-color: transparent;
+   color: $colors-grey;
+   border-color: $colors-lightgrey;
+}
+
+.btn--secondary.btn--error {
+   border: 1px solid $colors-secondary;
+   color: $colors-secondary
+}
+
+.btn--transparent {
+   @extend .btn--secondary;
+   border-color: transparent;
+}
+
+.btn--small {
+   // font-size: 13px;
+   padding: $padding-small
+}
+
+.btn--loading svg {
+   animation: rotate 1s infinite;
+}
+@keyframes rotate {
+   to {
+      transform: rotate(360deg)
+   }
+}
+
+.btn:hover {}
+/*******************************************************************************
+Buttons
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+File input
+*******************************************************************************/
+.input-file {
+   display: inline-block;
+   width: 100%;
+   max-width: 300px;
+   position: relative;
+}
+
+.input-file .input-group--inline {
+   margin-right: 0;
+}
+
+.input-file .input-group--inline:first-child {
+   width: 100%;
+}
+
+.input-file .input-text {
+   width: 100%;
+}
+
+.input-file .btn {
+   border-radius: 0 3px 3px 0;
+   margin-left: -1px;
+   position: absolute;
+   right: 0;
+   background-color: #f2f2f2;
+   border-color: $colors-border;
+   color: $colors-grey
+}
+/*******************************************************************************
+File input
+*******************************************************************************/
+
+
+/*******************************************************************************
+Input widths
+*******************************************************************************/
+.input-width--small {
+   width: 100px;
+}
+
+.input-width--medium {
+   width: 200px;
+}
+
+.input-width--large {
+   width: 350px
+}
+
+.input-width--full {
+   width: 100%;
+}
+/*******************************************************************************
+Input widths
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Input sizes
+*******************************************************************************/
+.input-size--small {
+   padding: $padding-small
+}
+/*******************************************************************************
+Input sizes
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Input group
+*******************************************************************************/
+.input-group {
+   margin-bottom: 34px;
+}
+
+.input-group--basic {
+   margin-bottom: 10px;
+}
+
+.input-group--inline {
+   display: inline-block;
+   margin-bottom: 34px;
+   margin-right: 10px;
+   vertical-align: top;
+}
+
+.input-group--bg {
+   @extend %form-asset;
+   // background-color: #f9f9f9;
+   border-color: $colors-border;
+   padding-left: 16px;
+   padding-right: 16px;
+   margin-top: 0
+}
+/*******************************************************************************
+Input group
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Star rating
+*******************************************************************************/
+.star-input {
+   color: #ddd;
+   line-height: 0;
+   cursor: pointer;
+   font-size: 24px;
+
+   &:focus-visible,
+   &:focus {
+      outline: 1px solid skyblue
+   }
+}
+
+.star-input--sel {
+   color: $colors-primary;
+}
+/*******************************************************************************
+Star rating
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Text inputs
+*******************************************************************************/
+%text-input {
+   @extend %form-asset;
+   border-color: $colors-border;
+   background-color: #fff;
+}
+
+.input-text {
+   @extend %text-input;
+}
+
+.input-text--small {
+   padding: $padding-small;
+}
+
+.input-text--grey {
+   background-color: #f8f8f8;
+}
+
+.input-text:focus {
+   border-color: skyblue;
+}
+
+.input-text:disabled {
+   // background-color: transparent;
+   // border-color: transparent
+}
+
+.input-textarea {
+   @extend %text-input;
+   max-width: 600px;
+   width: 100%;
+   height: 200px;
+}
+
+.input-textarea--small {
+   height: 100px;
+}
+/*******************************************************************************
+Text inputs
+*******************************************************************************/
+
+
+
+.input-label {
+   margin-bottom: 6px;
+   opacity: 0.7;
+   font-size: 13px
+}
+
+
+/*******************************************************************************
+Heading input
+*******************************************************************************/
+.input-text--heading {
+   @extend .text--md;
+   border-top: none;
+   border-right: none;
+   border-left: none;
+   font-weight: 600;
+   background-color: transparent;
+   padding: 8px;
+}
+
+.input-text--heading::placeholder {
+   color: rgba(0,0,0,0.5)
+}
+/*******************************************************************************
+Heading input
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Autocomplete
+*******************************************************************************/
+.autocomplete {
+   position: relative;
+   display: inline-block;
+}
+
+// .autocomplete_input {
+//    border: 1px solid #ddd;
+//    padding: 10px;
+//    display: block;
+//    outline: none;
+// }
+
+.autocomplete_suggestions-box {
+   position: absolute;
+   font-size: 15px;
+   z-index: 1;
+   width: 100%;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+   margin-top: -1px;
+   max-height: 200px;
+   overflow: auto;
+}
+
+.autocomplete_suggestion,
+.autocomplete_text {
+   padding: 10px;
+   cursor: pointer;
+}
+
+.autocomplete_suggestion {
+   cursor: pointer;
+}
+
+.autocomplete_suggestion--sel,
+.autocomplete_suggestion:hover {
+   background-color: $colors-secondary;
+   color: white;
+}
+
+.autocomplete_text {
+   opacity: 0.6;
+}
+/*******************************************************************************
+Autocomplete
+*******************************************************************************/
+
+
+
+
+
+@include use-mobile-small {
+
+.input-group--inline {
+   margin-bottom: 34px;
+   display: block;
+}
+
+.input-group--bg .input-group--inline {
+   display: inline-block;
+   margin-top: 0;
+   margin-bottom: 10px;
+}
+
+.input-width--large {
+   width: 100%;
+}
+
+}

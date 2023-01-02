@@ -1,0 +1,60 @@
+@use './globals/' as *;
+
+header {
+   display: none;
+   position: fixed;
+   top: 0;
+   height: 60px;
+   background-color: white;
+   z-index: 2;
+   left: 0;
+   right: 0;
+   text-align: center;
+   border-bottom: 1px solid $colors-lightgrey;
+}
+
+.header_logo {
+   display: inline-block;
+   width: 100px;
+   // background-color: greenyellow;
+   height: 60px;
+   line-height: 60px;
+}
+
+.header_logo img {
+   vertical-align: middle;
+}
+
+header .btn {
+   position: absolute;
+   padding: 0;
+   // width: 40px;
+   color: #777;
+   font-size: 20px;
+   height: 40px;
+   line-height: 10px;
+   left: 80px;
+   top: 10px;
+}
+
+
+
+
+
+@include use-tablet-small {
+
+header {
+   display: block;
+}
+
+}
+
+
+
+@include use-mobile {
+
+header .btn {
+   left: 30px;
+}
+
+}

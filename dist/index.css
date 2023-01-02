@@ -1,0 +1,869 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+ol, ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, textarea {
+  border: none;
+  outline: none;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+}
+
+body {
+  font-family: "Fredoka";
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, .btn, th,
+.sidebar_logo {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+p {
+  line-height: 1.5em;
+  margin: 20px 0;
+  color: #333;
+}
+
+.text--sm {
+  font-size: 15px;
+}
+
+.text--md, .recipe h6, .recipe h4, .input-text--heading {
+  font-size: 17px;
+}
+
+.text--lg {
+  font-size: 20px;
+}
+
+.text--light, .recipe_label {
+  opacity: 0.9;
+}
+
+.dist {
+  margin-top: 20px;
+}
+
+.light {
+  opacity: 0.3;
+}
+
+.input-textarea, .input-text, .input-group--bg, .btn {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 10px 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.input-textarea:focus-visible, .input-text:focus-visible, .input-group--bg:focus-visible, .btn:focus-visible, .input-textarea:focus, .input-text:focus, .input-group--bg:focus, .btn:focus {
+  outline: 1px solid skyblue;
+}
+
+/*******************************************************************************
+Buttons
+*******************************************************************************/
+.btn {
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.btn > svg {
+  vertical-align: middle;
+}
+
+.btn > span {
+  vertical-align: middle;
+}
+
+.btn--error {
+  background-color: #ff5c73;
+  color: white;
+}
+
+.btn--primary {
+  background-color: #5a0a88;
+  color: white;
+}
+
+.btn--secondary, .btn--transparent {
+  background-color: transparent;
+  color: #5a0a88;
+  border-color: #5a0a88;
+}
+
+.btn--light {
+  background-color: transparent;
+  color: #777;
+  border-color: #ccc;
+}
+
+.btn--secondary.btn--error, .btn--error.btn--transparent {
+  border: 1px solid #ff5c73;
+  color: #ff5c73;
+}
+
+.btn--transparent {
+  border-color: transparent;
+}
+
+.btn--small {
+  padding: 5px;
+}
+
+.btn--loading svg {
+  animation: rotate 1s infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*******************************************************************************
+Buttons
+*******************************************************************************/
+/*******************************************************************************
+File input
+*******************************************************************************/
+.input-file {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+
+.input-file .input-group--inline {
+  margin-right: 0;
+}
+
+.input-file .input-group--inline:first-child {
+  width: 100%;
+}
+
+.input-file .input-text {
+  width: 100%;
+}
+
+.input-file .btn {
+  border-radius: 0 3px 3px 0;
+  margin-left: -1px;
+  position: absolute;
+  right: 0;
+  background-color: #f2f2f2;
+  border-color: #bfbfbf;
+  color: #777;
+}
+
+/*******************************************************************************
+File input
+*******************************************************************************/
+/*******************************************************************************
+Input widths
+*******************************************************************************/
+.input-width--small {
+  width: 100px;
+}
+
+.input-width--medium {
+  width: 200px;
+}
+
+.input-width--large {
+  width: 350px;
+}
+
+.input-width--full {
+  width: 100%;
+}
+
+/*******************************************************************************
+Input widths
+*******************************************************************************/
+/*******************************************************************************
+Input sizes
+*******************************************************************************/
+.input-size--small {
+  padding: 5px;
+}
+
+/*******************************************************************************
+Input sizes
+*******************************************************************************/
+/*******************************************************************************
+Input group
+*******************************************************************************/
+.input-group {
+  margin-bottom: 34px;
+}
+
+.input-group--basic {
+  margin-bottom: 10px;
+}
+
+.input-group--inline {
+  display: inline-block;
+  margin-bottom: 34px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+.input-group--bg {
+  border-color: #bfbfbf;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 0;
+}
+
+/*******************************************************************************
+Input group
+*******************************************************************************/
+/*******************************************************************************
+Star rating
+*******************************************************************************/
+.star-input {
+  color: #ddd;
+  line-height: 0;
+  cursor: pointer;
+  font-size: 24px;
+}
+.star-input:focus-visible, .star-input:focus {
+  outline: 1px solid skyblue;
+}
+
+.star-input--sel {
+  color: #5a0a88;
+}
+
+/*******************************************************************************
+Star rating
+*******************************************************************************/
+/*******************************************************************************
+Text inputs
+*******************************************************************************/
+.input-textarea, .input-text {
+  border-color: #bfbfbf;
+  background-color: #fff;
+}
+
+.input-text--small {
+  padding: 5px;
+}
+
+.input-text--grey {
+  background-color: #f8f8f8;
+}
+
+.input-text:focus {
+  border-color: skyblue;
+}
+
+.input-textarea {
+  max-width: 600px;
+  width: 100%;
+  height: 200px;
+}
+
+.input-textarea--small {
+  height: 100px;
+}
+
+/*******************************************************************************
+Text inputs
+*******************************************************************************/
+.input-label {
+  margin-bottom: 6px;
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+/*******************************************************************************
+Heading input
+*******************************************************************************/
+.input-text--heading {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-weight: 600;
+  background-color: transparent;
+  padding: 8px;
+}
+
+.input-text--heading::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/*******************************************************************************
+Heading input
+*******************************************************************************/
+/*******************************************************************************
+Autocomplete
+*******************************************************************************/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete_suggestions-box {
+  position: absolute;
+  font-size: 15px;
+  z-index: 1;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.autocomplete_suggestion,
+.autocomplete_text {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete_suggestion {
+  cursor: pointer;
+}
+
+.autocomplete_suggestion--sel,
+.autocomplete_suggestion:hover {
+  background-color: #ff5c73;
+  color: white;
+}
+
+.autocomplete_text {
+  opacity: 0.6;
+}
+
+/*******************************************************************************
+Autocomplete
+*******************************************************************************/
+@media screen and (max-width: 500px) {
+  .input-group--inline {
+    margin-bottom: 34px;
+    display: block;
+  }
+  .input-group--bg .input-group--inline {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .input-width--large {
+    width: 100%;
+  }
+}
+.overlay {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  transition: 0.2s linear;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.overlay--shown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.alert {
+  position: fixed;
+  bottom: -50px;
+  transform: translateX(-50%);
+  left: 50%;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: #ff5c73;
+  color: white;
+  z-index: 5;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: 0.2s;
+  border: 1px solid #bfbfbf;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+.alert--shown {
+  opacity: 1;
+  bottom: 30px;
+}
+
+@media screen and (max-width: 700px) {
+  .alert {
+    width: 90%;
+    max-width: 400px;
+  }
+  .alert--shown {
+    bottom: 20px;
+  }
+}
+.modal {
+  position: fixed;
+  width: 90%;
+  max-width: 450px;
+  background-color: white;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.modal_head {
+  border-bottom: 1px solid #bfbfbf;
+  margin: 0 -20px;
+  padding: 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+.modal .input-group:last-child {
+  margin-bottom: 5px;
+  margin-top: 40px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  margin-top: 40px;
+}
+.table tr {
+  border: 1px solid #bfbfbf;
+}
+.table th {
+  background-color: #f6f6f6;
+  padding: 12px 10px;
+}
+.table td {
+  padding: 10px;
+}
+
+body {
+  background-color: #fffde6;
+  width: 1000px;
+  margin: 50px auto;
+  position: relative;
+}
+
+@media screen and (max-width: 1050px) {
+  body {
+    width: 840px;
+  }
+}
+@media screen and (max-width: 870px) {
+  body {
+    width: auto;
+  }
+}
+header {
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 60px;
+  background-color: white;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.header_logo {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.header_logo img {
+  vertical-align: middle;
+}
+
+header .btn {
+  position: absolute;
+  padding: 0;
+  color: #777;
+  font-size: 20px;
+  height: 40px;
+  line-height: 10px;
+  left: 80px;
+  top: 10px;
+}
+
+@media screen and (max-width: 870px) {
+  header {
+    display: block;
+  }
+}
+@media screen and (max-width: 700px) {
+  header .btn {
+    left: 30px;
+  }
+}
+.sidebar {
+  position: fixed;
+  padding: 0 40px;
+  width: 250px;
+  border-right: 1px solid #bfbfbf;
+  box-sizing: border-box;
+  top: 50px;
+  bottom: 40px;
+  overflow: auto;
+}
+.sidebar::-webkit-scrollbar {
+  appearance: none;
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #999;
+}
+
+.sidebar_logo {
+  font-size: 45px;
+  color: #5a0a88;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  line-height: 0.9;
+}
+
+.sidebar_logo img {
+  width: 90%;
+  display: block;
+}
+
+.sidebar_entries {
+  margin-top: 50px;
+}
+
+.sidebar_entry {
+  display: block;
+  margin-bottom: 27px;
+  color: #222;
+}
+
+body .sidebar .sidebar_entry--sel {
+  color: #5a0a88;
+  font-weight: 700;
+}
+
+.sidebar_entry:hover {
+  color: #000;
+}
+
+.sidebar .input-text {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.sidebar svg,
+.sidebar span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebar p {
+  font-size: 14px;
+  margin-top: 90px;
+  line-height: 1.2em;
+  border-top: 1px solid #bfbfbf;
+  padding-top: 15px;
+}
+
+.sidebar p a {
+  color: #5a0a88;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 870px) {
+  .sidebar {
+    visibility: hidden;
+    transform: translateX(-200%);
+    transition: 0.3s;
+    z-index: 20;
+    bottom: 0;
+    top: 0;
+    background-color: #fffde6;
+    overflow: auto;
+    padding-bottom: 20px;
+  }
+  .sidebar--shown {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .sidebar p {
+    margin-top: 100px;
+  }
+}
+@media screen and (max-width: 870px) {
+  .sidebar_logo {
+    margin-top: 40px;
+  }
+  .sidebar_logo img {
+    width: 70%;
+    display: block;
+  }
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+}
+
+.centered h2 {
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 500;
+  opacity: 0.2;
+}
+
+.centered p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.centered a {
+  color: #5a0a88;
+  text-decoration: underline;
+}
+
+.input-yield {
+  margin-left: 40px;
+}
+
+h1 + form {
+  margin-top: 0;
+}
+
+@keyframes loading {
+  50% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: #ddd;
+  }
+}
+.main {
+  margin-left: 250px;
+  padding: 10px 40px;
+  position: relative;
+  min-height: 500px;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 870px) {
+  .main {
+    margin: 0;
+    padding: 60px 80px;
+    min-height: 200px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .main {
+    padding: 50px 30px;
+  }
+  table .btn span {
+    display: none;
+  }
+  .centered h2 {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .input-yield {
+    margin-left: 0;
+    display: block;
+  }
+}
+.star {
+  color: #ccc;
+}
+
+.star--sel {
+  color: #ff5c73;
+}
+
+/*******************************************************************************
+Recipe card
+*******************************************************************************/
+.recipe-cards {
+  margin: 0 -10px;
+}
+
+.recipe-card-wrapper {
+  float: left;
+  width: 50%;
+}
+
+.recipe-card {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 20px;
+  display: block;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: scale(1.03);
+  border-color: #5a0a88;
+}
+
+.recipe-card_category {
+  background-color: #5a0a88;
+  color: white;
+  display: inline-block;
+  padding: 7px 9px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 3px 0 3px;
+}
+
+.recipe-card_rating {
+  color: #ccc;
+}
+
+.recipe-card_date {
+  margin-top: 4px;
+  color: #777;
+}
+
+.recipe-card h2 {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/*******************************************************************************
+Recipe card
+*******************************************************************************/
+/*******************************************************************************
+Recipe view
+*******************************************************************************/
+.recipe h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+
+.recipe h6 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.recipe_header {
+  position: relative;
+}
+
+.recipe_btns {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.recipe_btn {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.recipe_rating {
+  margin-top: 0;
+}
+
+.recipe_group {
+  margin: 55px 0;
+}
+
+.recipe_label {
+  margin: 10px 0 20px;
+  border-bottom: 1px solid #bfbfbf;
+  padding-bottom: 7px;
+}
+
+.recipe p, .recipe li ol li {
+  font-size: 19px;
+}
+
+.recipe li ol {
+  margin-top: 15px;
+}
+
+.recipe li ol li {
+  margin: 10px 0;
+  padding-left: 24px;
+  position: relative;
+}
+.recipe li ol li:before {
+  content: "";
+  position: absolute;
+  padding: 3px;
+  background-color: #5a0a88;
+  left: 4px;
+  top: 11px;
+  border-radius: 3px;
+}
+
+.recipe h4 {
+  margin-top: 35px;
+}
+
+.recipe li:first-child h4 {
+  margin-top: 15px;
+}
+
+/*******************************************************************************
+Recipe view
+*******************************************************************************/
+@media screen and (max-width: 1050px) {
+  .recipe-card-wrapper {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

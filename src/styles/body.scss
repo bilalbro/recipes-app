@@ -1,0 +1,27 @@
+@use './globals' as *;
+
+body {
+   background-color: $colors-lightyellow;
+   width: 1000px;
+   margin: 50px auto;
+   position: relative;
+}
+
+
+@include use-tablet-large {
+
+body {
+   width: 840px;
+}
+
+}
+
+
+
+@include use-tablet-small {
+
+body {
+   width: auto
+}
+
+}

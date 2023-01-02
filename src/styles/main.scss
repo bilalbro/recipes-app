@@ -1,0 +1,105 @@
+@use './globals' as *;
+
+
+.centered {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   // background-color: greenyellow;
+   text-align: center;
+   width: 80%;
+}
+
+.centered h2 {
+   margin-bottom: 10px;
+   font-size: 40px;
+   font-weight: 500;
+   opacity: 0.2;
+}
+
+.centered p {
+   margin-top: 10px;
+   opacity: 0.9;
+}
+
+.centered a {
+   color: $colors-primary;
+   text-decoration: underline;
+}
+
+
+.input-yield {
+   margin-left: 40px
+}
+
+h1 + form {
+   margin-top: -0
+}
+
+
+
+@keyframes loading {
+   50% {
+      background-color: #fff;
+   }
+   100% {
+      background-color: #ddd;
+   }
+}
+
+.main {
+   margin-left: 250px;
+   padding: 10px 40px;
+   position: relative;
+   min-height: 500px;
+   // background-color: greenyellow;
+}
+
+h1 {
+   margin-bottom: 30px;
+}
+
+
+
+
+@include use-tablet-small {
+
+.main {
+   margin: 0;
+   padding: 60px 80px;
+   min-height: 200px;
+}
+
+
+}
+
+
+
+
+@include use-mobile {
+
+.main {
+   padding: 50px 30px
+}
+
+table .btn span {
+   display: none;
+}
+
+.centered h2 {
+   font-size: 32px;
+}
+
+}
+
+
+
+@include use-mobile-small {
+
+.input-yield {
+   margin-left: 0;
+   display: block;
+}
+
+}
