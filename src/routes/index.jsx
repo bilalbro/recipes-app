@@ -130,7 +130,6 @@ const router = createBrowserRouter([
                var url = new URL(request.url);
                var query = url.searchParams.get('q');
                var results = await recipeList.searchRecipe(query);
-
                return {
                   query,
                   results

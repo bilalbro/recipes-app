@@ -5,6 +5,7 @@ import AutocompleteInput from './AutocompleteInput';
 import InputList from './InputList';
 import {InputGroup, InputGroupInline} from './InputGroups';
 import Button from './Button';
+import LinkButton from './LinkButton';
 import LoadingButton from './LoadingButton';
 import LoadingSubmitButton from './LoadingSubmitButton';
 import FileInput from './FileInput';
@@ -22,6 +23,7 @@ export {
    InputGroup,
    InputGroupInline,
    Button,
+   LinkButton,
    LoadingButton,
    LoadingSubmitButton,
    FileInput,

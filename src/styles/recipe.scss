@@ -94,6 +94,11 @@ Recipe view
 
 .recipe_header {
    position: relative;
+
+   // .recipe_btn:nth-child(1),
+   // .recipe_btn:nth-child(2) {
+   //    border: none
+   // }
 }
 
 .recipe_btns {
@@ -102,9 +107,21 @@ Recipe view
    top: 5px;
 }
 
+.recipe_iterations .recipe_btns {
+   top: 1px;
+
+   .btn {
+      padding: 3px
+   }
+   .btn svg {
+      font-size: 25px;
+   }
+}
+
 .recipe_btn {
    display: inline-block;
    margin-left: 10px;
+   padding: 10px
 }
 
 .recipe_rating {

@@ -8,7 +8,6 @@ export default function CategoryInput({
    ...props
 })
 {
-   console.log(category);
    return (
       <AutocompleteInput
          className="input-text"

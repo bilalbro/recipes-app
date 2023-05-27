@@ -33311,34 +33311,6 @@
 	}
 
 	// THIS FILE IS AUTO GENERATED
-	function FaArrowLeft(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 448 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaArrowRight(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 448 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
-	      }
-	    }]
-	  })(props);
-	}
 	function FaBars(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -33349,34 +33321,6 @@
 	      "tag": "path",
 	      "attr": {
 	        "d": "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaCopy(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 448 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaFastForward(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 512 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M512 76v360c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12V284.1L276.5 440.6c-20.6 17.2-52.5 2.8-52.5-24.6V284.1L52.5 440.6C31.9 457.8 0 443.4 0 416V96c0-27.4 31.9-41.7 52.5-24.6L224 226.8V96c0-27.4 31.9-41.7 52.5-24.6L448 226.8V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12z"
 	      }
 	    }]
 	  })(props);
@@ -33395,20 +33339,6 @@
 	    }]
 	  })(props);
 	}
-	function FaPencilAlt(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 512 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
-	      }
-	    }]
-	  })(props);
-	}
 	function FaPlusCircle(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -33423,34 +33353,6 @@
 	    }]
 	  })(props);
 	}
-	function FaPlus(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 448 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaSpinner(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 512 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
-	      }
-	    }]
-	  })(props);
-	}
 	function FaStar(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -33461,34 +33363,6 @@
 	      "tag": "path",
 	      "attr": {
 	        "d": "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaTimes(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 352 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-	      }
-	    }]
-	  })(props);
-	}
-	function FaTrashAlt(props) {
-	  return GenIcon({
-	    "tag": "svg",
-	    "attr": {
-	      "viewBox": "0 0 448 512"
-	    },
-	    "child": [{
-	      "tag": "path",
-	      "attr": {
-	        "d": "M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
 	      }
 	    }]
 	  })(props);
@@ -34007,6 +33881,135 @@
 	  }));
 	}
 
+	// THIS FILE IS AUTO GENERATED
+	function BiChevronRightCircle(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+	      }
+	    }, {
+	      "tag": "path",
+	      "attr": {
+	        "d": "M9.293 7.707 13.586 12l-4.293 4.293 1.414 1.414L16.414 12l-5.707-5.707z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiCopyAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"
+	      }
+	    }, {
+	      "tag": "path",
+	      "attr": {
+	        "d": "M6 12h6v2H6zm0 4h6v2H6z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiLeftArrowAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiLoaderAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiPencil(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiPlus(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiRightArrowAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiTrash(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"
+	      }
+	    }, {
+	      "tag": "path",
+	      "attr": {
+	        "d": "M9 10h2v8H9zm4 0h2v8h-2z"
+	      }
+	    }]
+	  })(props);
+	}
+
 	function Button({
 	  submit = false,
 	  type = 'primary',
@@ -34034,7 +34037,7 @@
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
-	  }, /*#__PURE__*/React.createElement(FaTimes, null));
+	  }, /*#__PURE__*/React.createElement(BiTrash, null));
 	}
 	function DefaultAddButton({
 	  onClick
@@ -34042,7 +34045,7 @@
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
-	  }, /*#__PURE__*/React.createElement(FaPlus, null));
+	  }, /*#__PURE__*/React.createElement(BiPlus, null));
 	}
 	function useInputList(initialList) {
 	  const [list, setList] = reactExports.useState(initialList.length === 0 ? [[]] : initialList);
@@ -34137,6 +34140,23 @@
 	  }, props));
 	}
 
+	function LinkButton({
+	  to,
+	  children,
+	  ...props
+	}) {
+	  const navigate = useNavigate();
+	  function onClick() {
+	    if (to) {
+	      navigate(to);
+	    }
+	  }
+	  return /*#__PURE__*/React.createElement(Button, _extends({
+	    disabled: !to,
+	    onClick: onClick
+	  }, props), children);
+	}
+
 	function LoadingButton({
 	  children,
 	  loader,
@@ -34158,7 +34178,7 @@
 	      'btn--loading': loading
 	    }),
 	    disabled: loading ? true : disabled
-	  }, props), loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(FaSpinner, null), "\xA0", loadingText) : children);
+	  }, props), loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(BiLoaderAlt, null), "\xA0", loadingText) : children);
 	}
 
 	function LoadingSubmitButton({
@@ -34186,7 +34206,7 @@
 	    }),
 	    disabled: loading,
 	    submit: true
-	  }, props), loading ? /*#__PURE__*/React.createElement(FaSpinner, null) : children);
+	  }, props), loading ? /*#__PURE__*/React.createElement(BiLoaderAlt, null) : children);
 	}
 
 	function FileInput({
@@ -34238,7 +34258,7 @@
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    onClick: onClick
-	  }, /*#__PURE__*/React.createElement(FaPlus, null), " Add Section");
+	  }, /*#__PURE__*/React.createElement(BiPlus, null), " Add Section");
 	}
 	function RemoveGroupButton({
 	  onClick
@@ -35255,7 +35275,6 @@
 	  category,
 	  ...props
 	}) {
-	  console.log(category);
 	  return /*#__PURE__*/React.createElement(AutocompleteInput, _extends({
 	    className: "input-text",
 	    name: "category",
@@ -35621,19 +35640,23 @@
 	    className: "recipe_iterations"
 	  }, /*#__PURE__*/React.createElement("h6", null, "Iteration ", iterations.current, " of ", iterations.total), /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_btns"
-	  }, /*#__PURE__*/React.createElement(Link, {
-	    to: '/recipe/' + iterations.previous
+	  }, /*#__PURE__*/React.createElement(LinkButton, {
+	    small: true,
+	    type: "transparent",
+	    to: iterations.previous && '/recipe/' + iterations.previous
 	  }, /*#__PURE__*/React.createElement("span", {
 	    className: classNames({
 	      'light': !iterations.previous
 	    })
-	  }, /*#__PURE__*/React.createElement(FaArrowLeft, null))), /*#__PURE__*/React.createElement(Link, {
-	    to: '/recipe/' + iterations.next
+	  }, /*#__PURE__*/React.createElement(BiLeftArrowAlt, null))), /*#__PURE__*/React.createElement(LinkButton, {
+	    small: true,
+	    type: "transparent",
+	    to: iterations.next && '/recipe/' + iterations.next
 	  }, /*#__PURE__*/React.createElement("span", {
 	    className: classNames({
 	      'light': !iterations.next
 	    })
-	  }, /*#__PURE__*/React.createElement(FaArrowRight, null))))), /*#__PURE__*/React.createElement("div", {
+	  }, /*#__PURE__*/React.createElement(BiRightArrowAlt, null))))), /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_header"
 	  }, /*#__PURE__*/React.createElement("h6", {
 	    className: "text--md text--light"
@@ -35642,18 +35665,18 @@
 	  }, /*#__PURE__*/React.createElement(Link, {
 	    to: "iterate",
 	    className: "recipe_btn btn btn--grey"
-	  }, /*#__PURE__*/React.createElement(FaFastForward, null)), /*#__PURE__*/React.createElement(Link, {
+	  }, /*#__PURE__*/React.createElement(BiChevronRightCircle, null)), /*#__PURE__*/React.createElement(Link, {
 	    to: "copy",
 	    className: "recipe_btn btn btn--grey"
-	  }, /*#__PURE__*/React.createElement(FaCopy, null)), /*#__PURE__*/React.createElement(Link, {
+	  }, /*#__PURE__*/React.createElement(BiCopyAlt, null)), /*#__PURE__*/React.createElement(Link, {
 	    to: "update",
 	    className: "recipe_btn btn btn--secondary"
-	  }, /*#__PURE__*/React.createElement(FaPencilAlt, null)), /*#__PURE__*/React.createElement(Button, {
+	  }, /*#__PURE__*/React.createElement(BiPencil, null)), /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    onClick: onDelete,
 	    error: true,
 	    className: "recipe_btn"
-	  }, /*#__PURE__*/React.createElement(FaTrashAlt, null)))), /*#__PURE__*/React.createElement("div", {
+	  }, /*#__PURE__*/React.createElement(BiTrash, null)))), /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_rating"
 	  }, /*#__PURE__*/React.createElement(Rating, {
 	    rating: rating
@@ -35835,12 +35858,12 @@
 	    type: "secondary",
 	    small: true,
 	    onClick: onUpdateClick
-	  }, /*#__PURE__*/React.createElement(FaPencilAlt, null), " ", /*#__PURE__*/React.createElement("span", null, "Edit")), "\xA0\xA0", /*#__PURE__*/React.createElement(Button, {
+	  }, /*#__PURE__*/React.createElement(BiPencil, null), " ", /*#__PURE__*/React.createElement("span", null, "Edit")), "\xA0\xA0", /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    small: true,
 	    error: true,
 	    onClick: onRemoveClick
-	  }, /*#__PURE__*/React.createElement(FaTrashAlt, null), " ", /*#__PURE__*/React.createElement("span", null, "Delete"))));
+	  }, /*#__PURE__*/React.createElement(BiTrash, null), " ", /*#__PURE__*/React.createElement("span", null, "Delete"))));
 	}
 	function ItemTable({
 	  entries
@@ -35904,7 +35927,7 @@
 	  }, "(", entries.length, ")")), /*#__PURE__*/React.createElement(Button, {
 	    onClick: onAddItem,
 	    type: "primary"
-	  }, /*#__PURE__*/React.createElement(FaPlus, null), " ", /*#__PURE__*/React.createElement("span", null, "Add")), entries.length ? /*#__PURE__*/React.createElement(ItemTable, {
+	  }, /*#__PURE__*/React.createElement(BiPlus, null), " ", /*#__PURE__*/React.createElement("span", null, "Add")), entries.length ? /*#__PURE__*/React.createElement(ItemTable, {
 	    entries: entries
 	  }) : null);
 	}

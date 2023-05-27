@@ -8,7 +8,7 @@ $padding-small: 5px;
 }
 
 .light {
-   opacity: 0.3;
+   opacity: 0.6;
 }
 
 %form-asset {
@@ -30,6 +30,7 @@ Buttons
 *******************************************************************************/
 .btn {
    @extend %form-asset;
+   padding: 9px 12px;
    letter-spacing: 0.2px;
    font-weight: 700;
    cursor: pointer;
@@ -39,8 +40,9 @@ Buttons
    }
 }
 
-.btn > svg {
+.btn svg {
    vertical-align: middle;
+   font-size: 22px;
 }
 .btn > span {
    vertical-align: middle;
@@ -64,8 +66,8 @@ Buttons
 
 .btn--grey {
    background-color: transparent;
-   color: $colors-grey;
-   border-color: $colors-grey;
+   color: $colors-darkgrey;
+   border-color: $colors-border;
 }
 
 .btn--light {
@@ -82,11 +84,15 @@ Buttons
 .btn--transparent {
    @extend .btn--secondary;
    border-color: transparent;
+   color: inherit
 }
 
 .btn--small {
-   // font-size: 13px;
-   padding: $padding-small
+   padding: $padding-small;
+
+   svg {
+      font-size: 18px;
+   }
 }
 
 .btn--loading svg {

@@ -70,7 +70,7 @@ p {
 }
 
 .light {
-  opacity: 0.3;
+  opacity: 0.6;
 }
 
 .input-textarea, .input-text, .input-group--bg, .btn {
@@ -88,6 +88,7 @@ p {
 Buttons
 *******************************************************************************/
 .btn {
+  padding: 9px 12px;
   letter-spacing: 0.2px;
   font-weight: 700;
   cursor: pointer;
@@ -96,8 +97,9 @@ Buttons
   opacity: 0.5;
 }
 
-.btn > svg {
+.btn svg {
   vertical-align: middle;
+  font-size: 22px;
 }
 
 .btn > span {
@@ -122,8 +124,8 @@ Buttons
 
 .btn--grey {
   background-color: transparent;
-  color: #777;
-  border-color: #777;
+  color: #666;
+  border-color: #bfbfbf;
 }
 
 .btn--light {
@@ -139,10 +141,14 @@ Buttons
 
 .btn--transparent {
   border-color: transparent;
+  color: inherit;
 }
 
 .btn--small {
   padding: 5px;
+}
+.btn--small svg {
+  font-size: 18px;
 }
 
 .btn--loading svg {
@@ -813,9 +819,20 @@ Recipe view
   top: 5px;
 }
 
+.recipe_iterations .recipe_btns {
+  top: 1px;
+}
+.recipe_iterations .recipe_btns .btn {
+  padding: 3px;
+}
+.recipe_iterations .recipe_btns .btn svg {
+  font-size: 25px;
+}
+
 .recipe_btn {
   display: inline-block;
   margin-left: 10px;
+  padding: 10px;
 }
 
 .recipe_rating {

@@ -1,19 +1,20 @@
 import React from 'react';
 import { useLoaderData, Link, Form, useHref } from 'react-router-dom';
 import {
-   FaArrowLeft,
-   FaArrowRight,
-   FaCopy,
-   FaFastForward,
-   FaPencilAlt,
-   FaTrashAlt
-} from 'react-icons/fa';
+   BiChevronRightCircle,
+   BiCopyAlt,
+   BiLeftArrowAlt,
+   BiPencil,
+   BiRightArrowAlt,
+   BiTrash
+} from 'react-icons/bi'
 
 import { recipeList } from '../model';
 import {
    Button,
    LoadingSubmitButton,
-   InputGroup
+   InputGroup,
+   LinkButton
 } from '../components/Inputs';
 import Rating from '../components/Rating';
 import { useModal } from '../helpers/modal';
@@ -83,16 +84,22 @@ export default function Recipe({})
             <div className="recipe_iterations">
                <h6>Iteration {iterations.current} of {iterations.total}</h6>
                <div className="recipe_btns">
-                  <Link to={'/recipe/' + iterations.previous}>
-                     <span className={classNames({
-                        'light': !iterations.previous
-                     })}><FaArrowLeft/></span>
-                  </Link>
-                  <Link to={'/recipe/' + iterations.next}>
-                     <span className={classNames({
-                        'light': !iterations.next
-                     })}><FaArrowRight/></span>
-                  </Link>
+                  <LinkButton
+                     small type="transparent"
+                     to={iterations.previous && ('/recipe/' + iterations.previous)}
+                  >
+                     <span className={classNames({ 'light': !iterations.previous })}>
+                        <BiLeftArrowAlt/>
+                     </span>
+                  </LinkButton>
+                  <LinkButton
+                     small type="transparent"
+                     to={iterations.next && ('/recipe/' + iterations.next)}
+                  >
+                     <span className={classNames({'light': !iterations.next })}>
+                        <BiRightArrowAlt/>
+                     </span>
+                  </LinkButton>
                </div>
             </div>
          )}
@@ -102,16 +109,16 @@ export default function Recipe({})
 
             <div className="recipe_btns">
                <Link to="iterate" className="recipe_btn btn btn--grey">
-                  <FaFastForward/>
+                  <BiChevronRightCircle/>
                </Link>
                <Link to="copy" className="recipe_btn btn btn--grey">
-                  <FaCopy/>
+                  <BiCopyAlt/>
                </Link>
                <Link to="update" className="recipe_btn btn btn--secondary">
-                  <FaPencilAlt/>
+                  <BiPencil/>
                </Link>
                <Button type="secondary" onClick={onDelete} error className="recipe_btn">
-                  <FaTrashAlt/>
+                  <BiTrash/>
                </Button>
             </div>
          </div>

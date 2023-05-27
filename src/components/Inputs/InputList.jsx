@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { FaPlus, FaTimes } from 'react-icons/fa';
+import { BiPlus, BiTrash } from 'react-icons/bi';
+
 import Button from './Button';
 
 
@@ -8,7 +9,7 @@ function DefaultRemoveButton({
 })
 {
    return (
-      <Button type="light" onClick={onClick}><FaTimes /></Button>
+      <Button type="light" onClick={onClick}><BiTrash /></Button>
    );
 }
 
@@ -18,7 +19,7 @@ function DefaultAddButton({
 })
 {
    return (
-      <Button type="light" onClick={onClick}><FaPlus /></Button>
+      <Button type="light" onClick={onClick}><BiPlus /></Button>
    )
 }
 

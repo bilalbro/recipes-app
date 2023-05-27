@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { FaSpinner } from 'react-icons/fa';
+import { BiLoaderAlt } from 'react-icons/bi';
 
 import Button from './Button';
 import { classNames } from '../helper';
+
 
 export default function LoadingButton({
    children,
@@ -28,7 +29,7 @@ export default function LoadingButton({
       })} disabled={loading ? true : disabled} {...props}>
          {loading
          ? <>
-            <FaSpinner />&nbsp;
+            <BiLoaderAlt />&nbsp;
             {loadingText}
          </>
          : children}

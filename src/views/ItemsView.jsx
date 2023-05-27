@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaPencilAlt, FaPlus, FaTrashAlt } from 'react-icons/fa';
 import { useLoaderData, Form, useHref } from 'react-router-dom';
+import { BiPencil, BiPlus, BiTrash } from 'react-icons/bi';
 
 import {
    TextInput,
@@ -81,11 +81,11 @@ function ItemTableRow({
          <td>{usage}</td>
          <td>
             <Button type="secondary" small onClick={onUpdateClick}>
-               <FaPencilAlt /> <span>Edit</span>
+               <BiPencil/> <span>Edit</span>
             </Button>
             &nbsp;&nbsp;
             <Button type="secondary" small error onClick={onRemoveClick}>
-               <FaTrashAlt /> <span>Delete</span>
+               <BiTrash/> <span>Delete</span>
             </Button>
          </td>
       </tr>
@@ -151,7 +151,7 @@ export default function ItemList({
    return <>
       <h1>{title} <span className="light">({entries.length})</span></h1>
 
-      <Button onClick={onAddItem} type="primary"><FaPlus /> <span>Add</span></Button>
+      <Button onClick={onAddItem} type="primary"><BiPlus /> <span>Add</span></Button>
       {entries.length
       ? <ItemTable entries={entries} />
       : null

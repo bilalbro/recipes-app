@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigation } from 'react-router-dom';
-import { FaSpinner } from 'react-icons/fa';
 
 import Button from './Button';
 import { classNames } from '../helper';
+
 
 export default function LoadingSubmitButton({
    children,
@@ -33,7 +34,7 @@ export default function LoadingSubmitButton({
          'btn--loading': loading,
       })} disabled={loading} submit {...props}>
          {loading
-         ? <FaSpinner />
+         ? <BiLoaderAlt />
          : children}
       </Button>
    )

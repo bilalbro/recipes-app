@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { BiPlus } from 'react-icons/bi';
 
 import {
    InputGroup,
@@ -17,7 +17,7 @@ function AddGroupButton({
 })
 {
    return (
-      <Button type="secondary" onClick={onClick}><FaPlus /> Add Section</Button>
+      <Button type="secondary" onClick={onClick}><BiPlus /> Add Section</Button>
    );
 }
 
