@@ -81,7 +81,7 @@ const router = createBrowserRouter([
                   path: '',
                   element: <RecipeView />,
                   loader: async function({params}) {
-                     return await recipeList.getRecipe(params.recipeId, true);
+                     return await recipeList.getRecipeDetailed(params.recipeId);
                   },
                },
                {
@@ -95,13 +95,27 @@ const router = createBrowserRouter([
                   path: 'update',
                   element: <UpdateRecipeView />,
                   loader: async function({params, request}) {
-                     return await recipeList.getRecipe(params.recipeId, true);
+                     return await recipeList.getRecipeForUpdate(params.recipeId);
                   },
                   action: async function({params, request}) {
                      var formDataMap = processRecipe(await request.formData());
                      await recipeList.updateRecipe(params.recipeId, formDataMap);
-                     return redirect('/');
+                     return redirect(`/recipe/${params.recipeId}`);
                   }
+               },
+               {
+                  path: 'iterate',
+                  loader: async function({params, request}) {
+                     var key = await recipeList.makeIteration(params.recipeId);
+                     return redirect(`/recipe/${key}/update`);
+                  },
+               },
+               {
+                  path: 'copy',
+                  loader: async function({params, request}) {
+                     var key = await recipeList.cloneRecipe(params.recipeId);
+                     return redirect(`/recipe/${key}/update`);
+                  },
                }
             ]
          },

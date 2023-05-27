@@ -1,7 +1,15 @@
 import React from 'react';
 import { useLoaderData, Link, Form, useHref } from 'react-router-dom';
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import {
+   FaArrowLeft,
+   FaArrowRight,
+   FaCopy,
+   FaFastForward,
+   FaPencilAlt,
+   FaTrashAlt
+} from 'react-icons/fa';
 
+import { recipeList } from '../model';
 import {
    Button,
    LoadingSubmitButton,
@@ -9,6 +17,7 @@ import {
 } from '../components/Inputs';
 import Rating from '../components/Rating';
 import { useModal } from '../helpers/modal';
+import { classNames } from '../components/helper';
 
 
 function IngredientsGroup({
@@ -22,7 +31,7 @@ function IngredientsGroup({
          <h4>{name}</h4>
          <ol>
             {ingredients.map((_, i) => (
-               <li key={i}>{ingredients[i][1]} - {quantities[i]}</li>
+               <li key={i}>{ingredients[i]} - {quantities[i]}</li>
             ))}
          </ol>
       </li>
@@ -49,16 +58,19 @@ function DeleteRecipeForm()
 export default function Recipe({})
 {
    const {
+      id,
       name,
       category,
       rating,
       items,
       instructions,
-      review
+      review,
+      dateCreated,
+      iterations
    } = useLoaderData();
    const { showModal } = useModal()
 
-   function onClick() {
+   function onDelete() {
       showModal({
          title: 'Delete Recipe',
          body: <DeleteRecipeForm />
@@ -67,22 +79,49 @@ export default function Recipe({})
 
    return (
       <div className="recipe">
+         {iterations && (
+            <div className="recipe_iterations">
+               <h6>Iteration {iterations.current} of {iterations.total}</h6>
+               <div className="recipe_btns">
+                  <Link to={'/recipe/' + iterations.previous}>
+                     <span className={classNames({
+                        'light': !iterations.previous
+                     })}><FaArrowLeft/></span>
+                  </Link>
+                  <Link to={'/recipe/' + iterations.next}>
+                     <span className={classNames({
+                        'light': !iterations.next
+                     })}><FaArrowRight/></span>
+                  </Link>
+               </div>
+            </div>
+         )}
          <div className="recipe_header">
-            <h6 className="text--md text--light">{category[1]}</h6>
+            <h6 className="text--md text--light">{category}</h6>
             <h1>{name}</h1>
 
             <div className="recipe_btns">
-               <Link to="update" className="recipe_btn btn btn--secondary">
-                  <FaPencilAlt />
+               <Link to="iterate" className="recipe_btn btn btn--grey">
+                  <FaFastForward/>
                </Link>
-               <Button type="secondary" onClick={onClick} error className="recipe_btn">
-                  <FaTrashAlt />
+               <Link to="copy" className="recipe_btn btn btn--grey">
+                  <FaCopy/>
+               </Link>
+               <Link to="update" className="recipe_btn btn btn--secondary">
+                  <FaPencilAlt/>
+               </Link>
+               <Button type="secondary" onClick={onDelete} error className="recipe_btn">
+                  <FaTrashAlt/>
                </Button>
             </div>
          </div>
          <div className="recipe_rating">
             <Rating rating={rating} />
          </div>
+         <div className="recipe_group--close">
+            <div className="light">{dateCreated.toDateString()}</div>
+         </div>
+
          <div className="recipe_group">
             <div className="recipe_label">Ingredients</div>
             <ol>

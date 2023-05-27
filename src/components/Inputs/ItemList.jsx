@@ -48,8 +48,8 @@ export default function ItemList({
                      <InputGroup basic>
                         <InputGroupInline style={{marginBottom: 0}}>
                            <IngredientInput {...{
-                              ingredientKey: ingredient && ingredient[0],
-                              ingredient: ingredient && ingredient[1]
+                              ingredientKey: ingredient && ingredient.key,
+                              ingredient: ingredient && ingredient.name
                            }} />
                         </InputGroupInline>
 

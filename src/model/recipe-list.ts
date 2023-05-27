@@ -1,4 +1,4 @@
-import FrontendDB, { FrontendDBStore } from '../../../p7/src';
+import FrontendDB, { FrontendDBStore } from '../../../frontend-db/src';
 
 import {
    RECIPES_STORE_NAME
@@ -13,7 +13,9 @@ import {
    Recipe,
    RecipeItem,
    RecipeFormData,
-   RecipeForDisplay
+   RecipeProcessed,
+   RecipeDetailed,
+   RecipeDetailedForUpdate
 } from './types';
 import deepClone from '../helpers/deepClone';
 
@@ -44,7 +46,7 @@ class RecipeList
    }
 
 
-   private async getItemAfterPossiblyAdding(name: string, itemSet: ItemSet, isNew: boolean)
+   private async getItemAfterPossiblyAdding(name: string, itemSet: ItemSet)
    {
       await this.init();
 
@@ -58,7 +60,7 @@ class RecipeList
    }
 
 
-   private async getRecordForDB(data: RecipeFormData, isNew = false)
+   private async getRecordForDB(data: RecipeFormData)
    {
       await this.init();
 
@@ -68,7 +70,7 @@ class RecipeList
 
          for (var ingredient of item.ingredients) {
             ingredients.push(await this.getItemAfterPossiblyAdding(
-               ingredient, ingredientSet, isNew));
+               ingredient, ingredientSet));
          }
 
          items.push({
@@ -79,7 +81,7 @@ class RecipeList
       }
 
       var category = await this.getItemAfterPossiblyAdding(
-         data.category, categorySet, isNew);
+         data.category, categorySet);
 
       // Now, given that we've added the necessary ingredients and the category
       // to their respective data stores, we can safely proceed with adding a
@@ -92,14 +94,31 @@ class RecipeList
          items,
          instructions: data.instructions,
          review: data.review,
-         iterationOf: null
+         previous: null,
+         next: null,
       } as Recipe;
 
-      if (isNew) {
-         var dateString = '' + Number(new Date());
-         record.id = dateString;
-         record.dateCreated = dateString;
+      return record;
+   }
+
+
+   async getNewRecord(recipeFormData: RecipeFormData): Promise<Recipe>
+   async getNewRecord(key: string): Promise<Recipe>
+   async getNewRecord(formDataOrKey: RecipeFormData | string)
+   {
+      await this.init();
+
+      var record: Recipe;
+      if (typeof formDataOrKey !== 'string') {
+         record = await this.getRecordForDB(formDataOrKey as RecipeFormData);
       }
+      else {
+         record = deepClone(this.data[formDataOrKey as string]);
+      }
+
+      var timestamp = Number(new Date());
+      record.id = '' + timestamp;
+      record.dateCreated = timestamp;
 
       return record;
    }
@@ -109,8 +128,65 @@ class RecipeList
    {
       await this.init();
 
-      var record = await this.getRecordForDB(data, true);
+      var record = await this.getNewRecord(data);
+      await this.addRecipeRecord(record);
+   }
+
+
+   private async addRecipeRecord(record: Recipe)
+   {
+      await this.init();
+
       await this.store.addRecord(record);
+      this.data[record.id] = record;
+   }
+
+
+   private async useCategoryAndIngredients(record: Recipe)
+   {
+      await this.init();
+      for (var item of record.items) {
+         for (var ingredient of item.ingredients) {
+            await this.getItemAfterPossiblyAdding(ingredient as string, ingredientSet);
+         }
+      }
+      await this.getItemAfterPossiblyAdding(record.category as string, categorySet);
+   }
+
+
+   async cloneRecipe(key: string)
+   {
+      await this.init();
+
+      var recordClone = await this.getNewRecord(key);
+      recordClone.name += ' (copy)';
+      recordClone.previous = null;
+      recordClone.next = null;
+
+      // 'Use' the ingredients' and the category.
+      await this.useCategoryAndIngredients(recordClone);
+
+      await this.addRecipeRecord(recordClone);
+      return recordClone.id;
+   }
+
+
+   async makeIteration(key: string)
+   {
+      await this.init();
+
+      var recordClone = await this.getNewRecord(key);      
+      recordClone.previous = key;
+
+      // 'Use' the ingredients' and the category.
+      await this.useCategoryAndIngredients(recordClone);
+
+      await this.addRecipeRecord(recordClone);
+
+      await this.store.updateRecord(key, { next: recordClone.id });
+      this.data[key].next = recordClone.id;
+
+      return recordClone.id;
    }
 
 
@@ -120,40 +196,70 @@ class RecipeList
 
       var records: any[] = [];
       for (var key in this.data) {
-         records.push(await this.getRecipe(key, false));
+         var record = this.data[key];
+         if (record.next === null) {
+            records.push(await this.getRecipe(key));
+         }
       }
       return records;
    }
 
 
-   async getRecipe(key: string, withIngredientNames = false)
+   async getRecipe(key: string)
    {
       await this.init();
 
       var record = this.data[key];
-      var recordCopy = deepClone(record) as RecipeForDisplay;
+      var recordProcessed: RecipeProcessed = deepClone(record);
+
+      // Process data
+      recordProcessed.dateCreated = new Date(record.dateCreated);
 
       // Process category
-      recordCopy.category = [
-         recordCopy.category,
-         (await categorySet.get(record.category)).name
-      ];
+      recordProcessed.category = (await categorySet.get(record.category)).name;
+
+      return recordProcessed;
+   }
+
+
+   async getRecipeDetailed(key: string)
+   {
+      await this.init();
+
+      var record = await this.getRecipe(key) as RecipeDetailed;
 
       // Process ingredients
-      if (withIngredientNames) {
-         for (var item of recordCopy.items) {
-            var ingredientKeysWithNames: [IDBValidKey, string][] = [];
-            for (var ingredientKey of item.ingredients) {
-               ingredientKeysWithNames.push([
-                  ingredientKey,
-                  (await ingredientSet.get(ingredientKey)).name
-               ]);
-               item.ingredients = ingredientKeysWithNames;
-            }
+      for (var item of record.items) {
+         var ingredients = item.ingredients;
+         for (var i = 0, len = ingredients.length; i < len; i++) {
+            ingredients[i] = (await ingredientSet.get(ingredients[i])).name
          }
       }
 
-      return recordCopy;
+      record.iterations = await this.getIterationDetails(key);
+
+      return record;
+   }
+
+
+   async getRecipeForUpdate(key: string)
+   {
+      await this.init();
+
+      var record: RecipeDetailedForUpdate = deepClone(this.data[key]);
+
+      // Process category
+      (record as any).category = await categorySet.getForUpdate(record.category as any);
+
+      // Process ingredients
+      for (var item of record.items) {
+         var ingredients = item.ingredients;
+         for (var i = 0, len = ingredients.length; i < len; i++) {
+            ingredients[i] = await ingredientSet.getForUpdate(ingredients[i] as any);
+         }
+      }
+
+      return record;
    }
 
 
@@ -162,6 +268,24 @@ class RecipeList
       await this.init();
 
       await this.unUseCategoryAndIngredients(key);
+      var record = this.data[key];
+
+      // Restructure the iteration pointers.
+      if (record.previous) {
+         var newNextOfPrevious: IDBValidKey | null = null;
+         if (record.next) {
+            newNextOfPrevious = record.next;
+         }
+         await this.updateRecipeRecord(record.previous as string, { next: newNextOfPrevious });
+      }
+
+      if (record.next) {
+         var newPreviousOfNext: IDBValidKey | null = null;
+         if (record.previous) {
+            newPreviousOfNext = record.previous;
+         }
+         await this.updateRecipeRecord(record.next as string, { previous: newPreviousOfNext });
+      }
 
       delete this.data[key];
       await this.store.deleteRecord(key);
@@ -204,18 +328,58 @@ class RecipeList
       await this.unUseCategoryAndIngredients(key);
 
       var record = await this.getRecordForDB(data);
+      record.previous = this.data[key].previous;
+      record.next = this.data[key].next;
+
+      await this.updateRecipeRecord(key, record);
+   }
+
+
+   private async updateRecipeRecord(key: string, record: Object)
+   {
+      await this.init();
       await this.store.updateRecord(key, record);
       this.data[key] = Object.assign(this.data[key], record);
    }
 
-   cloneRecipe() {}
+
+   async getIterationDetails(key: string)
+   {
+      await this.init();
+
+      var previous = this.data[key].previous;
+      var next = this.data[key].next;
+
+      if (previous || next) {
+         var previousRecords = 1;
+         while (previous) {
+            previousRecords++;
+            previous = this.data[previous as string].previous;
+         }
+
+         var nextRecords = 0;
+         while (next) {
+            nextRecords++;
+            next = this.data[next as string].next;
+         }
+
+         return {
+            current: previousRecords,
+            total: previousRecords + nextRecords,
+            next: this.data[key].next,
+            previous: this.data[key].previous
+         }
+      }
+
+      return null;
+   }
 
 
    async searchRecipe(query: string)
    {
       await this.init();
 
-      var results: Recipe[] = [];
+      var results: RecipeProcessed[] = [];
       for (var key in this.data) {
          var record = this.data[key];
          if (record.name.toLowerCase().includes(query.toLowerCase())) {
@@ -256,12 +420,10 @@ class RecipeList
       // since at that init() call, the existing database has been deleted. There
       // are multiple ways to prevent this, and so this can be solved later on.
 
-      // console.log('restore started')
       await this.init();
       await this.db.delete();
 
       await FrontendDB.restore(jsonString);
-      // console.log('restore done')
       await this.init(true);
    }
 

@@ -1,4 +1,4 @@
-import Database, {FrontendDBStore} from '../../../p7/src';
+import Database, {FrontendDBStore} from '../../../frontend-db/src';
 import getDatabase from './get-database';
 
 class ItemSet
@@ -55,11 +55,32 @@ class ItemSet
       return this.data[key as string];
    }
 
+   async getForUpdate(key: string)
+   {
+      await this.init();
+      return {
+         key,
+         name: this.data[key].name
+      };
+   }
+
    async getAll() {
       await this.init();
       var data: any[] = [];
       for (var [key, value] of Object.entries(this.data)) {
          data.push([key, value]);
+      }
+      return data;
+   }
+
+   async getAllForUpdate() {
+      await this.init();
+      var data: any[] = [];
+      for (var [key, value] of Object.entries(this.data)) {
+         data.push({
+            key,
+            name: value.name
+         });
       }
       return data;
    }

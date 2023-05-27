@@ -1,4 +1,4 @@
-import FrontendDB from "../../../p7/src";
+import FrontendDB from '../../../frontend-db/src';
 import { DB_NAME } from './constants';
 
 var openDBRequest: Promise<FrontendDB>;

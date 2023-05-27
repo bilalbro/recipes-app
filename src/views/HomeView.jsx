@@ -7,7 +7,7 @@ import RecipeCardList from '../components/RecipeCardList';
 export default function Home()
 {
    const recipes = useLoaderData();
-   
+
    return (
       recipes.length
       ? <>

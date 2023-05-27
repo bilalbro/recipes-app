@@ -62,6 +62,12 @@ Buttons
    border-color: $colors-primary;
 }
 
+.btn--grey {
+   background-color: transparent;
+   color: $colors-grey;
+   border-color: $colors-grey;
+}
+
 .btn--light {
    background-color: transparent;
    color: $colors-grey;

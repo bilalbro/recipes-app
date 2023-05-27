@@ -120,6 +120,12 @@ Buttons
   border-color: #5a0a88;
 }
 
+.btn--grey {
+  background-color: transparent;
+  color: #777;
+  border-color: #777;
+}
+
 .btn--light {
   background-color: transparent;
   color: #777;
@@ -814,16 +820,30 @@ Recipe view
 
 .recipe_rating {
   margin-top: 0;
+  line-height: 0;
 }
 
 .recipe_group {
   margin: 55px 0;
 }
 
+.recipe_group--close {
+  margin: 8px 0;
+}
+
 .recipe_label {
   margin: 10px 0 20px;
   border-bottom: 1px solid #bfbfbf;
   padding-bottom: 7px;
+}
+
+.recipe_iterations {
+  background-color: #33074d;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 7px;
+  color: white;
+  position: relative;
 }
 
 .recipe p, .recipe li ol li {

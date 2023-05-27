@@ -99,7 +99,7 @@ Recipe view
 .recipe_btns {
    position: absolute;
    right: 0;
-   top: 5px;   
+   top: 5px;
 }
 
 .recipe_btn {
@@ -109,10 +109,15 @@ Recipe view
 
 .recipe_rating {
    margin-top: 0;
+   line-height: 0;
 }
 
 .recipe_group {
    margin: 55px 0
+}
+
+.recipe_group--close {
+   margin: 8px 0
 }
 
 .recipe_label {
@@ -120,6 +125,15 @@ Recipe view
    border-bottom: 1px solid $colors-border;
    padding-bottom: 7px;
    @extend .text--light;
+}
+
+.recipe_iterations {
+   background-color: $colors-primary-dark;
+   border-radius: 4px;
+   margin-bottom: 30px;
+   padding: 7px;
+   color: white;
+   position: relative;
 }
 
 %recipe-text {
