@@ -32670,7 +32670,7 @@
 	  };
 	  return _extends$1.apply(this, arguments);
 	}
-	function _objectWithoutPropertiesLoose(source, excluded) {
+	function _objectWithoutPropertiesLoose$1(source, excluded) {
 	  if (source == null) return {};
 	  var target = {};
 	  var sourceKeys = Object.keys(source);
@@ -32824,7 +32824,7 @@
 	    formData
 	  };
 	}
-	const _excluded = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
+	const _excluded$1 = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
 	  _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to", "children"],
 	  _excluded3 = ["reloadDocument", "replace", "method", "action", "onSubmit", "fetcherKey", "routeId", "relative", "preventScrollReset"];
 	function createBrowserRouter(routes, opts) {
@@ -32889,7 +32889,7 @@
 	      to,
 	      preventScrollReset
 	    } = _ref4,
-	    rest = _objectWithoutPropertiesLoose(_ref4, _excluded);
+	    rest = _objectWithoutPropertiesLoose$1(_ref4, _excluded$1);
 	  let {
 	    basename
 	  } = reactExports.useContext(NavigationContext); // Rendered into <a href> for absolute URLs
@@ -32961,7 +32961,7 @@
 	      to,
 	      children
 	    } = _ref5,
-	    rest = _objectWithoutPropertiesLoose(_ref5, _excluded2);
+	    rest = _objectWithoutPropertiesLoose$1(_ref5, _excluded2);
 	  let path = useResolvedPath(to, {
 	    relative: rest.relative
 	  });
@@ -33040,7 +33040,7 @@
 	      relative,
 	      preventScrollReset
 	    } = _ref6,
-	    props = _objectWithoutPropertiesLoose(_ref6, _excluded3);
+	    props = _objectWithoutPropertiesLoose$1(_ref6, _excluded3);
 	  let submit = useSubmitImpl(fetcherKey, routeId);
 	  let formMethod = method.toLowerCase() === "get" ? "get" : "post";
 	  let formAction = useFormAction(action, {
@@ -33237,6 +33237,565 @@
 	    path.pathname = path.pathname === "/" ? basename : joinPaths([basename, path.pathname]);
 	  }
 	  return createPath(path);
+	}
+
+	function _iterableToArrayLimit(arr, i) {
+	  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+	  if (null != _i) {
+	    var _s,
+	      _e,
+	      _x,
+	      _r,
+	      _arr = [],
+	      _n = !0,
+	      _d = !1;
+	    try {
+	      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+	        if (Object(_i) !== _i) return;
+	        _n = !1;
+	      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+	    } catch (err) {
+	      _d = !0, _e = err;
+	    } finally {
+	      try {
+	        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
+	      } finally {
+	        if (_d) throw _e;
+	      }
+	    }
+	    return _arr;
+	  }
+	}
+	function ownKeys(object, enumerableOnly) {
+	  var keys = Object.keys(object);
+	  if (Object.getOwnPropertySymbols) {
+	    var symbols = Object.getOwnPropertySymbols(object);
+	    enumerableOnly && (symbols = symbols.filter(function (sym) {
+	      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+	    })), keys.push.apply(keys, symbols);
+	  }
+	  return keys;
+	}
+	function _objectSpread2(target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = null != arguments[i] ? arguments[i] : {};
+	    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+	      _defineProperty(target, key, source[key]);
+	    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+	      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+	    });
+	  }
+	  return target;
+	}
+	function _regeneratorRuntime() {
+	  _regeneratorRuntime = function () {
+	    return exports;
+	  };
+	  var exports = {},
+	    Op = Object.prototype,
+	    hasOwn = Op.hasOwnProperty,
+	    defineProperty = Object.defineProperty || function (obj, key, desc) {
+	      obj[key] = desc.value;
+	    },
+	    $Symbol = "function" == typeof Symbol ? Symbol : {},
+	    iteratorSymbol = $Symbol.iterator || "@@iterator",
+	    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+	    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+	  function define(obj, key, value) {
+	    return Object.defineProperty(obj, key, {
+	      value: value,
+	      enumerable: !0,
+	      configurable: !0,
+	      writable: !0
+	    }), obj[key];
+	  }
+	  try {
+	    define({}, "");
+	  } catch (err) {
+	    define = function (obj, key, value) {
+	      return obj[key] = value;
+	    };
+	  }
+	  function wrap(innerFn, outerFn, self, tryLocsList) {
+	    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
+	      generator = Object.create(protoGenerator.prototype),
+	      context = new Context(tryLocsList || []);
+	    return defineProperty(generator, "_invoke", {
+	      value: makeInvokeMethod(innerFn, self, context)
+	    }), generator;
+	  }
+	  function tryCatch(fn, obj, arg) {
+	    try {
+	      return {
+	        type: "normal",
+	        arg: fn.call(obj, arg)
+	      };
+	    } catch (err) {
+	      return {
+	        type: "throw",
+	        arg: err
+	      };
+	    }
+	  }
+	  exports.wrap = wrap;
+	  var ContinueSentinel = {};
+	  function Generator() {}
+	  function GeneratorFunction() {}
+	  function GeneratorFunctionPrototype() {}
+	  var IteratorPrototype = {};
+	  define(IteratorPrototype, iteratorSymbol, function () {
+	    return this;
+	  });
+	  var getProto = Object.getPrototypeOf,
+	    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+	  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
+	  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+	  function defineIteratorMethods(prototype) {
+	    ["next", "throw", "return"].forEach(function (method) {
+	      define(prototype, method, function (arg) {
+	        return this._invoke(method, arg);
+	      });
+	    });
+	  }
+	  function AsyncIterator(generator, PromiseImpl) {
+	    function invoke(method, arg, resolve, reject) {
+	      var record = tryCatch(generator[method], generator, arg);
+	      if ("throw" !== record.type) {
+	        var result = record.arg,
+	          value = result.value;
+	        return value && "object" == typeof value && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
+	          invoke("next", value, resolve, reject);
+	        }, function (err) {
+	          invoke("throw", err, resolve, reject);
+	        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
+	          result.value = unwrapped, resolve(result);
+	        }, function (error) {
+	          return invoke("throw", error, resolve, reject);
+	        });
+	      }
+	      reject(record.arg);
+	    }
+	    var previousPromise;
+	    defineProperty(this, "_invoke", {
+	      value: function (method, arg) {
+	        function callInvokeWithMethodAndArg() {
+	          return new PromiseImpl(function (resolve, reject) {
+	            invoke(method, arg, resolve, reject);
+	          });
+	        }
+	        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+	      }
+	    });
+	  }
+	  function makeInvokeMethod(innerFn, self, context) {
+	    var state = "suspendedStart";
+	    return function (method, arg) {
+	      if ("executing" === state) throw new Error("Generator is already running");
+	      if ("completed" === state) {
+	        if ("throw" === method) throw arg;
+	        return doneResult();
+	      }
+	      for (context.method = method, context.arg = arg;;) {
+	        var delegate = context.delegate;
+	        if (delegate) {
+	          var delegateResult = maybeInvokeDelegate(delegate, context);
+	          if (delegateResult) {
+	            if (delegateResult === ContinueSentinel) continue;
+	            return delegateResult;
+	          }
+	        }
+	        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+	          if ("suspendedStart" === state) throw state = "completed", context.arg;
+	          context.dispatchException(context.arg);
+	        } else "return" === context.method && context.abrupt("return", context.arg);
+	        state = "executing";
+	        var record = tryCatch(innerFn, self, context);
+	        if ("normal" === record.type) {
+	          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+	          return {
+	            value: record.arg,
+	            done: context.done
+	          };
+	        }
+	        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+	      }
+	    };
+	  }
+	  function maybeInvokeDelegate(delegate, context) {
+	    var methodName = context.method,
+	      method = delegate.iterator[methodName];
+	    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
+	    var record = tryCatch(method, delegate.iterator, context.arg);
+	    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
+	    var info = record.arg;
+	    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
+	  }
+	  function pushTryEntry(locs) {
+	    var entry = {
+	      tryLoc: locs[0]
+	    };
+	    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
+	  }
+	  function resetTryEntry(entry) {
+	    var record = entry.completion || {};
+	    record.type = "normal", delete record.arg, entry.completion = record;
+	  }
+	  function Context(tryLocsList) {
+	    this.tryEntries = [{
+	      tryLoc: "root"
+	    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
+	  }
+	  function values(iterable) {
+	    if (iterable) {
+	      var iteratorMethod = iterable[iteratorSymbol];
+	      if (iteratorMethod) return iteratorMethod.call(iterable);
+	      if ("function" == typeof iterable.next) return iterable;
+	      if (!isNaN(iterable.length)) {
+	        var i = -1,
+	          next = function next() {
+	            for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+	            return next.value = undefined, next.done = !0, next;
+	          };
+	        return next.next = next;
+	      }
+	    }
+	    return {
+	      next: doneResult
+	    };
+	  }
+	  function doneResult() {
+	    return {
+	      value: undefined,
+	      done: !0
+	    };
+	  }
+	  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
+	    value: GeneratorFunctionPrototype,
+	    configurable: !0
+	  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
+	    value: GeneratorFunction,
+	    configurable: !0
+	  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+	    var ctor = "function" == typeof genFun && genFun.constructor;
+	    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
+	  }, exports.mark = function (genFun) {
+	    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
+	  }, exports.awrap = function (arg) {
+	    return {
+	      __await: arg
+	    };
+	  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+	    return this;
+	  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+	    void 0 === PromiseImpl && (PromiseImpl = Promise);
+	    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+	    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
+	      return result.done ? result.value : iter.next();
+	    });
+	  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
+	    return this;
+	  }), define(Gp, "toString", function () {
+	    return "[object Generator]";
+	  }), exports.keys = function (val) {
+	    var object = Object(val),
+	      keys = [];
+	    for (var key in object) keys.push(key);
+	    return keys.reverse(), function next() {
+	      for (; keys.length;) {
+	        var key = keys.pop();
+	        if (key in object) return next.value = key, next.done = !1, next;
+	      }
+	      return next.done = !0, next;
+	    };
+	  }, exports.values = values, Context.prototype = {
+	    constructor: Context,
+	    reset: function (skipTempReset) {
+	      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
+	    },
+	    stop: function () {
+	      this.done = !0;
+	      var rootRecord = this.tryEntries[0].completion;
+	      if ("throw" === rootRecord.type) throw rootRecord.arg;
+	      return this.rval;
+	    },
+	    dispatchException: function (exception) {
+	      if (this.done) throw exception;
+	      var context = this;
+	      function handle(loc, caught) {
+	        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
+	      }
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i],
+	          record = entry.completion;
+	        if ("root" === entry.tryLoc) return handle("end");
+	        if (entry.tryLoc <= this.prev) {
+	          var hasCatch = hasOwn.call(entry, "catchLoc"),
+	            hasFinally = hasOwn.call(entry, "finallyLoc");
+	          if (hasCatch && hasFinally) {
+	            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+	            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+	          } else if (hasCatch) {
+	            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+	          } else {
+	            if (!hasFinally) throw new Error("try statement without catch or finally");
+	            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+	          }
+	        }
+	      }
+	    },
+	    abrupt: function (type, arg) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+	          var finallyEntry = entry;
+	          break;
+	        }
+	      }
+	      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
+	      var record = finallyEntry ? finallyEntry.completion : {};
+	      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
+	    },
+	    complete: function (record, afterLoc) {
+	      if ("throw" === record.type) throw record.arg;
+	      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
+	    },
+	    finish: function (finallyLoc) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
+	      }
+	    },
+	    catch: function (tryLoc) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.tryLoc === tryLoc) {
+	          var record = entry.completion;
+	          if ("throw" === record.type) {
+	            var thrown = record.arg;
+	            resetTryEntry(entry);
+	          }
+	          return thrown;
+	        }
+	      }
+	      throw new Error("illegal catch attempt");
+	    },
+	    delegateYield: function (iterable, resultName, nextLoc) {
+	      return this.delegate = {
+	        iterator: values(iterable),
+	        resultName: resultName,
+	        nextLoc: nextLoc
+	      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
+	    }
+	  }, exports;
+	}
+	function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+	  try {
+	    var info = gen[key](arg);
+	    var value = info.value;
+	  } catch (error) {
+	    reject(error);
+	    return;
+	  }
+	  if (info.done) {
+	    resolve(value);
+	  } else {
+	    Promise.resolve(value).then(_next, _throw);
+	  }
+	}
+	function _asyncToGenerator(fn) {
+	  return function () {
+	    var self = this,
+	      args = arguments;
+	    return new Promise(function (resolve, reject) {
+	      var gen = fn.apply(self, args);
+	      function _next(value) {
+	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+	      }
+	      function _throw(err) {
+	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+	      }
+	      _next(undefined);
+	    });
+	  };
+	}
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+	function _defineProperties(target, props) {
+	  for (var i = 0; i < props.length; i++) {
+	    var descriptor = props[i];
+	    descriptor.enumerable = descriptor.enumerable || false;
+	    descriptor.configurable = true;
+	    if ("value" in descriptor) descriptor.writable = true;
+	    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+	  }
+	}
+	function _createClass(Constructor, protoProps, staticProps) {
+	  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+	  if (staticProps) _defineProperties(Constructor, staticProps);
+	  Object.defineProperty(Constructor, "prototype", {
+	    writable: false
+	  });
+	  return Constructor;
+	}
+	function _defineProperty(obj, key, value) {
+	  key = _toPropertyKey(key);
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, {
+	      value: value,
+	      enumerable: true,
+	      configurable: true,
+	      writable: true
+	    });
+	  } else {
+	    obj[key] = value;
+	  }
+	  return obj;
+	}
+	function _extends() {
+	  _extends = Object.assign ? Object.assign.bind() : function (target) {
+	    for (var i = 1; i < arguments.length; i++) {
+	      var source = arguments[i];
+	      for (var key in source) {
+	        if (Object.prototype.hasOwnProperty.call(source, key)) {
+	          target[key] = source[key];
+	        }
+	      }
+	    }
+	    return target;
+	  };
+	  return _extends.apply(this, arguments);
+	}
+	function _objectDestructuringEmpty(obj) {
+	  if (obj == null) throw new TypeError("Cannot destructure " + obj);
+	}
+	function _objectWithoutPropertiesLoose(source, excluded) {
+	  if (source == null) return {};
+	  var target = {};
+	  var sourceKeys = Object.keys(source);
+	  var key, i;
+	  for (i = 0; i < sourceKeys.length; i++) {
+	    key = sourceKeys[i];
+	    if (excluded.indexOf(key) >= 0) continue;
+	    target[key] = source[key];
+	  }
+	  return target;
+	}
+	function _objectWithoutProperties(source, excluded) {
+	  if (source == null) return {};
+	  var target = _objectWithoutPropertiesLoose(source, excluded);
+	  var key, i;
+	  if (Object.getOwnPropertySymbols) {
+	    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+	    for (i = 0; i < sourceSymbolKeys.length; i++) {
+	      key = sourceSymbolKeys[i];
+	      if (excluded.indexOf(key) >= 0) continue;
+	      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+	      target[key] = source[key];
+	    }
+	  }
+	  return target;
+	}
+	function _slicedToArray(arr, i) {
+	  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+	}
+	function _toConsumableArray(arr) {
+	  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+	}
+	function _arrayWithoutHoles(arr) {
+	  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+	}
+	function _arrayWithHoles(arr) {
+	  if (Array.isArray(arr)) return arr;
+	}
+	function _iterableToArray(iter) {
+	  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+	}
+	function _unsupportedIterableToArray(o, minLen) {
+	  if (!o) return;
+	  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+	  var n = Object.prototype.toString.call(o).slice(8, -1);
+	  if (n === "Object" && o.constructor) n = o.constructor.name;
+	  if (n === "Map" || n === "Set") return Array.from(o);
+	  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+	}
+	function _arrayLikeToArray(arr, len) {
+	  if (len == null || len > arr.length) len = arr.length;
+	  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+	  return arr2;
+	}
+	function _nonIterableSpread() {
+	  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	}
+	function _nonIterableRest() {
+	  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	}
+	function _createForOfIteratorHelper(o, allowArrayLike) {
+	  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+	  if (!it) {
+	    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+	      if (it) o = it;
+	      var i = 0;
+	      var F = function () {};
+	      return {
+	        s: F,
+	        n: function () {
+	          if (i >= o.length) return {
+	            done: true
+	          };
+	          return {
+	            done: false,
+	            value: o[i++]
+	          };
+	        },
+	        e: function (e) {
+	          throw e;
+	        },
+	        f: F
+	      };
+	    }
+	    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	  }
+	  var normalCompletion = true,
+	    didErr = false,
+	    err;
+	  return {
+	    s: function () {
+	      it = it.call(o);
+	    },
+	    n: function () {
+	      var step = it.next();
+	      normalCompletion = step.done;
+	      return step;
+	    },
+	    e: function (e) {
+	      didErr = true;
+	      err = e;
+	    },
+	    f: function () {
+	      try {
+	        if (!normalCompletion && it.return != null) it.return();
+	      } finally {
+	        if (didErr) throw err;
+	      }
+	    }
+	  };
+	}
+	function _toPrimitive(input, hint) {
+	  if (typeof input !== "object" || input === null) return input;
+	  var prim = input[Symbol.toPrimitive];
+	  if (prim !== undefined) {
+	    var res = prim.call(input, hint || "default");
+	    if (typeof res !== "object") return res;
+	    throw new TypeError("@@toPrimitive must return a primitive value.");
+	  }
+	  return (hint === "string" ? String : Number)(input);
+	}
+	function _toPropertyKey(arg) {
+	  var key = _toPrimitive(arg, "string");
+	  return typeof key === "symbol" ? key : String(key);
 	}
 
 	var DefaultContext = {
@@ -33441,97 +34000,6 @@
 	  });
 	}
 
-	function _extends() {
-	  _extends = Object.assign ? Object.assign.bind() : function (target) {
-	    for (var i = 1; i < arguments.length; i++) {
-	      var source = arguments[i];
-	      for (var key in source) {
-	        if (Object.prototype.hasOwnProperty.call(source, key)) {
-	          target[key] = source[key];
-	        }
-	      }
-	    }
-	    return target;
-	  };
-	  return _extends.apply(this, arguments);
-	}
-	function _toConsumableArray(arr) {
-	  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-	}
-	function _arrayWithoutHoles(arr) {
-	  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-	}
-	function _iterableToArray(iter) {
-	  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-	}
-	function _unsupportedIterableToArray(o, minLen) {
-	  if (!o) return;
-	  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-	  var n = Object.prototype.toString.call(o).slice(8, -1);
-	  if (n === "Object" && o.constructor) n = o.constructor.name;
-	  if (n === "Map" || n === "Set") return Array.from(o);
-	  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-	}
-	function _arrayLikeToArray(arr, len) {
-	  if (len == null || len > arr.length) len = arr.length;
-	  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-	  return arr2;
-	}
-	function _nonIterableSpread() {
-	  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-	}
-	function _createForOfIteratorHelper(o, allowArrayLike) {
-	  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-	  if (!it) {
-	    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-	      if (it) o = it;
-	      var i = 0;
-	      var F = function () {};
-	      return {
-	        s: F,
-	        n: function () {
-	          if (i >= o.length) return {
-	            done: true
-	          };
-	          return {
-	            done: false,
-	            value: o[i++]
-	          };
-	        },
-	        e: function (e) {
-	          throw e;
-	        },
-	        f: F
-	      };
-	    }
-	    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-	  }
-	  var normalCompletion = true,
-	    didErr = false,
-	    err;
-	  return {
-	    s: function () {
-	      it = it.call(o);
-	    },
-	    n: function () {
-	      var step = it.next();
-	      normalCompletion = step.done;
-	      return step;
-	    },
-	    e: function (e) {
-	      didErr = true;
-	      err = e;
-	    },
-	    f: function () {
-	      try {
-	        if (!normalCompletion && it.return != null) it.return();
-	      } finally {
-	        if (didErr) throw err;
-	      }
-	    }
-	  };
-	}
-
 	function TextInput({
 	  name,
 	  className,
@@ -33624,49 +34092,64 @@
 	  }, /*#__PURE__*/React.createElement(FaStar, null))));
 	}
 
-	async function loadData(data, dispatchForAutocompleter, dispatchForSuggestionsBox) {
-	  if (data instanceof Promise) {
-	    var loadedData = await data;
-	    dispatchForAutocompleter({
-	      type: 'dataLoad',
-	      data: loadedData,
-	      dispatchForSuggestionsBox
-	    });
-	  }
+	function loadData(_x, _x2, _x3) {
+	  return _loadData.apply(this, arguments);
 	}
-
 	/*******************************************************************************
 	Reducer
 	*******************************************************************************/
+	function _loadData() {
+	  _loadData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, dispatchForAutocompleter, dispatchForSuggestionsBox) {
+	    var loadedData;
+	    return _regeneratorRuntime().wrap(function _callee$(_context) {
+	      while (1) switch (_context.prev = _context.next) {
+	        case 0:
+	          if (!(data instanceof Promise)) {
+	            _context.next = 5;
+	            break;
+	          }
+	          _context.next = 3;
+	          return data;
+	        case 3:
+	          loadedData = _context.sent;
+	          dispatchForAutocompleter({
+	            type: 'dataLoad',
+	            data: loadedData,
+	            dispatchForSuggestionsBox: dispatchForSuggestionsBox
+	          });
+	        case 5:
+	        case "end":
+	          return _context.stop();
+	      }
+	    }, _callee);
+	  }));
+	  return _loadData.apply(this, arguments);
+	}
 	function autocompleterReducer(state, action) {
 	  switch (action.type) {
 	    case 'init':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        value: action.value
-	      };
+	      });
 	    case 'input':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        value: action.value,
 	        hiddenValue: action.value
-	      };
+	      });
 	    case 'inputBlur':
-	      const firstSuggestion = action.suggestions[0];
-	      if (firstSuggestion) {
-	        return {
-	          ...state,
+	      var firstSuggestion = action.suggestions[0];
+	      if (firstSuggestion && state.getInputValue(firstSuggestion).toLowerCase() === action.value.toLowerCase()) {
+	        return _objectSpread2(_objectSpread2({}, state), {}, {
 	          hiddenValue: state.getHiddenInputValue(firstSuggestion)
-	        };
+	        });
 	      }
 	      return state;
 	    case 'entryClick':
 	      if (action.suggestion) {
-	        return {
-	          ...state,
+	        return _objectSpread2(_objectSpread2({}, state), {}, {
 	          value: state.getInputValue(action.suggestion),
 	          hiddenValue: state.getHiddenInputValue(action.suggestion)
-	        };
+	        });
 	      }
 	    case 'inputFocus':
 	      if (state.data instanceof Promise) {
@@ -33679,10 +34162,9 @@
 	        value: state.value,
 	        data: action.data
 	      });
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        data: action.data
-	      };
+	      });
 	    default:
 	      return state;
 	  }
@@ -33827,46 +34309,68 @@
 	  }, typeof noMatchText === 'function' ? noMatchText(value) : noMatchText));
 	}
 
-	function AutocompleteInput({
-	  value = '',
-	  hiddenValue,
-	  name,
-	  data,
-	  allOnEmpty = false,
-	  hideOnEsc = true,
-	  noMatchText = 'Nothing found',
-	  getInputValue = s => s,
-	  getHiddenInputValue = s => s,
-	  getSuggestionValue = s => s,
-	  filterFunction = (value, s) => s.toLowerCase().indexOf(value.toLowerCase()) !== -1,
-	  className,
-	  ...props
-	}) {
-	  const [autocompleter, dispatchForAutocompleter] = reactExports.useReducer(autocompleterReducer, {
-	    value,
-	    hiddenValue: hiddenValue || value,
-	    data,
-	    getInputValue,
-	    getHiddenInputValue
-	  });
-	  reactExports.useEffect(() => {
+	var _excluded = ["value", "hiddenValue", "name", "data", "allOnEmpty", "hideOnEsc", "noMatchText", "getInputValue", "getHiddenInputValue", "getSuggestionValue", "filterFunction", "className"];
+	function AutocompleteInput(_ref) {
+	  var _ref$value = _ref.value,
+	    value = _ref$value === void 0 ? '' : _ref$value,
+	    hiddenValue = _ref.hiddenValue,
+	    name = _ref.name,
+	    data = _ref.data,
+	    _ref$allOnEmpty = _ref.allOnEmpty,
+	    allOnEmpty = _ref$allOnEmpty === void 0 ? false : _ref$allOnEmpty,
+	    _ref$hideOnEsc = _ref.hideOnEsc,
+	    hideOnEsc = _ref$hideOnEsc === void 0 ? true : _ref$hideOnEsc,
+	    _ref$noMatchText = _ref.noMatchText,
+	    noMatchText = _ref$noMatchText === void 0 ? 'Nothing found' : _ref$noMatchText,
+	    _ref$getInputValue = _ref.getInputValue,
+	    getInputValue = _ref$getInputValue === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getInputValue,
+	    _ref$getHiddenInputVa = _ref.getHiddenInputValue,
+	    getHiddenInputValue = _ref$getHiddenInputVa === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getHiddenInputVa,
+	    _ref$getSuggestionVal = _ref.getSuggestionValue,
+	    getSuggestionValue = _ref$getSuggestionVal === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getSuggestionVal,
+	    _ref$filterFunction = _ref.filterFunction,
+	    filterFunction = _ref$filterFunction === void 0 ? function (value, s) {
+	      return s.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+	    } : _ref$filterFunction,
+	    className = _ref.className,
+	    props = _objectWithoutProperties(_ref, _excluded);
+	  var _useReducer = reactExports.useReducer(autocompleterReducer, {
+	      value: value,
+	      hiddenValue: hiddenValue || value,
+	      data: data,
+	      getInputValue: getInputValue,
+	      getHiddenInputValue: getHiddenInputValue
+	    }),
+	    _useReducer2 = _slicedToArray(_useReducer, 2),
+	    autocompleter = _useReducer2[0],
+	    dispatchForAutocompleter = _useReducer2[1];
+	  reactExports.useEffect(function () {
 	    dispatchForAutocompleter({
 	      type: 'init',
 	      value: value
 	    });
 	  }, [value]);
-	  const [suggestionsBox, dispatchForSuggestionsBox] = reactExports.useReducer(suggestionsBoxReducer, {
-	    // The index of the entry selected.
-	    entrySelected: -1,
-	    // Whether or not the suggestion box is shown.
-	    isShown: false,
-	    // The list of matching suggestions.
-	    suggestions: data,
-	    allOnEmpty,
-	    filterFunction,
-	    getSuggestionValue,
-	    noMatchText
-	  });
+	  var _useReducer3 = reactExports.useReducer(suggestionsBoxReducer, {
+	      // The index of the entry selected.
+	      entrySelected: -1,
+	      // Whether or not the suggestion box is shown.
+	      isShown: false,
+	      // The list of matching suggestions.
+	      suggestions: data,
+	      allOnEmpty: allOnEmpty,
+	      filterFunction: filterFunction,
+	      getSuggestionValue: getSuggestionValue,
+	      noMatchText: noMatchText
+	    }),
+	    _useReducer4 = _slicedToArray(_useReducer3, 2),
+	    suggestionsBox = _useReducer4[0],
+	    dispatchForSuggestionsBox = _useReducer4[1];
 	  function onChange(e) {
 	    dispatchForAutocompleter({
 	      type: 'input',
@@ -33916,8 +34420,8 @@
 	  function onFocus(e) {
 	    dispatchForAutocompleter({
 	      type: 'inputFocus',
-	      dispatchForAutocompleter,
-	      dispatchForSuggestionsBox
+	      dispatchForAutocompleter: dispatchForAutocompleter,
+	      dispatchForSuggestionsBox: dispatchForSuggestionsBox
 	    });
 	    dispatchForSuggestionsBox({
 	      type: 'inputFocus',
@@ -33950,10 +34454,10 @@
 	    type: "hidden",
 	    value: autocompleter.hiddenValue
 	  }), /*#__PURE__*/React.createElement(SuggestionsBox, {
-	    autocompleter,
-	    dispatchForAutocompleter,
-	    suggestionsBox,
-	    dispatchForSuggestionsBox
+	    autocompleter: autocompleter,
+	    dispatchForAutocompleter: dispatchForAutocompleter,
+	    suggestionsBox: suggestionsBox,
+	    dispatchForSuggestionsBox: dispatchForSuggestionsBox
 	  }));
 	}
 
@@ -34066,6 +34570,20 @@
 	    }]
 	  })(props);
 	}
+	function BiReply(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M10 11h6v7h2v-8a1 1 0 0 0-1-1h-7V6l-5 4 5 4v-3z"
+	      }
+	    }]
+	  })(props);
+	}
 	function BiRightArrowAlt(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -34135,84 +34653,129 @@
 	  }, props), children);
 	}
 
-	function DefaultRemoveButton({
-	  onClick
-	}) {
+	function DefaultRemoveButton(_ref) {
+	  var onClick = _ref.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiTrash, null));
 	}
-	function DefaultAddButton({
-	  onClick
-	}) {
+	function DefaultAddButton(_ref2) {
+	  var onClick = _ref2.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiPlus, null));
 	}
+	function DefaultInsertButton(_ref3) {
+	  var onClick = _ref3.onClick;
+	  return /*#__PURE__*/React.createElement(Button, {
+	    type: "light",
+	    onClick: onClick
+	  }, /*#__PURE__*/React.createElement(BiReply, null));
+	}
+	function getUniqueKey(i) {
+	  return i + '' + Number(new Date());
+	}
 	function useInputList(initialList) {
-	  const [list, setList] = reactExports.useState(initialList.length === 0 ? [[]] : initialList);
-	  const computedKeys = reactExports.useMemo(() => {
-	    return list.map((_, i) => {
+	  var _useState = reactExports.useState(initialList.length === 0 ? [[]] : initialList),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    list = _useState2[0],
+	    setList = _useState2[1];
+	  var computedKeys = reactExports.useMemo(function () {
+	    return list.map(function (_, i) {
 	      return i;
+	      // return i + '' + Number(new Date());
 	    });
 	  }, []);
-	  const [keys, setKeys] = reactExports.useState(computedKeys);
-	  function add() {
-	    setList([...list, []]);
-	    setKeys([...keys, keys[keys.length - 1] !== undefined ? keys[keys.length - 1] + 1 : 0]);
+	  var _useState3 = reactExports.useState(computedKeys),
+	    _useState4 = _slicedToArray(_useState3, 2),
+	    keys = _useState4[0],
+	    setKeys = _useState4[1];
+	  function add(i) {
+	    if (i === undefined) {
+	      setList([].concat(_toConsumableArray(list), [[]]));
+	      setKeys([].concat(_toConsumableArray(keys), [getUniqueKey(keys.length)]));
+	    } else {
+	      setList([].concat(_toConsumableArray(list.slice(0, i)), [[]], _toConsumableArray(list.slice(i))));
+	      setKeys([].concat(_toConsumableArray(keys.slice(0, i)), [getUniqueKey(i)], _toConsumableArray(keys.slice(i))));
+	    }
 	  }
 	  function remove(i) {
-	    setList(list.filter((_, _i) => i !== _i));
-	    setKeys(keys.filter((_, _i) => i !== _i));
+	    setList(list.filter(function (_, _i) {
+	      return i !== _i;
+	    }));
+	    setKeys(keys.filter(function (_, _i) {
+	      return i !== _i;
+	    }));
 	  }
 	  return {
-	    keys,
-	    list,
-	    add,
-	    remove
+	    keys: keys,
+	    list: list,
+	    add: add,
+	    remove: remove
 	  };
 	}
-	function InputList({
-	  list: initialList = [],
-	  focusInput = false,
-	  addButton,
-	  removeButton,
-	  children
-	}) {
-	  const {
-	    list,
-	    keys,
-	    add,
-	    remove
-	  } = useInputList(initialList);
-	  const divElement = reactExports.useRef();
-	  const clicked = reactExports.useRef(false);
-	  reactExports.useEffect(() => {
+	function InputList(_ref4) {
+	  var _ref4$list = _ref4.list,
+	    initialList = _ref4$list === void 0 ? [] : _ref4$list,
+	    _ref4$focusInput = _ref4.focusInput,
+	    focusInput = _ref4$focusInput === void 0 ? false : _ref4$focusInput,
+	    addButton = _ref4.addButton,
+	    insertButton = _ref4.insertButton,
+	    removeButton = _ref4.removeButton,
+	    children = _ref4.children;
+	  var _useInputList = useInputList(initialList),
+	    list = _useInputList.list,
+	    keys = _useInputList.keys,
+	    add = _useInputList.add,
+	    remove = _useInputList.remove;
+	  var divElement = reactExports.useRef();
+	  var clicked = reactExports.useRef(false);
+	  reactExports.useEffect(function () {
 	    if (focusInput && clicked.current) {
-	      divElement.current.lastElementChild.getElementsByTagName('input')[0].focus();
+	      console.log('current', divElement.current);
+	      var inputElement;
+	      if (clicked.focusIndex === null) {
+	        inputElement = divElement.current.lastElementChild;
+	      } else {
+	        inputElement = divElement.current.children[clicked.focusIndex];
+	      }
+	      inputElement.getElementsByTagName('input')[0].focus();
 	      clicked.current = false;
 	    }
 	  });
 	  function onClick() {
 	    clicked.current = true;
+	    clicked.focusIndex = null;
 	    add();
+	  }
+	  function onInsertClick(i) {
+	    clicked.current = true;
+	    clicked.focusIndex = i;
+	    add(i);
 	  }
 	  function onRemoveClick(i) {
 	    remove(i);
 	  }
-	  const AddButton = addButton ? addButton : DefaultAddButton;
-	  const RemoveButton = removeButton ? removeButton : DefaultRemoveButton;
+	  var AddButton = addButton ? addButton : DefaultAddButton;
+	  var RemoveButton = removeButton ? removeButton : DefaultRemoveButton;
+	  var InsertButton = insertButton ? insertButton : DefaultInsertButton;
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
 	    ref: divElement
-	  }, list.map((_, i) => /*#__PURE__*/React.createElement(React.Fragment, {
-	    key: keys[i]
-	  }, children(list[i], /*#__PURE__*/React.createElement(RemoveButton, {
-	    onClick: () => {
-	      onRemoveClick(i);
-	    }
-	  }))))), /*#__PURE__*/React.createElement(AddButton, {
+	  }, list.map(function (_, i) {
+	    return /*#__PURE__*/React.createElement(React.Fragment, {
+	      key: keys[i]
+	    }, children(list[i], /*#__PURE__*/React.createElement(RemoveButton, {
+	      onClick: function onClick() {
+	        return onRemoveClick(i);
+	      }
+	    }), /*#__PURE__*/React.createElement(InsertButton, {
+	      onClick: function onClick() {
+	        return onInsertClick(i);
+	      }
+	    })));
+	  })), /*#__PURE__*/React.createElement(AddButton, {
 	    onClick: onClick
 	  }));
 	}
@@ -34356,74 +34919,91 @@
 	  }));
 	}
 
-	function AddGroupButton({
-	  onClick
-	}) {
+	function AddGroupButton(_ref) {
+	  var onClick = _ref.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiPlus, null), " Add Section");
 	}
-	function RemoveGroupButton({
-	  onClick
-	}) {
+	function RemoveGroupButton(_ref2) {
+	  var onClick = _ref2.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    error: true,
 	    onClick: onClick
 	  }, "Remove Group");
 	}
-	function ItemList$1({
-	  items
-	}) {
+	function ItemList$1(_ref3) {
+	  var items = _ref3.items;
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(InputList, {
 	    list: items,
 	    addButton: AddGroupButton,
 	    removeButton: RemoveGroupButton
-	  }, ({
-	    name = '',
-	    ingredients = [],
-	    quantities = []
-	  }, RemoveGroupButton) => /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true,
-	    bg: true
-	  }, /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true
-	  }, /*#__PURE__*/React.createElement(TextInput, {
-	    className: "input-text--heading",
-	    width: "medium",
-	    name: "group",
-	    value: name,
-	    placeholder: "Section name"
-	  })), /*#__PURE__*/React.createElement(InputList, {
-	    focusInput: true,
-	    list: ingredients.map((_, i) => [ingredients[i], quantities[i]])
-	  }, ([ingredient, quantity = ''], RemoveButton) => /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true
-	  }, /*#__PURE__*/React.createElement(InputGroupInline, {
-	    style: {
-	      marginBottom: 0
-	    }
-	  }, /*#__PURE__*/React.createElement(IngredientInput, {
-	    ingredientKey: ingredient && ingredient.key,
-	    ingredient: ingredient && ingredient.name
-	  })), /*#__PURE__*/React.createElement(InputGroupInline, {
-	    style: {
-	      marginBottom: 0
-	    }
-	  }, /*#__PURE__*/React.createElement(TextInput, {
-	    className: "input-text--white",
-	    width: "small",
-	    name: "quantities",
-	    placeholder: "Qty",
-	    value: quantity
-	  })), RemoveButton)), /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true,
-	    style: {
-	      marginTop: 15,
-	      marginBottom: 7
-	    }
-	  }, RemoveGroupButton))), /*#__PURE__*/React.createElement("input", {
+	  }, function (_ref4, RemoveGroupButton) {
+	    var _ref4$name = _ref4.name,
+	      name = _ref4$name === void 0 ? '' : _ref4$name,
+	      _ref4$ingredients = _ref4.ingredients,
+	      ingredients = _ref4$ingredients === void 0 ? [] : _ref4$ingredients,
+	      _ref4$quantities = _ref4.quantities,
+	      quantities = _ref4$quantities === void 0 ? [] : _ref4$quantities;
+	    return /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true,
+	      bg: true
+	    }, /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true
+	    }, /*#__PURE__*/React.createElement(TextInput, {
+	      className: "input-text--heading",
+	      width: "medium",
+	      name: "group",
+	      value: name,
+	      placeholder: "Section name"
+	    })), /*#__PURE__*/React.createElement(InputList, {
+	      focusInput: true,
+	      list: ingredients.map(function (_, i) {
+	        return [ingredients[i], quantities[i]];
+	      })
+	    }, function (_ref5, RemoveButton, InsertButton) {
+	      var _ref6 = _slicedToArray(_ref5, 2),
+	        ingredient = _ref6[0],
+	        _ref6$ = _ref6[1],
+	        quantity = _ref6$ === void 0 ? '' : _ref6$;
+	      return /*#__PURE__*/React.createElement(InputGroup, {
+	        basic: true
+	      }, /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, /*#__PURE__*/React.createElement(IngredientInput, {
+	        ingredientKey: ingredient && ingredient.key,
+	        ingredient: ingredient && ingredient.name
+	      })), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, /*#__PURE__*/React.createElement(TextInput, {
+	        className: "input-text--white",
+	        width: "small",
+	        name: "quantities",
+	        placeholder: "Qty",
+	        value: quantity
+	      })), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, RemoveButton), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, InsertButton));
+	    }), /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true,
+	      style: {
+	        marginTop: 15,
+	        marginBottom: 7
+	      }
+	    }, RemoveGroupButton));
+	  }), /*#__PURE__*/React.createElement("input", {
 	    type: "hidden",
 	    name: "groupend",
 	    value: "true"
@@ -35134,333 +35714,1188 @@
 	  }
 	}
 
-	class RecipeList {
-	  data = {};
-	  // Fill the local list with records from the underlying IndexedDB store, or
-	  // else create a fresh store.
-	  async init(getNewDB = false) {
-	    // TODO: Prevent this routine if it has been performed already.
-	    this.db = await getDatabase(getNewDB);
-
-	    // If the 'recipes' store doesn't exist, create it first.
-	    if (!(await this.db.existsStore(RECIPES_STORE_NAME))) {
-	      await this.db.createStore(RECIPES_STORE_NAME, {}, 'id', ['rating']);
-	    }
-	    this.store = await this.db.getStore(RECIPES_STORE_NAME);
-	    var records = await this.store.getAllRecords();
-	    for (var record of records) {
-	      this.data[record.id] = record;
-	    }
+	var RecipeList = /*#__PURE__*/function () {
+	  function RecipeList() {
+	    _classCallCheck(this, RecipeList);
+	    _defineProperty(this, "db", void 0);
+	    _defineProperty(this, "data", {});
+	    _defineProperty(this, "store", void 0);
 	  }
-	  async getItemAfterPossiblyAdding(name, itemSet) {
-	    await this.init();
-	    var itemKey = +name;
-	    if (isNaN(itemKey)) {
-	      itemKey = await itemSet.add(name);
-	    }
-	    await itemSet.use(itemKey);
-	    return itemKey;
-	  }
-	  async getRecordForDB(data) {
-	    await this.init();
-	    var items = [];
-	    for (var item of data.items) {
-	      var ingredients = [];
-	      for (var ingredient of item.ingredients) {
-	        ingredients.push(await this.getItemAfterPossiblyAdding(ingredient, ingredientSet));
+	  _createClass(RecipeList, [{
+	    key: "init",
+	    value: // Fill the local list with records from the underlying IndexedDB store, or
+	    // else create a fresh store.
+	    function () {
+	      var _init = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+	        var getNewDB,
+	          records,
+	          _iterator,
+	          _step,
+	          record,
+	          _args = arguments;
+	        return _regeneratorRuntime().wrap(function _callee$(_context) {
+	          while (1) switch (_context.prev = _context.next) {
+	            case 0:
+	              getNewDB = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
+	              _context.next = 3;
+	              return getDatabase(getNewDB);
+	            case 3:
+	              this.db = _context.sent;
+	              _context.next = 6;
+	              return this.db.existsStore(RECIPES_STORE_NAME);
+	            case 6:
+	              if (_context.sent) {
+	                _context.next = 9;
+	                break;
+	              }
+	              _context.next = 9;
+	              return this.db.createStore(RECIPES_STORE_NAME, {}, 'id', ['rating']);
+	            case 9:
+	              _context.next = 11;
+	              return this.db.getStore(RECIPES_STORE_NAME);
+	            case 11:
+	              this.store = _context.sent;
+	              _context.next = 14;
+	              return this.store.getAllRecords();
+	            case 14:
+	              records = _context.sent;
+	              _iterator = _createForOfIteratorHelper(records);
+	              try {
+	                for (_iterator.s(); !(_step = _iterator.n()).done;) {
+	                  record = _step.value;
+	                  this.data[record.id] = record;
+	                }
+	              } catch (err) {
+	                _iterator.e(err);
+	              } finally {
+	                _iterator.f();
+	              }
+	            case 17:
+	            case "end":
+	              return _context.stop();
+	          }
+	        }, _callee, this);
+	      }));
+	      function init() {
+	        return _init.apply(this, arguments);
 	      }
-	      items.push({
-	        name: item.name,
-	        ingredients,
-	        quantities: item.quantities
-	      });
-	    }
-	    var category = await this.getItemAfterPossiblyAdding(data.category, categorySet);
-
-	    // Now, given that we've added the necessary ingredients and the category
-	    // to their respective data stores, we can safely proceed with adding a
-	    // new record for the provided recipe data.
-	    var record = {
-	      name: data.name,
-	      category: category,
-	      rating: Number(data.rating),
-	      yield: data.yield,
-	      items,
-	      instructions: data.instructions,
-	      review: data.review,
-	      previous: null,
-	      next: null
-	    };
-	    return record;
-	  }
-	  async getNewRecord(formDataOrKey) {
-	    await this.init();
-	    var record;
-	    if (typeof formDataOrKey !== 'string') {
-	      record = await this.getRecordForDB(formDataOrKey);
-	    } else {
-	      record = deepClone(this.data[formDataOrKey]);
-	    }
-	    var timestamp = Number(new Date());
-	    record.id = '' + timestamp;
-	    record.dateCreated = timestamp;
-	    return record;
-	  }
-	  async addRecipe(data) {
-	    await this.init();
-	    var record = await this.getNewRecord(data);
-	    await this.addRecipeRecord(record);
-	  }
-	  async addRecipeRecord(record) {
-	    await this.init();
-	    await this.store.addRecord(record);
-	    this.data[record.id] = record;
-	  }
-	  async useCategoryAndIngredients(record) {
-	    await this.init();
-	    for (var item of record.items) {
-	      for (var ingredient of item.ingredients) {
-	        await this.getItemAfterPossiblyAdding(ingredient, ingredientSet);
+	      return init;
+	    }()
+	  }, {
+	    key: "getItemAfterPossiblyAdding",
+	    value: function () {
+	      var _getItemAfterPossiblyAdding = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(name, itemSet) {
+	        var itemKey;
+	        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+	          while (1) switch (_context2.prev = _context2.next) {
+	            case 0:
+	              _context2.next = 2;
+	              return this.init();
+	            case 2:
+	              itemKey = +name;
+	              if (!isNaN(itemKey)) {
+	                _context2.next = 7;
+	                break;
+	              }
+	              _context2.next = 6;
+	              return itemSet.add(name);
+	            case 6:
+	              itemKey = _context2.sent;
+	            case 7:
+	              _context2.next = 9;
+	              return itemSet.use(itemKey);
+	            case 9:
+	              return _context2.abrupt("return", itemKey);
+	            case 10:
+	            case "end":
+	              return _context2.stop();
+	          }
+	        }, _callee2, this);
+	      }));
+	      function getItemAfterPossiblyAdding(_x, _x2) {
+	        return _getItemAfterPossiblyAdding.apply(this, arguments);
 	      }
-	    }
-	    await this.getItemAfterPossiblyAdding(record.category, categorySet);
-	  }
-	  async cloneRecipe(key) {
-	    await this.init();
-	    var recordClone = await this.getNewRecord(key);
-	    recordClone.name += ' (copy)';
-	    recordClone.previous = null;
-	    recordClone.next = null;
-
-	    // 'Use' the ingredients' and the category.
-	    await this.useCategoryAndIngredients(recordClone);
-	    await this.addRecipeRecord(recordClone);
-	    return recordClone.id;
-	  }
-	  async makeIteration(key) {
-	    await this.init();
-	    var recordClone = await this.getNewRecord(key);
-	    recordClone.previous = key;
-
-	    // 'Use' the ingredients' and the category.
-	    await this.useCategoryAndIngredients(recordClone);
-	    await this.addRecipeRecord(recordClone);
-	    await this.store.updateRecord(key, {
-	      next: recordClone.id
-	    });
-	    this.data[key].next = recordClone.id;
-	    return recordClone.id;
-	  }
-	  async getAllRecipes() {
-	    await this.init();
-	    var records = [];
-	    for (var key in this.data) {
-	      var record = this.data[key];
-	      if (record.next === null) {
-	        records.push(await this.getRecipe(key));
+	      return getItemAfterPossiblyAdding;
+	    }()
+	  }, {
+	    key: "getRecordForDB",
+	    value: function () {
+	      var _getRecordForDB = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
+	        var items, _iterator2, _step2, item, ingredients, _iterator3, _step3, ingredient, category, record;
+	        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+	          while (1) switch (_context3.prev = _context3.next) {
+	            case 0:
+	              _context3.next = 2;
+	              return this.init();
+	            case 2:
+	              items = [];
+	              _iterator2 = _createForOfIteratorHelper(data.items);
+	              _context3.prev = 4;
+	              _iterator2.s();
+	            case 6:
+	              if ((_step2 = _iterator2.n()).done) {
+	                _context3.next = 32;
+	                break;
+	              }
+	              item = _step2.value;
+	              ingredients = [];
+	              _iterator3 = _createForOfIteratorHelper(item.ingredients);
+	              _context3.prev = 10;
+	              _iterator3.s();
+	            case 12:
+	              if ((_step3 = _iterator3.n()).done) {
+	                _context3.next = 21;
+	                break;
+	              }
+	              ingredient = _step3.value;
+	              _context3.t0 = ingredients;
+	              _context3.next = 17;
+	              return this.getItemAfterPossiblyAdding(ingredient, ingredientSet);
+	            case 17:
+	              _context3.t1 = _context3.sent;
+	              _context3.t0.push.call(_context3.t0, _context3.t1);
+	            case 19:
+	              _context3.next = 12;
+	              break;
+	            case 21:
+	              _context3.next = 26;
+	              break;
+	            case 23:
+	              _context3.prev = 23;
+	              _context3.t2 = _context3["catch"](10);
+	              _iterator3.e(_context3.t2);
+	            case 26:
+	              _context3.prev = 26;
+	              _iterator3.f();
+	              return _context3.finish(26);
+	            case 29:
+	              items.push({
+	                name: item.name,
+	                ingredients: ingredients,
+	                quantities: item.quantities
+	              });
+	            case 30:
+	              _context3.next = 6;
+	              break;
+	            case 32:
+	              _context3.next = 37;
+	              break;
+	            case 34:
+	              _context3.prev = 34;
+	              _context3.t3 = _context3["catch"](4);
+	              _iterator2.e(_context3.t3);
+	            case 37:
+	              _context3.prev = 37;
+	              _iterator2.f();
+	              return _context3.finish(37);
+	            case 40:
+	              _context3.next = 42;
+	              return this.getItemAfterPossiblyAdding(data.category, categorySet);
+	            case 42:
+	              category = _context3.sent;
+	              // Now, given that we've added the necessary ingredients and the category
+	              // to their respective data stores, we can safely proceed with adding a
+	              // new record for the provided recipe data.
+	              record = {
+	                name: data.name,
+	                category: category,
+	                rating: Number(data.rating),
+	                "yield": data["yield"],
+	                items: items,
+	                instructions: data.instructions,
+	                review: data.review,
+	                previous: null,
+	                next: null
+	              };
+	              return _context3.abrupt("return", record);
+	            case 45:
+	            case "end":
+	              return _context3.stop();
+	          }
+	        }, _callee3, this, [[4, 34, 37, 40], [10, 23, 26, 29]]);
+	      }));
+	      function getRecordForDB(_x3) {
+	        return _getRecordForDB.apply(this, arguments);
 	      }
-	    }
-	    return records;
-	  }
-	  async getRecipe(key) {
-	    await this.init();
-	    var record = this.data[key];
-	    var recordProcessed = deepClone(record);
-
-	    // Process data
-	    recordProcessed.dateCreated = new Date(record.dateCreated);
-
-	    // Process category
-	    recordProcessed.category = (await categorySet.get(record.category)).name;
-	    return recordProcessed;
-	  }
-	  async compareIngredient(key, itemIndex, ingredientKey) {
-	    await this.init();
-	    var record = this.data[key];
-	    if (record.previous) {
-	      var previousRecord = this.data[record.previous];
-	      var ingredients = record.items[itemIndex].ingredients;
-	      var previousIngredients = previousRecord.items[itemIndex].ingredients;
-
-	      // First, determine if the current ingredient is 'new'.
-	      if (!previousIngredients.includes(ingredientKey)) {
-	        return 'new';
-	      } else {
-	        // Given that the current ingredient is not 'new', further check if
-	        // it has increased or decreased in quantity.
-
-	        var quantity = record.items[itemIndex].quantities[ingredients.indexOf(ingredientKey)];
-	        var previousQuantity = previousRecord.items[itemIndex].quantities[previousIngredients.indexOf(ingredientKey)];
-	        return diffQuantities(quantity, previousQuantity);
+	      return getRecordForDB;
+	    }()
+	  }, {
+	    key: "getNewRecord",
+	    value: function () {
+	      var _getNewRecord = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(formDataOrKey) {
+	        var record, timestamp;
+	        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+	          while (1) switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.next = 2;
+	              return this.init();
+	            case 2:
+	              if (!(typeof formDataOrKey !== 'string')) {
+	                _context4.next = 8;
+	                break;
+	              }
+	              _context4.next = 5;
+	              return this.getRecordForDB(formDataOrKey);
+	            case 5:
+	              record = _context4.sent;
+	              _context4.next = 9;
+	              break;
+	            case 8:
+	              record = deepClone(this.data[formDataOrKey]);
+	            case 9:
+	              timestamp = Number(new Date());
+	              record.id = '' + timestamp;
+	              record.dateCreated = timestamp;
+	              return _context4.abrupt("return", record);
+	            case 13:
+	            case "end":
+	              return _context4.stop();
+	          }
+	        }, _callee4, this);
+	      }));
+	      function getNewRecord(_x4) {
+	        return _getNewRecord.apply(this, arguments);
 	      }
-	    } else {
-	      return 'same';
-	    }
-	  }
-	  async getRecipeDetailed(key) {
-	    await this.init();
-	    var record = await this.getRecipe(key);
+	      return getNewRecord;
+	    }()
+	  }, {
+	    key: "addRecipe",
+	    value: function () {
+	      var _addRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(data) {
+	        var record;
+	        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+	          while (1) switch (_context5.prev = _context5.next) {
+	            case 0:
+	              _context5.next = 2;
+	              return this.init();
+	            case 2:
+	              _context5.next = 4;
+	              return this.getNewRecord(data);
+	            case 4:
+	              record = _context5.sent;
+	              _context5.next = 7;
+	              return this.addRecipeRecord(record);
+	            case 7:
+	            case "end":
+	              return _context5.stop();
+	          }
+	        }, _callee5, this);
+	      }));
+	      function addRecipe(_x5) {
+	        return _addRecipe.apply(this, arguments);
+	      }
+	      return addRecipe;
+	    }()
+	  }, {
+	    key: "addRecipeRecord",
+	    value: function () {
+	      var _addRecipeRecord = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(record) {
+	        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+	          while (1) switch (_context6.prev = _context6.next) {
+	            case 0:
+	              _context6.next = 2;
+	              return this.init();
+	            case 2:
+	              _context6.next = 4;
+	              return this.store.addRecord(record);
+	            case 4:
+	              this.data[record.id] = record;
+	            case 5:
+	            case "end":
+	              return _context6.stop();
+	          }
+	        }, _callee6, this);
+	      }));
+	      function addRecipeRecord(_x6) {
+	        return _addRecipeRecord.apply(this, arguments);
+	      }
+	      return addRecipeRecord;
+	    }()
+	  }, {
+	    key: "useCategoryAndIngredients",
+	    value: function () {
+	      var _useCategoryAndIngredients = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(record) {
+	        var _iterator4, _step4, item, _iterator5, _step5, ingredient;
+	        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+	          while (1) switch (_context7.prev = _context7.next) {
+	            case 0:
+	              _context7.next = 2;
+	              return this.init();
+	            case 2:
+	              _iterator4 = _createForOfIteratorHelper(record.items);
+	              _context7.prev = 3;
+	              _iterator4.s();
+	            case 5:
+	              if ((_step4 = _iterator4.n()).done) {
+	                _context7.next = 26;
+	                break;
+	              }
+	              item = _step4.value;
+	              _iterator5 = _createForOfIteratorHelper(item.ingredients);
+	              _context7.prev = 8;
+	              _iterator5.s();
+	            case 10:
+	              if ((_step5 = _iterator5.n()).done) {
+	                _context7.next = 16;
+	                break;
+	              }
+	              ingredient = _step5.value;
+	              _context7.next = 14;
+	              return this.getItemAfterPossiblyAdding(ingredient, ingredientSet);
+	            case 14:
+	              _context7.next = 10;
+	              break;
+	            case 16:
+	              _context7.next = 21;
+	              break;
+	            case 18:
+	              _context7.prev = 18;
+	              _context7.t0 = _context7["catch"](8);
+	              _iterator5.e(_context7.t0);
+	            case 21:
+	              _context7.prev = 21;
+	              _iterator5.f();
+	              return _context7.finish(21);
+	            case 24:
+	              _context7.next = 5;
+	              break;
+	            case 26:
+	              _context7.next = 31;
+	              break;
+	            case 28:
+	              _context7.prev = 28;
+	              _context7.t1 = _context7["catch"](3);
+	              _iterator4.e(_context7.t1);
+	            case 31:
+	              _context7.prev = 31;
+	              _iterator4.f();
+	              return _context7.finish(31);
+	            case 34:
+	              _context7.next = 36;
+	              return this.getItemAfterPossiblyAdding(record.category, categorySet);
+	            case 36:
+	            case "end":
+	              return _context7.stop();
+	          }
+	        }, _callee7, this, [[3, 28, 31, 34], [8, 18, 21, 24]]);
+	      }));
+	      function useCategoryAndIngredients(_x7) {
+	        return _useCategoryAndIngredients.apply(this, arguments);
+	      }
+	      return useCategoryAndIngredients;
+	    }()
+	  }, {
+	    key: "cloneRecipe",
+	    value: function () {
+	      var _cloneRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(key) {
+	        var recordClone;
+	        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+	          while (1) switch (_context8.prev = _context8.next) {
+	            case 0:
+	              _context8.next = 2;
+	              return this.init();
+	            case 2:
+	              _context8.next = 4;
+	              return this.getNewRecord(key);
+	            case 4:
+	              recordClone = _context8.sent;
+	              recordClone.name += ' (copy)';
+	              recordClone.previous = null;
+	              recordClone.next = null;
 
-	    // Process ingredients
-	    var itemIndex = 0;
-	    for (var item of record.items) {
-	      var ingredients = item.ingredients;
-	      for (var i = 0, len = ingredients.length; i < len; i++) {
-	        ingredients[i] = {
-	          name: (await ingredientSet.get(ingredients[i])).name,
-	          status: await this.compareIngredient(key, itemIndex, ingredients[i])
-	        };
+	              // 'Use' the ingredients' and the category.
+	              _context8.next = 10;
+	              return this.useCategoryAndIngredients(recordClone);
+	            case 10:
+	              _context8.next = 12;
+	              return this.addRecipeRecord(recordClone);
+	            case 12:
+	              return _context8.abrupt("return", recordClone.id);
+	            case 13:
+	            case "end":
+	              return _context8.stop();
+	          }
+	        }, _callee8, this);
+	      }));
+	      function cloneRecipe(_x8) {
+	        return _cloneRecipe.apply(this, arguments);
 	      }
-	      itemIndex++;
-	    }
-	    record.iterations = await this.getIterationDetails(key);
-	    return record;
-	  }
-	  async getRecipeForUpdate(key) {
-	    await this.init();
-	    var record = deepClone(this.data[key]);
+	      return cloneRecipe;
+	    }()
+	  }, {
+	    key: "makeIteration",
+	    value: function () {
+	      var _makeIteration = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(key) {
+	        var recordClone;
+	        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+	          while (1) switch (_context9.prev = _context9.next) {
+	            case 0:
+	              _context9.next = 2;
+	              return this.init();
+	            case 2:
+	              _context9.next = 4;
+	              return this.getNewRecord(key);
+	            case 4:
+	              recordClone = _context9.sent;
+	              recordClone.previous = key;
 
-	    // Process category
-	    record.category = await categorySet.getForUpdate(record.category);
+	              // 'Use' the ingredients' and the category.
+	              _context9.next = 8;
+	              return this.useCategoryAndIngredients(recordClone);
+	            case 8:
+	              _context9.next = 10;
+	              return this.addRecipeRecord(recordClone);
+	            case 10:
+	              _context9.next = 12;
+	              return this.store.updateRecord(key, {
+	                next: recordClone.id
+	              });
+	            case 12:
+	              this.data[key].next = recordClone.id;
+	              return _context9.abrupt("return", recordClone.id);
+	            case 14:
+	            case "end":
+	              return _context9.stop();
+	          }
+	        }, _callee9, this);
+	      }));
+	      function makeIteration(_x9) {
+	        return _makeIteration.apply(this, arguments);
+	      }
+	      return makeIteration;
+	    }()
+	  }, {
+	    key: "getAllRecipes",
+	    value: function () {
+	      var _getAllRecipes = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+	        var records, key, record;
+	        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+	          while (1) switch (_context10.prev = _context10.next) {
+	            case 0:
+	              _context10.next = 2;
+	              return this.init();
+	            case 2:
+	              records = [];
+	              _context10.t0 = _regeneratorRuntime().keys(this.data);
+	            case 4:
+	              if ((_context10.t1 = _context10.t0()).done) {
+	                _context10.next = 15;
+	                break;
+	              }
+	              key = _context10.t1.value;
+	              record = this.data[key];
+	              if (!(record.next === null)) {
+	                _context10.next = 13;
+	                break;
+	              }
+	              _context10.t2 = records;
+	              _context10.next = 11;
+	              return this.getRecipe(key);
+	            case 11:
+	              _context10.t3 = _context10.sent;
+	              _context10.t2.push.call(_context10.t2, _context10.t3);
+	            case 13:
+	              _context10.next = 4;
+	              break;
+	            case 15:
+	              return _context10.abrupt("return", records);
+	            case 16:
+	            case "end":
+	              return _context10.stop();
+	          }
+	        }, _callee10, this);
+	      }));
+	      function getAllRecipes() {
+	        return _getAllRecipes.apply(this, arguments);
+	      }
+	      return getAllRecipes;
+	    }()
+	  }, {
+	    key: "getRecipe",
+	    value: function () {
+	      var _getRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(key) {
+	        var record, recordProcessed;
+	        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+	          while (1) switch (_context11.prev = _context11.next) {
+	            case 0:
+	              _context11.next = 2;
+	              return this.init();
+	            case 2:
+	              record = this.data[key];
+	              recordProcessed = deepClone(record); // Process data
+	              recordProcessed.dateCreated = new Date(record.dateCreated);
 
-	    // Process ingredients
-	    for (var item of record.items) {
-	      var ingredients = item.ingredients;
-	      for (var i = 0, len = ingredients.length; i < len; i++) {
-	        ingredients[i] = await ingredientSet.getForUpdate(ingredients[i]);
+	              // Process category
+	              _context11.next = 7;
+	              return categorySet.get(record.category);
+	            case 7:
+	              recordProcessed.category = _context11.sent.name;
+	              return _context11.abrupt("return", recordProcessed);
+	            case 9:
+	            case "end":
+	              return _context11.stop();
+	          }
+	        }, _callee11, this);
+	      }));
+	      function getRecipe(_x10) {
+	        return _getRecipe.apply(this, arguments);
 	      }
-	    }
-	    return record;
-	  }
-	  async removeRecipe(key) {
-	    await this.init();
-	    await this.unUseCategoryAndIngredients(key);
-	    var record = this.data[key];
-
-	    // Restructure the iteration pointers.
-	    if (record.previous) {
-	      var newNextOfPrevious = null;
-	      if (record.next) {
-	        newNextOfPrevious = record.next;
+	      return getRecipe;
+	    }()
+	  }, {
+	    key: "compareIngredient",
+	    value: function () {
+	      var _compareIngredient = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(key, itemIndex, ingredientKey) {
+	        var record, previousRecord, ingredients, previousIngredients, quantity, previousQuantity;
+	        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+	          while (1) switch (_context12.prev = _context12.next) {
+	            case 0:
+	              _context12.next = 2;
+	              return this.init();
+	            case 2:
+	              record = this.data[key];
+	              if (!record.previous) {
+	                _context12.next = 16;
+	                break;
+	              }
+	              previousRecord = this.data[record.previous];
+	              ingredients = record.items[itemIndex].ingredients;
+	              previousIngredients = previousRecord.items[itemIndex].ingredients; // First, determine if the current ingredient is 'new'.
+	              if (previousIngredients.includes(ingredientKey)) {
+	                _context12.next = 11;
+	                break;
+	              }
+	              return _context12.abrupt("return", 'new');
+	            case 11:
+	              // Given that the current ingredient is not 'new', further check if
+	              // it has increased or decreased in quantity.
+	              quantity = record.items[itemIndex].quantities[ingredients.indexOf(ingredientKey)];
+	              previousQuantity = previousRecord.items[itemIndex].quantities[previousIngredients.indexOf(ingredientKey)];
+	              return _context12.abrupt("return", diffQuantities(quantity, previousQuantity));
+	            case 14:
+	              _context12.next = 17;
+	              break;
+	            case 16:
+	              return _context12.abrupt("return", 'same');
+	            case 17:
+	            case "end":
+	              return _context12.stop();
+	          }
+	        }, _callee12, this);
+	      }));
+	      function compareIngredient(_x11, _x12, _x13) {
+	        return _compareIngredient.apply(this, arguments);
 	      }
-	      await this.updateRecipeRecord(record.previous, {
-	        next: newNextOfPrevious
-	      });
-	    }
-	    if (record.next) {
-	      var newPreviousOfNext = null;
-	      if (record.previous) {
-	        newPreviousOfNext = record.previous;
+	      return compareIngredient;
+	    }()
+	  }, {
+	    key: "getRecipeDetailed",
+	    value: function () {
+	      var _getRecipeDetailed = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(key) {
+	        var record, itemIndex, _iterator6, _step6, item, ingredients, i, len;
+	        return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+	          while (1) switch (_context13.prev = _context13.next) {
+	            case 0:
+	              _context13.next = 2;
+	              return this.init();
+	            case 2:
+	              _context13.next = 4;
+	              return this.getRecipe(key);
+	            case 4:
+	              record = _context13.sent;
+	              // Process ingredients
+	              itemIndex = 0;
+	              _iterator6 = _createForOfIteratorHelper(record.items);
+	              _context13.prev = 7;
+	              _iterator6.s();
+	            case 9:
+	              if ((_step6 = _iterator6.n()).done) {
+	                _context13.next = 27;
+	                break;
+	              }
+	              item = _step6.value;
+	              ingredients = item.ingredients;
+	              i = 0, len = ingredients.length;
+	            case 13:
+	              if (!(i < len)) {
+	                _context13.next = 24;
+	                break;
+	              }
+	              _context13.next = 16;
+	              return ingredientSet.get(ingredients[i]);
+	            case 16:
+	              _context13.t0 = _context13.sent.name;
+	              _context13.next = 19;
+	              return this.compareIngredient(key, itemIndex, ingredients[i]);
+	            case 19:
+	              _context13.t1 = _context13.sent;
+	              ingredients[i] = {
+	                name: _context13.t0,
+	                status: _context13.t1
+	              };
+	            case 21:
+	              i++;
+	              _context13.next = 13;
+	              break;
+	            case 24:
+	              itemIndex++;
+	            case 25:
+	              _context13.next = 9;
+	              break;
+	            case 27:
+	              _context13.next = 32;
+	              break;
+	            case 29:
+	              _context13.prev = 29;
+	              _context13.t2 = _context13["catch"](7);
+	              _iterator6.e(_context13.t2);
+	            case 32:
+	              _context13.prev = 32;
+	              _iterator6.f();
+	              return _context13.finish(32);
+	            case 35:
+	              _context13.next = 37;
+	              return this.getIterationDetails(key);
+	            case 37:
+	              record.iterations = _context13.sent;
+	              return _context13.abrupt("return", record);
+	            case 39:
+	            case "end":
+	              return _context13.stop();
+	          }
+	        }, _callee13, this, [[7, 29, 32, 35]]);
+	      }));
+	      function getRecipeDetailed(_x14) {
+	        return _getRecipeDetailed.apply(this, arguments);
 	      }
-	      await this.updateRecipeRecord(record.next, {
-	        previous: newPreviousOfNext
-	      });
-	    }
-	    delete this.data[key];
-	    await this.store.deleteRecord(key);
-	  }
-	  async forEachIngredient(key, callback) {
-	    await this.init();
-	    var record = this.data[key];
-	    for (var item of record.items) {
-	      for (var ingredient of item.ingredients) {
-	        await callback(ingredient);
+	      return getRecipeDetailed;
+	    }()
+	  }, {
+	    key: "getRecipeForUpdate",
+	    value: function () {
+	      var _getRecipeForUpdate = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(key) {
+	        var record, _iterator7, _step7, item, ingredients, i, len;
+	        return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+	          while (1) switch (_context14.prev = _context14.next) {
+	            case 0:
+	              _context14.next = 2;
+	              return this.init();
+	            case 2:
+	              record = deepClone(this.data[key]); // Process category
+	              _context14.next = 5;
+	              return categorySet.getForUpdate(record.category);
+	            case 5:
+	              record.category = _context14.sent;
+	              // Process ingredients
+	              _iterator7 = _createForOfIteratorHelper(record.items);
+	              _context14.prev = 7;
+	              _iterator7.s();
+	            case 9:
+	              if ((_step7 = _iterator7.n()).done) {
+	                _context14.next = 22;
+	                break;
+	              }
+	              item = _step7.value;
+	              ingredients = item.ingredients;
+	              i = 0, len = ingredients.length;
+	            case 13:
+	              if (!(i < len)) {
+	                _context14.next = 20;
+	                break;
+	              }
+	              _context14.next = 16;
+	              return ingredientSet.getForUpdate(ingredients[i]);
+	            case 16:
+	              ingredients[i] = _context14.sent;
+	            case 17:
+	              i++;
+	              _context14.next = 13;
+	              break;
+	            case 20:
+	              _context14.next = 9;
+	              break;
+	            case 22:
+	              _context14.next = 27;
+	              break;
+	            case 24:
+	              _context14.prev = 24;
+	              _context14.t0 = _context14["catch"](7);
+	              _iterator7.e(_context14.t0);
+	            case 27:
+	              _context14.prev = 27;
+	              _iterator7.f();
+	              return _context14.finish(27);
+	            case 30:
+	              return _context14.abrupt("return", record);
+	            case 31:
+	            case "end":
+	              return _context14.stop();
+	          }
+	        }, _callee14, this, [[7, 24, 27, 30]]);
+	      }));
+	      function getRecipeForUpdate(_x15) {
+	        return _getRecipeForUpdate.apply(this, arguments);
 	      }
-	    }
-	  }
-	  async unUseCategoryAndIngredients(key) {
-	    await this.init();
-	    var record = this.data[key];
-
-	    // unUse() the category.
-	    await categorySet.unUse(record.category);
-
-	    // Go over all ingredients and unUse() each one.
-	    await this.forEachIngredient(key, async ingredientKey => {
-	      await ingredientSet.unUse(ingredientKey);
-	    });
-	  }
-	  async updateRecipe(key, data) {
-	    await this.init();
-	    await this.unUseCategoryAndIngredients(key);
-	    var record = await this.getRecordForDB(data);
-	    record.previous = this.data[key].previous;
-	    record.next = this.data[key].next;
-	    await this.updateRecipeRecord(key, record);
-	  }
-	  async updateRecipeRecord(key, record) {
-	    await this.init();
-	    await this.store.updateRecord(key, record);
-	    this.data[key] = Object.assign(this.data[key], record);
-	  }
-	  async getIterationDetails(key) {
-	    await this.init();
-	    var previous = this.data[key].previous;
-	    var next = this.data[key].next;
-	    if (previous || next) {
-	      var previousRecords = 1;
-	      while (previous) {
-	        previousRecords++;
-	        previous = this.data[previous].previous;
+	      return getRecipeForUpdate;
+	    }()
+	  }, {
+	    key: "removeRecipe",
+	    value: function () {
+	      var _removeRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(key) {
+	        var record, newNextOfPrevious, newPreviousOfNext;
+	        return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+	          while (1) switch (_context15.prev = _context15.next) {
+	            case 0:
+	              _context15.next = 2;
+	              return this.init();
+	            case 2:
+	              _context15.next = 4;
+	              return this.unUseCategoryAndIngredients(key);
+	            case 4:
+	              record = this.data[key]; // Restructure the iteration pointers.
+	              if (!record.previous) {
+	                _context15.next = 10;
+	                break;
+	              }
+	              newNextOfPrevious = null;
+	              if (record.next) {
+	                newNextOfPrevious = record.next;
+	              }
+	              _context15.next = 10;
+	              return this.updateRecipeRecord(record.previous, {
+	                next: newNextOfPrevious
+	              });
+	            case 10:
+	              if (!record.next) {
+	                _context15.next = 15;
+	                break;
+	              }
+	              newPreviousOfNext = null;
+	              if (record.previous) {
+	                newPreviousOfNext = record.previous;
+	              }
+	              _context15.next = 15;
+	              return this.updateRecipeRecord(record.next, {
+	                previous: newPreviousOfNext
+	              });
+	            case 15:
+	              delete this.data[key];
+	              _context15.next = 18;
+	              return this.store.deleteRecord(key);
+	            case 18:
+	            case "end":
+	              return _context15.stop();
+	          }
+	        }, _callee15, this);
+	      }));
+	      function removeRecipe(_x16) {
+	        return _removeRecipe.apply(this, arguments);
 	      }
-	      var nextRecords = 0;
-	      while (next) {
-	        nextRecords++;
-	        next = this.data[next].next;
+	      return removeRecipe;
+	    }()
+	  }, {
+	    key: "forEachIngredient",
+	    value: function () {
+	      var _forEachIngredient = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(key, callback) {
+	        var record, _iterator8, _step8, item, _iterator9, _step9, ingredient;
+	        return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+	          while (1) switch (_context16.prev = _context16.next) {
+	            case 0:
+	              _context16.next = 2;
+	              return this.init();
+	            case 2:
+	              record = this.data[key];
+	              _iterator8 = _createForOfIteratorHelper(record.items);
+	              _context16.prev = 4;
+	              _iterator8.s();
+	            case 6:
+	              if ((_step8 = _iterator8.n()).done) {
+	                _context16.next = 27;
+	                break;
+	              }
+	              item = _step8.value;
+	              _iterator9 = _createForOfIteratorHelper(item.ingredients);
+	              _context16.prev = 9;
+	              _iterator9.s();
+	            case 11:
+	              if ((_step9 = _iterator9.n()).done) {
+	                _context16.next = 17;
+	                break;
+	              }
+	              ingredient = _step9.value;
+	              _context16.next = 15;
+	              return callback(ingredient);
+	            case 15:
+	              _context16.next = 11;
+	              break;
+	            case 17:
+	              _context16.next = 22;
+	              break;
+	            case 19:
+	              _context16.prev = 19;
+	              _context16.t0 = _context16["catch"](9);
+	              _iterator9.e(_context16.t0);
+	            case 22:
+	              _context16.prev = 22;
+	              _iterator9.f();
+	              return _context16.finish(22);
+	            case 25:
+	              _context16.next = 6;
+	              break;
+	            case 27:
+	              _context16.next = 32;
+	              break;
+	            case 29:
+	              _context16.prev = 29;
+	              _context16.t1 = _context16["catch"](4);
+	              _iterator8.e(_context16.t1);
+	            case 32:
+	              _context16.prev = 32;
+	              _iterator8.f();
+	              return _context16.finish(32);
+	            case 35:
+	            case "end":
+	              return _context16.stop();
+	          }
+	        }, _callee16, this, [[4, 29, 32, 35], [9, 19, 22, 25]]);
+	      }));
+	      function forEachIngredient(_x17, _x18) {
+	        return _forEachIngredient.apply(this, arguments);
 	      }
-	      return {
-	        current: previousRecords,
-	        total: previousRecords + nextRecords,
-	        next: this.data[key].next,
-	        previous: this.data[key].previous
-	      };
-	    }
-	    return null;
-	  }
-	  async searchRecipe(query) {
-	    await this.init();
-	    var results = [];
-	    for (var key in this.data) {
-	      var record = this.data[key];
-	      if (record.name.toLowerCase().includes(query.toLowerCase())) {
-	        results.push(await this.getRecipe(key));
+	      return forEachIngredient;
+	    }()
+	  }, {
+	    key: "unUseCategoryAndIngredients",
+	    value: function () {
+	      var _unUseCategoryAndIngredients = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(key) {
+	        var record;
+	        return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+	          while (1) switch (_context18.prev = _context18.next) {
+	            case 0:
+	              _context18.next = 2;
+	              return this.init();
+	            case 2:
+	              record = this.data[key]; // unUse() the category.
+	              _context18.next = 5;
+	              return categorySet.unUse(record.category);
+	            case 5:
+	              _context18.next = 7;
+	              return this.forEachIngredient(key, /*#__PURE__*/function () {
+	                var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(ingredientKey) {
+	                  return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+	                    while (1) switch (_context17.prev = _context17.next) {
+	                      case 0:
+	                        _context17.next = 2;
+	                        return ingredientSet.unUse(ingredientKey);
+	                      case 2:
+	                      case "end":
+	                        return _context17.stop();
+	                    }
+	                  }, _callee17);
+	                }));
+	                return function (_x20) {
+	                  return _ref.apply(this, arguments);
+	                };
+	              }());
+	            case 7:
+	            case "end":
+	              return _context18.stop();
+	          }
+	        }, _callee18, this);
+	      }));
+	      function unUseCategoryAndIngredients(_x19) {
+	        return _unUseCategoryAndIngredients.apply(this, arguments);
 	      }
-	    }
-	    return results;
-	  }
-	  async isIngredientInUse(ingredientStringKey) {
-	    await this.init();
-	    return await ingredientSet.isInUse(Number(ingredientStringKey));
-	  }
-	  async isCategoryInUse(categoryStringKey) {
-	    await this.init();
-	    return await categorySet.isInUse(Number(categoryStringKey));
-	  }
-	  async download() {
-	    await this.init();
-	    await this.db.exportToJSON();
-	  }
-	  async restore(jsonString) {
-	    // TODO: Going 'quickly' back to the home page from the restoration page
-	    // after having clicked the Restore button causes an init() call to be
-	    // made before the init(true) call down below. This leads to an error
-	    // since at that init() call, the existing database has been deleted. There
-	    // are multiple ways to prevent this, and so this can be solved later on.
-
-	    await this.init();
-	    await this.db.delete();
-	    await FrontendDB$1.restore(jsonString);
-	    await this.init(true);
-	  }
-	  async deleteAll() {
-	    await this.init();
-	    await this.db.delete();
-	    this.data = {};
-	    await ingredientSet.deleteAll();
-	    await categorySet.deleteAll();
-	    await this.init(true);
-	  }
-	}
+	      return unUseCategoryAndIngredients;
+	    }()
+	  }, {
+	    key: "updateRecipe",
+	    value: function () {
+	      var _updateRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(key, data) {
+	        var record;
+	        return _regeneratorRuntime().wrap(function _callee19$(_context19) {
+	          while (1) switch (_context19.prev = _context19.next) {
+	            case 0:
+	              _context19.next = 2;
+	              return this.init();
+	            case 2:
+	              _context19.next = 4;
+	              return this.unUseCategoryAndIngredients(key);
+	            case 4:
+	              _context19.next = 6;
+	              return this.getRecordForDB(data);
+	            case 6:
+	              record = _context19.sent;
+	              record.previous = this.data[key].previous;
+	              record.next = this.data[key].next;
+	              _context19.next = 11;
+	              return this.updateRecipeRecord(key, record);
+	            case 11:
+	            case "end":
+	              return _context19.stop();
+	          }
+	        }, _callee19, this);
+	      }));
+	      function updateRecipe(_x21, _x22) {
+	        return _updateRecipe.apply(this, arguments);
+	      }
+	      return updateRecipe;
+	    }()
+	  }, {
+	    key: "updateRecipeRecord",
+	    value: function () {
+	      var _updateRecipeRecord = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(key, record) {
+	        return _regeneratorRuntime().wrap(function _callee20$(_context20) {
+	          while (1) switch (_context20.prev = _context20.next) {
+	            case 0:
+	              _context20.next = 2;
+	              return this.init();
+	            case 2:
+	              _context20.next = 4;
+	              return this.store.updateRecord(key, record);
+	            case 4:
+	              this.data[key] = Object.assign(this.data[key], record);
+	            case 5:
+	            case "end":
+	              return _context20.stop();
+	          }
+	        }, _callee20, this);
+	      }));
+	      function updateRecipeRecord(_x23, _x24) {
+	        return _updateRecipeRecord.apply(this, arguments);
+	      }
+	      return updateRecipeRecord;
+	    }()
+	  }, {
+	    key: "getIterationDetails",
+	    value: function () {
+	      var _getIterationDetails = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(key) {
+	        var previous, next, previousRecords, nextRecords;
+	        return _regeneratorRuntime().wrap(function _callee21$(_context21) {
+	          while (1) switch (_context21.prev = _context21.next) {
+	            case 0:
+	              _context21.next = 2;
+	              return this.init();
+	            case 2:
+	              previous = this.data[key].previous;
+	              next = this.data[key].next;
+	              if (!(previous || next)) {
+	                _context21.next = 10;
+	                break;
+	              }
+	              previousRecords = 1;
+	              while (previous) {
+	                previousRecords++;
+	                previous = this.data[previous].previous;
+	              }
+	              nextRecords = 0;
+	              while (next) {
+	                nextRecords++;
+	                next = this.data[next].next;
+	              }
+	              return _context21.abrupt("return", {
+	                current: previousRecords,
+	                total: previousRecords + nextRecords,
+	                next: this.data[key].next,
+	                previous: this.data[key].previous
+	              });
+	            case 10:
+	              return _context21.abrupt("return", null);
+	            case 11:
+	            case "end":
+	              return _context21.stop();
+	          }
+	        }, _callee21, this);
+	      }));
+	      function getIterationDetails(_x25) {
+	        return _getIterationDetails.apply(this, arguments);
+	      }
+	      return getIterationDetails;
+	    }()
+	  }, {
+	    key: "searchRecipe",
+	    value: function () {
+	      var _searchRecipe = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(query) {
+	        var results, key, record;
+	        return _regeneratorRuntime().wrap(function _callee22$(_context22) {
+	          while (1) switch (_context22.prev = _context22.next) {
+	            case 0:
+	              _context22.next = 2;
+	              return this.init();
+	            case 2:
+	              results = [];
+	              _context22.t0 = _regeneratorRuntime().keys(this.data);
+	            case 4:
+	              if ((_context22.t1 = _context22.t0()).done) {
+	                _context22.next = 15;
+	                break;
+	              }
+	              key = _context22.t1.value;
+	              record = this.data[key];
+	              if (!record.name.toLowerCase().includes(query.toLowerCase())) {
+	                _context22.next = 13;
+	                break;
+	              }
+	              _context22.t2 = results;
+	              _context22.next = 11;
+	              return this.getRecipe(key);
+	            case 11:
+	              _context22.t3 = _context22.sent;
+	              _context22.t2.push.call(_context22.t2, _context22.t3);
+	            case 13:
+	              _context22.next = 4;
+	              break;
+	            case 15:
+	              return _context22.abrupt("return", results);
+	            case 16:
+	            case "end":
+	              return _context22.stop();
+	          }
+	        }, _callee22, this);
+	      }));
+	      function searchRecipe(_x26) {
+	        return _searchRecipe.apply(this, arguments);
+	      }
+	      return searchRecipe;
+	    }()
+	  }, {
+	    key: "isIngredientInUse",
+	    value: function () {
+	      var _isIngredientInUse = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(ingredientStringKey) {
+	        return _regeneratorRuntime().wrap(function _callee23$(_context23) {
+	          while (1) switch (_context23.prev = _context23.next) {
+	            case 0:
+	              _context23.next = 2;
+	              return this.init();
+	            case 2:
+	              _context23.next = 4;
+	              return ingredientSet.isInUse(Number(ingredientStringKey));
+	            case 4:
+	              return _context23.abrupt("return", _context23.sent);
+	            case 5:
+	            case "end":
+	              return _context23.stop();
+	          }
+	        }, _callee23, this);
+	      }));
+	      function isIngredientInUse(_x27) {
+	        return _isIngredientInUse.apply(this, arguments);
+	      }
+	      return isIngredientInUse;
+	    }()
+	  }, {
+	    key: "isCategoryInUse",
+	    value: function () {
+	      var _isCategoryInUse = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(categoryStringKey) {
+	        return _regeneratorRuntime().wrap(function _callee24$(_context24) {
+	          while (1) switch (_context24.prev = _context24.next) {
+	            case 0:
+	              _context24.next = 2;
+	              return this.init();
+	            case 2:
+	              _context24.next = 4;
+	              return categorySet.isInUse(Number(categoryStringKey));
+	            case 4:
+	              return _context24.abrupt("return", _context24.sent);
+	            case 5:
+	            case "end":
+	              return _context24.stop();
+	          }
+	        }, _callee24, this);
+	      }));
+	      function isCategoryInUse(_x28) {
+	        return _isCategoryInUse.apply(this, arguments);
+	      }
+	      return isCategoryInUse;
+	    }()
+	  }, {
+	    key: "download",
+	    value: function () {
+	      var _download = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee25() {
+	        return _regeneratorRuntime().wrap(function _callee25$(_context25) {
+	          while (1) switch (_context25.prev = _context25.next) {
+	            case 0:
+	              _context25.next = 2;
+	              return this.init();
+	            case 2:
+	              _context25.next = 4;
+	              return this.db.exportToJSON();
+	            case 4:
+	            case "end":
+	              return _context25.stop();
+	          }
+	        }, _callee25, this);
+	      }));
+	      function download() {
+	        return _download.apply(this, arguments);
+	      }
+	      return download;
+	    }()
+	  }, {
+	    key: "restore",
+	    value: function () {
+	      var _restore = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee26(jsonString) {
+	        return _regeneratorRuntime().wrap(function _callee26$(_context26) {
+	          while (1) switch (_context26.prev = _context26.next) {
+	            case 0:
+	              _context26.next = 2;
+	              return this.init();
+	            case 2:
+	              _context26.next = 4;
+	              return this.db["delete"]();
+	            case 4:
+	              _context26.next = 6;
+	              return FrontendDB$1.restore(jsonString);
+	            case 6:
+	              _context26.next = 8;
+	              return this.init(true);
+	            case 8:
+	            case "end":
+	              return _context26.stop();
+	          }
+	        }, _callee26, this);
+	      }));
+	      function restore(_x29) {
+	        return _restore.apply(this, arguments);
+	      }
+	      return restore;
+	    }()
+	  }, {
+	    key: "deleteAll",
+	    value: function () {
+	      var _deleteAll = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27() {
+	        return _regeneratorRuntime().wrap(function _callee27$(_context27) {
+	          while (1) switch (_context27.prev = _context27.next) {
+	            case 0:
+	              _context27.next = 2;
+	              return this.init();
+	            case 2:
+	              _context27.next = 4;
+	              return this.db["delete"]();
+	            case 4:
+	              this.data = {};
+	              _context27.next = 7;
+	              return ingredientSet.deleteAll();
+	            case 7:
+	              _context27.next = 9;
+	              return categorySet.deleteAll();
+	            case 9:
+	              _context27.next = 11;
+	              return this.init(true);
+	            case 11:
+	            case "end":
+	              return _context27.stop();
+	          }
+	        }, _callee27, this);
+	      }));
+	      function deleteAll() {
+	        return _deleteAll.apply(this, arguments);
+	      }
+	      return deleteAll;
+	    }()
+	  }]);
+	  return RecipeList;
+	}();
 
 	const recipeList = new RecipeList();
 	const categorySet = new ItemSet(CATEGORIES_STORE_NAME);
@@ -35677,12 +37112,14 @@
 	  }, alertMessage);
 	}
 
-	function Root({
-	  element
-	}) {
-	  const [classApplied, setClassApplied] = reactExports.useState(false);
-	  const navigation = useNavigation();
-	  const isLoading = navigation.state !== 'idle';
+	function Root(_ref) {
+	  var element = _ref.element;
+	  var _useState = reactExports.useState(false),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    classApplied = _useState2[0],
+	    setClassApplied = _useState2[1];
+	  var navigation = useNavigation();
+	  var isLoading = navigation.state !== 'idle';
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Overlay, null), /*#__PURE__*/React.createElement(Modal, null), /*#__PURE__*/React.createElement(Alert, null), /*#__PURE__*/React.createElement(Header, {
 	    setClassApplied: setClassApplied
 	  }), /*#__PURE__*/React.createElement(SideBar, {
@@ -35794,26 +37231,25 @@
 	      return '';
 	  }
 	}
-	function IngredientsGroup({
-	  name,
-	  ingredients,
-	  quantities
-	}) {
-	  return /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h4", null, name), /*#__PURE__*/React.createElement("ol", null, ingredients.map((_, i) => /*#__PURE__*/React.createElement("li", {
-	    key: i,
-	    className: classNames({
-	      'ingredient': true,
-	      [`ingredient--${ingredients[i].status}`]: ingredients[i].status
-	    })
-	  }, /*#__PURE__*/React.createElement("div", {
-	    className: "icon"
-	  }, getIcon(ingredients[i].status)), ingredients[i].name, " - ", quantities[i]))));
+	function IngredientsGroup(_ref) {
+	  var name = _ref.name,
+	    ingredients = _ref.ingredients,
+	    quantities = _ref.quantities;
+	  return /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h4", null, name), /*#__PURE__*/React.createElement("ol", null, ingredients.map(function (_, i) {
+	    return /*#__PURE__*/React.createElement("li", {
+	      key: i,
+	      className: classNames(_defineProperty({
+	        'ingredient': true
+	      }, "ingredient--".concat(ingredients[i].status), ingredients[i].status))
+	    }, /*#__PURE__*/React.createElement("div", {
+	      className: "icon"
+	    }, getIcon(ingredients[i].status)), ingredients[i].name, " - ", quantities[i]);
+	  })));
 	}
 	function DeleteRecipeForm() {
-	  const {
-	    hideModal
-	  } = useModal();
-	  const href = useHref();
+	  var _useModal = useModal(),
+	    hideModal = _useModal.hideModal;
+	  var href = useHref();
 	  return /*#__PURE__*/React.createElement(Form, {
 	    action: href + '/delete'
 	  }, /*#__PURE__*/React.createElement("p", null, "Are you sure you want to delete this recipe?"), /*#__PURE__*/React.createElement(InputGroup, {
@@ -35823,31 +37259,30 @@
 	  }, /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    error: true,
-	    onClick: () => {
+	    onClick: function onClick() {
 	      hideModal();
 	    }
 	  }, "Cancel"), "\xA0\xA0", /*#__PURE__*/React.createElement(LoadingSubmitButton, {
 	    submit: true,
-	    onLoad: () => {
+	    onLoad: function onLoad() {
 	      hideModal();
 	    }
 	  }, "Delete")));
 	}
-	function Recipe({}) {
-	  const {
-	    id,
-	    name,
-	    category,
-	    rating,
-	    items,
-	    instructions,
-	    review,
-	    dateCreated,
-	    iterations
-	  } = useLoaderData();
-	  const {
-	    showModal
-	  } = useModal();
+	function Recipe(_ref2) {
+	  _objectDestructuringEmpty(_ref2);
+	  var _useLoaderData = useLoaderData();
+	    _useLoaderData.id;
+	    var name = _useLoaderData.name,
+	    category = _useLoaderData.category,
+	    rating = _useLoaderData.rating,
+	    items = _useLoaderData.items,
+	    instructions = _useLoaderData.instructions,
+	    review = _useLoaderData.review,
+	    dateCreated = _useLoaderData.dateCreated,
+	    iterations = _useLoaderData.iterations;
+	  var _useModal2 = useModal(),
+	    showModal = _useModal2.showModal;
 	  function onDelete() {
 	    showModal({
 	      title: 'Delete Recipe',
@@ -35908,9 +37343,11 @@
 	    className: "recipe_group"
 	  }, /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_label"
-	  }, "Ingredients"), /*#__PURE__*/React.createElement("ol", null, items.map((item, i) => /*#__PURE__*/React.createElement(IngredientsGroup, _extends({
-	    key: i
-	  }, item))))), /*#__PURE__*/React.createElement("div", {
+	  }, "Ingredients"), /*#__PURE__*/React.createElement("ol", null, items.map(function (item, i) {
+	    return /*#__PURE__*/React.createElement(IngredientsGroup, _extends({
+	      key: i
+	    }, item));
+	  }))), /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_group"
 	  }, /*#__PURE__*/React.createElement("div", {
 	    className: "recipe_label"
