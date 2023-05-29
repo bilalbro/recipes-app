@@ -33,7 +33,10 @@ export default function autocompleterReducer(state, action)
 
       case 'inputBlur':
          const firstSuggestion = action.suggestions[0];
-         if (firstSuggestion) {
+         if (
+            firstSuggestion &&
+            state.getInputValue(firstSuggestion).toLowerCase() === action.value.toLowerCase()
+         ) {
             return {
                ...state,
                hiddenValue: state.getHiddenInputValue(firstSuggestion)

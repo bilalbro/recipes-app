@@ -41,7 +41,7 @@ class RecipeList
          await this.db.createStore(RECIPES_STORE_NAME, {}, 'id', ['rating']);
       }
       this.store = await this.db.getStore(RECIPES_STORE_NAME);
-      var records = await this.store.getAllRecords()
+      var records = await this.store.getAllRecords();
       for (var record of records) {
          this.data[record.id] = record;
       }
