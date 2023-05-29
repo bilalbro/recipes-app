@@ -12,27 +12,21 @@ import {
 } from '.';
 
 
-function AddGroupButton({
-   onClick
-})
+function AddGroupButton({ onClick })
 {
    return (
       <Button type="secondary" onClick={onClick}><BiPlus /> Add Section</Button>
    );
 }
 
-function RemoveGroupButton({
-   onClick
-})
+function RemoveGroupButton({ onClick })
 {
    return (
       <Button type="secondary" error onClick={onClick}>Remove Group</Button>
    );
 }
 
-export default function ItemList({
-   items
-})
+export default function ItemList({ items })
 {
    return <>
       <InputList list={items} addButton={AddGroupButton} removeButton={RemoveGroupButton}>
@@ -44,7 +38,7 @@ export default function ItemList({
                </InputGroup>
 
                <InputList focusInput list={ingredients.map((_, i) => [ingredients[i], quantities[i]])}>
-                  {([ingredient, quantity = ''], RemoveButton) => (
+                  {([ingredient, quantity = ''], RemoveButton, InsertButton) => (
                      <InputGroup basic>
                         <InputGroupInline style={{marginBottom: 0}}>
                            <IngredientInput {...{
@@ -58,7 +52,8 @@ export default function ItemList({
                            name="quantities" placeholder="Qty" value={quantity} />
                         </InputGroupInline>
 
-                        {RemoveButton}
+                        <InputGroupInline style={{marginBottom: 0}}>{RemoveButton}</InputGroupInline>
+                        <InputGroupInline style={{marginBottom: 0}}>{InsertButton}</InputGroupInline>
                      </InputGroup>
                   )}
                </InputList>

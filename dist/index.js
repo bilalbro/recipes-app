@@ -32670,7 +32670,7 @@
 	  };
 	  return _extends$1.apply(this, arguments);
 	}
-	function _objectWithoutPropertiesLoose(source, excluded) {
+	function _objectWithoutPropertiesLoose$1(source, excluded) {
 	  if (source == null) return {};
 	  var target = {};
 	  var sourceKeys = Object.keys(source);
@@ -32824,7 +32824,7 @@
 	    formData
 	  };
 	}
-	const _excluded = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
+	const _excluded$1 = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
 	  _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to", "children"],
 	  _excluded3 = ["reloadDocument", "replace", "method", "action", "onSubmit", "fetcherKey", "routeId", "relative", "preventScrollReset"];
 	function createBrowserRouter(routes, opts) {
@@ -32889,7 +32889,7 @@
 	      to,
 	      preventScrollReset
 	    } = _ref4,
-	    rest = _objectWithoutPropertiesLoose(_ref4, _excluded);
+	    rest = _objectWithoutPropertiesLoose$1(_ref4, _excluded$1);
 	  let {
 	    basename
 	  } = reactExports.useContext(NavigationContext); // Rendered into <a href> for absolute URLs
@@ -32961,7 +32961,7 @@
 	      to,
 	      children
 	    } = _ref5,
-	    rest = _objectWithoutPropertiesLoose(_ref5, _excluded2);
+	    rest = _objectWithoutPropertiesLoose$1(_ref5, _excluded2);
 	  let path = useResolvedPath(to, {
 	    relative: rest.relative
 	  });
@@ -33040,7 +33040,7 @@
 	      relative,
 	      preventScrollReset
 	    } = _ref6,
-	    props = _objectWithoutPropertiesLoose(_ref6, _excluded3);
+	    props = _objectWithoutPropertiesLoose$1(_ref6, _excluded3);
 	  let submit = useSubmitImpl(fetcherKey, routeId);
 	  let formMethod = method.toLowerCase() === "get" ? "get" : "post";
 	  let formAction = useFormAction(action, {
@@ -33265,6 +33265,27 @@
 	    }
 	    return _arr;
 	  }
+	}
+	function ownKeys(object, enumerableOnly) {
+	  var keys = Object.keys(object);
+	  if (Object.getOwnPropertySymbols) {
+	    var symbols = Object.getOwnPropertySymbols(object);
+	    enumerableOnly && (symbols = symbols.filter(function (sym) {
+	      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+	    })), keys.push.apply(keys, symbols);
+	  }
+	  return keys;
+	}
+	function _objectSpread2(target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = null != arguments[i] ? arguments[i] : {};
+	    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+	      _defineProperty(target, key, source[key]);
+	    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+	      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+	    });
+	  }
+	  return target;
 	}
 	function _regeneratorRuntime() {
 	  _regeneratorRuntime = function () {
@@ -33649,6 +33670,33 @@
 	}
 	function _objectDestructuringEmpty(obj) {
 	  if (obj == null) throw new TypeError("Cannot destructure " + obj);
+	}
+	function _objectWithoutPropertiesLoose(source, excluded) {
+	  if (source == null) return {};
+	  var target = {};
+	  var sourceKeys = Object.keys(source);
+	  var key, i;
+	  for (i = 0; i < sourceKeys.length; i++) {
+	    key = sourceKeys[i];
+	    if (excluded.indexOf(key) >= 0) continue;
+	    target[key] = source[key];
+	  }
+	  return target;
+	}
+	function _objectWithoutProperties(source, excluded) {
+	  if (source == null) return {};
+	  var target = _objectWithoutPropertiesLoose(source, excluded);
+	  var key, i;
+	  if (Object.getOwnPropertySymbols) {
+	    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+	    for (i = 0; i < sourceSymbolKeys.length; i++) {
+	      key = sourceSymbolKeys[i];
+	      if (excluded.indexOf(key) >= 0) continue;
+	      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+	      target[key] = source[key];
+	    }
+	  }
+	  return target;
 	}
 	function _slicedToArray(arr, i) {
 	  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -34044,49 +34092,64 @@
 	  }, /*#__PURE__*/React.createElement(FaStar, null))));
 	}
 
-	async function loadData(data, dispatchForAutocompleter, dispatchForSuggestionsBox) {
-	  if (data instanceof Promise) {
-	    var loadedData = await data;
-	    dispatchForAutocompleter({
-	      type: 'dataLoad',
-	      data: loadedData,
-	      dispatchForSuggestionsBox
-	    });
-	  }
+	function loadData(_x, _x2, _x3) {
+	  return _loadData.apply(this, arguments);
 	}
-
 	/*******************************************************************************
 	Reducer
 	*******************************************************************************/
+	function _loadData() {
+	  _loadData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, dispatchForAutocompleter, dispatchForSuggestionsBox) {
+	    var loadedData;
+	    return _regeneratorRuntime().wrap(function _callee$(_context) {
+	      while (1) switch (_context.prev = _context.next) {
+	        case 0:
+	          if (!(data instanceof Promise)) {
+	            _context.next = 5;
+	            break;
+	          }
+	          _context.next = 3;
+	          return data;
+	        case 3:
+	          loadedData = _context.sent;
+	          dispatchForAutocompleter({
+	            type: 'dataLoad',
+	            data: loadedData,
+	            dispatchForSuggestionsBox: dispatchForSuggestionsBox
+	          });
+	        case 5:
+	        case "end":
+	          return _context.stop();
+	      }
+	    }, _callee);
+	  }));
+	  return _loadData.apply(this, arguments);
+	}
 	function autocompleterReducer(state, action) {
 	  switch (action.type) {
 	    case 'init':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        value: action.value
-	      };
+	      });
 	    case 'input':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        value: action.value,
 	        hiddenValue: action.value
-	      };
+	      });
 	    case 'inputBlur':
-	      const firstSuggestion = action.suggestions[0];
-	      if (firstSuggestion) {
-	        return {
-	          ...state,
+	      var firstSuggestion = action.suggestions[0];
+	      if (firstSuggestion && state.getInputValue(firstSuggestion).toLowerCase() === action.value.toLowerCase()) {
+	        return _objectSpread2(_objectSpread2({}, state), {}, {
 	          hiddenValue: state.getHiddenInputValue(firstSuggestion)
-	        };
+	        });
 	      }
 	      return state;
 	    case 'entryClick':
 	      if (action.suggestion) {
-	        return {
-	          ...state,
+	        return _objectSpread2(_objectSpread2({}, state), {}, {
 	          value: state.getInputValue(action.suggestion),
 	          hiddenValue: state.getHiddenInputValue(action.suggestion)
-	        };
+	        });
 	      }
 	    case 'inputFocus':
 	      if (state.data instanceof Promise) {
@@ -34099,10 +34162,9 @@
 	        value: state.value,
 	        data: action.data
 	      });
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        data: action.data
-	      };
+	      });
 	    default:
 	      return state;
 	  }
@@ -34247,46 +34309,68 @@
 	  }, typeof noMatchText === 'function' ? noMatchText(value) : noMatchText));
 	}
 
-	function AutocompleteInput({
-	  value = '',
-	  hiddenValue,
-	  name,
-	  data,
-	  allOnEmpty = false,
-	  hideOnEsc = true,
-	  noMatchText = 'Nothing found',
-	  getInputValue = s => s,
-	  getHiddenInputValue = s => s,
-	  getSuggestionValue = s => s,
-	  filterFunction = (value, s) => s.toLowerCase().indexOf(value.toLowerCase()) !== -1,
-	  className,
-	  ...props
-	}) {
-	  const [autocompleter, dispatchForAutocompleter] = reactExports.useReducer(autocompleterReducer, {
-	    value,
-	    hiddenValue: hiddenValue || value,
-	    data,
-	    getInputValue,
-	    getHiddenInputValue
-	  });
-	  reactExports.useEffect(() => {
+	var _excluded = ["value", "hiddenValue", "name", "data", "allOnEmpty", "hideOnEsc", "noMatchText", "getInputValue", "getHiddenInputValue", "getSuggestionValue", "filterFunction", "className"];
+	function AutocompleteInput(_ref) {
+	  var _ref$value = _ref.value,
+	    value = _ref$value === void 0 ? '' : _ref$value,
+	    hiddenValue = _ref.hiddenValue,
+	    name = _ref.name,
+	    data = _ref.data,
+	    _ref$allOnEmpty = _ref.allOnEmpty,
+	    allOnEmpty = _ref$allOnEmpty === void 0 ? false : _ref$allOnEmpty,
+	    _ref$hideOnEsc = _ref.hideOnEsc,
+	    hideOnEsc = _ref$hideOnEsc === void 0 ? true : _ref$hideOnEsc,
+	    _ref$noMatchText = _ref.noMatchText,
+	    noMatchText = _ref$noMatchText === void 0 ? 'Nothing found' : _ref$noMatchText,
+	    _ref$getInputValue = _ref.getInputValue,
+	    getInputValue = _ref$getInputValue === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getInputValue,
+	    _ref$getHiddenInputVa = _ref.getHiddenInputValue,
+	    getHiddenInputValue = _ref$getHiddenInputVa === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getHiddenInputVa,
+	    _ref$getSuggestionVal = _ref.getSuggestionValue,
+	    getSuggestionValue = _ref$getSuggestionVal === void 0 ? function (s) {
+	      return s;
+	    } : _ref$getSuggestionVal,
+	    _ref$filterFunction = _ref.filterFunction,
+	    filterFunction = _ref$filterFunction === void 0 ? function (value, s) {
+	      return s.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+	    } : _ref$filterFunction,
+	    className = _ref.className,
+	    props = _objectWithoutProperties(_ref, _excluded);
+	  var _useReducer = reactExports.useReducer(autocompleterReducer, {
+	      value: value,
+	      hiddenValue: hiddenValue || value,
+	      data: data,
+	      getInputValue: getInputValue,
+	      getHiddenInputValue: getHiddenInputValue
+	    }),
+	    _useReducer2 = _slicedToArray(_useReducer, 2),
+	    autocompleter = _useReducer2[0],
+	    dispatchForAutocompleter = _useReducer2[1];
+	  reactExports.useEffect(function () {
 	    dispatchForAutocompleter({
 	      type: 'init',
 	      value: value
 	    });
 	  }, [value]);
-	  const [suggestionsBox, dispatchForSuggestionsBox] = reactExports.useReducer(suggestionsBoxReducer, {
-	    // The index of the entry selected.
-	    entrySelected: -1,
-	    // Whether or not the suggestion box is shown.
-	    isShown: false,
-	    // The list of matching suggestions.
-	    suggestions: data,
-	    allOnEmpty,
-	    filterFunction,
-	    getSuggestionValue,
-	    noMatchText
-	  });
+	  var _useReducer3 = reactExports.useReducer(suggestionsBoxReducer, {
+	      // The index of the entry selected.
+	      entrySelected: -1,
+	      // Whether or not the suggestion box is shown.
+	      isShown: false,
+	      // The list of matching suggestions.
+	      suggestions: data,
+	      allOnEmpty: allOnEmpty,
+	      filterFunction: filterFunction,
+	      getSuggestionValue: getSuggestionValue,
+	      noMatchText: noMatchText
+	    }),
+	    _useReducer4 = _slicedToArray(_useReducer3, 2),
+	    suggestionsBox = _useReducer4[0],
+	    dispatchForSuggestionsBox = _useReducer4[1];
 	  function onChange(e) {
 	    dispatchForAutocompleter({
 	      type: 'input',
@@ -34336,8 +34420,8 @@
 	  function onFocus(e) {
 	    dispatchForAutocompleter({
 	      type: 'inputFocus',
-	      dispatchForAutocompleter,
-	      dispatchForSuggestionsBox
+	      dispatchForAutocompleter: dispatchForAutocompleter,
+	      dispatchForSuggestionsBox: dispatchForSuggestionsBox
 	    });
 	    dispatchForSuggestionsBox({
 	      type: 'inputFocus',
@@ -34370,10 +34454,10 @@
 	    type: "hidden",
 	    value: autocompleter.hiddenValue
 	  }), /*#__PURE__*/React.createElement(SuggestionsBox, {
-	    autocompleter,
-	    dispatchForAutocompleter,
-	    suggestionsBox,
-	    dispatchForSuggestionsBox
+	    autocompleter: autocompleter,
+	    dispatchForAutocompleter: dispatchForAutocompleter,
+	    suggestionsBox: suggestionsBox,
+	    dispatchForSuggestionsBox: dispatchForSuggestionsBox
 	  }));
 	}
 
@@ -34486,6 +34570,20 @@
 	    }]
 	  })(props);
 	}
+	function BiReply(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M10 11h6v7h2v-8a1 1 0 0 0-1-1h-7V6l-5 4 5 4v-3z"
+	      }
+	    }]
+	  })(props);
+	}
 	function BiRightArrowAlt(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -34555,84 +34653,129 @@
 	  }, props), children);
 	}
 
-	function DefaultRemoveButton({
-	  onClick
-	}) {
+	function DefaultRemoveButton(_ref) {
+	  var onClick = _ref.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiTrash, null));
 	}
-	function DefaultAddButton({
-	  onClick
-	}) {
+	function DefaultAddButton(_ref2) {
+	  var onClick = _ref2.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "light",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiPlus, null));
 	}
+	function DefaultInsertButton(_ref3) {
+	  var onClick = _ref3.onClick;
+	  return /*#__PURE__*/React.createElement(Button, {
+	    type: "light",
+	    onClick: onClick
+	  }, /*#__PURE__*/React.createElement(BiReply, null));
+	}
+	function getUniqueKey(i) {
+	  return i + '' + Number(new Date());
+	}
 	function useInputList(initialList) {
-	  const [list, setList] = reactExports.useState(initialList.length === 0 ? [[]] : initialList);
-	  const computedKeys = reactExports.useMemo(() => {
-	    return list.map((_, i) => {
+	  var _useState = reactExports.useState(initialList.length === 0 ? [[]] : initialList),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    list = _useState2[0],
+	    setList = _useState2[1];
+	  var computedKeys = reactExports.useMemo(function () {
+	    return list.map(function (_, i) {
 	      return i;
+	      // return i + '' + Number(new Date());
 	    });
 	  }, []);
-	  const [keys, setKeys] = reactExports.useState(computedKeys);
-	  function add() {
-	    setList([...list, []]);
-	    setKeys([...keys, keys[keys.length - 1] !== undefined ? keys[keys.length - 1] + 1 : 0]);
+	  var _useState3 = reactExports.useState(computedKeys),
+	    _useState4 = _slicedToArray(_useState3, 2),
+	    keys = _useState4[0],
+	    setKeys = _useState4[1];
+	  function add(i) {
+	    if (i === undefined) {
+	      setList([].concat(_toConsumableArray(list), [[]]));
+	      setKeys([].concat(_toConsumableArray(keys), [getUniqueKey(keys.length)]));
+	    } else {
+	      setList([].concat(_toConsumableArray(list.slice(0, i)), [[]], _toConsumableArray(list.slice(i))));
+	      setKeys([].concat(_toConsumableArray(keys.slice(0, i)), [getUniqueKey(i)], _toConsumableArray(keys.slice(i))));
+	    }
 	  }
 	  function remove(i) {
-	    setList(list.filter((_, _i) => i !== _i));
-	    setKeys(keys.filter((_, _i) => i !== _i));
+	    setList(list.filter(function (_, _i) {
+	      return i !== _i;
+	    }));
+	    setKeys(keys.filter(function (_, _i) {
+	      return i !== _i;
+	    }));
 	  }
 	  return {
-	    keys,
-	    list,
-	    add,
-	    remove
+	    keys: keys,
+	    list: list,
+	    add: add,
+	    remove: remove
 	  };
 	}
-	function InputList({
-	  list: initialList = [],
-	  focusInput = false,
-	  addButton,
-	  removeButton,
-	  children
-	}) {
-	  const {
-	    list,
-	    keys,
-	    add,
-	    remove
-	  } = useInputList(initialList);
-	  const divElement = reactExports.useRef();
-	  const clicked = reactExports.useRef(false);
-	  reactExports.useEffect(() => {
+	function InputList(_ref4) {
+	  var _ref4$list = _ref4.list,
+	    initialList = _ref4$list === void 0 ? [] : _ref4$list,
+	    _ref4$focusInput = _ref4.focusInput,
+	    focusInput = _ref4$focusInput === void 0 ? false : _ref4$focusInput,
+	    addButton = _ref4.addButton,
+	    insertButton = _ref4.insertButton,
+	    removeButton = _ref4.removeButton,
+	    children = _ref4.children;
+	  var _useInputList = useInputList(initialList),
+	    list = _useInputList.list,
+	    keys = _useInputList.keys,
+	    add = _useInputList.add,
+	    remove = _useInputList.remove;
+	  var divElement = reactExports.useRef();
+	  var clicked = reactExports.useRef(false);
+	  reactExports.useEffect(function () {
 	    if (focusInput && clicked.current) {
-	      divElement.current.lastElementChild.getElementsByTagName('input')[0].focus();
+	      console.log('current', divElement.current);
+	      var inputElement;
+	      if (clicked.focusIndex === null) {
+	        inputElement = divElement.current.lastElementChild;
+	      } else {
+	        inputElement = divElement.current.children[clicked.focusIndex];
+	      }
+	      inputElement.getElementsByTagName('input')[0].focus();
 	      clicked.current = false;
 	    }
 	  });
 	  function onClick() {
 	    clicked.current = true;
+	    clicked.focusIndex = null;
 	    add();
+	  }
+	  function onInsertClick(i) {
+	    clicked.current = true;
+	    clicked.focusIndex = i;
+	    add(i);
 	  }
 	  function onRemoveClick(i) {
 	    remove(i);
 	  }
-	  const AddButton = addButton ? addButton : DefaultAddButton;
-	  const RemoveButton = removeButton ? removeButton : DefaultRemoveButton;
+	  var AddButton = addButton ? addButton : DefaultAddButton;
+	  var RemoveButton = removeButton ? removeButton : DefaultRemoveButton;
+	  var InsertButton = insertButton ? insertButton : DefaultInsertButton;
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
 	    ref: divElement
-	  }, list.map((_, i) => /*#__PURE__*/React.createElement(React.Fragment, {
-	    key: keys[i]
-	  }, children(list[i], /*#__PURE__*/React.createElement(RemoveButton, {
-	    onClick: () => {
-	      onRemoveClick(i);
-	    }
-	  }))))), /*#__PURE__*/React.createElement(AddButton, {
+	  }, list.map(function (_, i) {
+	    return /*#__PURE__*/React.createElement(React.Fragment, {
+	      key: keys[i]
+	    }, children(list[i], /*#__PURE__*/React.createElement(RemoveButton, {
+	      onClick: function onClick() {
+	        return onRemoveClick(i);
+	      }
+	    }), /*#__PURE__*/React.createElement(InsertButton, {
+	      onClick: function onClick() {
+	        return onInsertClick(i);
+	      }
+	    })));
+	  })), /*#__PURE__*/React.createElement(AddButton, {
 	    onClick: onClick
 	  }));
 	}
@@ -34776,74 +34919,91 @@
 	  }));
 	}
 
-	function AddGroupButton({
-	  onClick
-	}) {
+	function AddGroupButton(_ref) {
+	  var onClick = _ref.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    onClick: onClick
 	  }, /*#__PURE__*/React.createElement(BiPlus, null), " Add Section");
 	}
-	function RemoveGroupButton({
-	  onClick
-	}) {
+	function RemoveGroupButton(_ref2) {
+	  var onClick = _ref2.onClick;
 	  return /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    error: true,
 	    onClick: onClick
 	  }, "Remove Group");
 	}
-	function ItemList$1({
-	  items
-	}) {
+	function ItemList$1(_ref3) {
+	  var items = _ref3.items;
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(InputList, {
 	    list: items,
 	    addButton: AddGroupButton,
 	    removeButton: RemoveGroupButton
-	  }, ({
-	    name = '',
-	    ingredients = [],
-	    quantities = []
-	  }, RemoveGroupButton) => /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true,
-	    bg: true
-	  }, /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true
-	  }, /*#__PURE__*/React.createElement(TextInput, {
-	    className: "input-text--heading",
-	    width: "medium",
-	    name: "group",
-	    value: name,
-	    placeholder: "Section name"
-	  })), /*#__PURE__*/React.createElement(InputList, {
-	    focusInput: true,
-	    list: ingredients.map((_, i) => [ingredients[i], quantities[i]])
-	  }, ([ingredient, quantity = ''], RemoveButton) => /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true
-	  }, /*#__PURE__*/React.createElement(InputGroupInline, {
-	    style: {
-	      marginBottom: 0
-	    }
-	  }, /*#__PURE__*/React.createElement(IngredientInput, {
-	    ingredientKey: ingredient && ingredient.key,
-	    ingredient: ingredient && ingredient.name
-	  })), /*#__PURE__*/React.createElement(InputGroupInline, {
-	    style: {
-	      marginBottom: 0
-	    }
-	  }, /*#__PURE__*/React.createElement(TextInput, {
-	    className: "input-text--white",
-	    width: "small",
-	    name: "quantities",
-	    placeholder: "Qty",
-	    value: quantity
-	  })), RemoveButton)), /*#__PURE__*/React.createElement(InputGroup, {
-	    basic: true,
-	    style: {
-	      marginTop: 15,
-	      marginBottom: 7
-	    }
-	  }, RemoveGroupButton))), /*#__PURE__*/React.createElement("input", {
+	  }, function (_ref4, RemoveGroupButton) {
+	    var _ref4$name = _ref4.name,
+	      name = _ref4$name === void 0 ? '' : _ref4$name,
+	      _ref4$ingredients = _ref4.ingredients,
+	      ingredients = _ref4$ingredients === void 0 ? [] : _ref4$ingredients,
+	      _ref4$quantities = _ref4.quantities,
+	      quantities = _ref4$quantities === void 0 ? [] : _ref4$quantities;
+	    return /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true,
+	      bg: true
+	    }, /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true
+	    }, /*#__PURE__*/React.createElement(TextInput, {
+	      className: "input-text--heading",
+	      width: "medium",
+	      name: "group",
+	      value: name,
+	      placeholder: "Section name"
+	    })), /*#__PURE__*/React.createElement(InputList, {
+	      focusInput: true,
+	      list: ingredients.map(function (_, i) {
+	        return [ingredients[i], quantities[i]];
+	      })
+	    }, function (_ref5, RemoveButton, InsertButton) {
+	      var _ref6 = _slicedToArray(_ref5, 2),
+	        ingredient = _ref6[0],
+	        _ref6$ = _ref6[1],
+	        quantity = _ref6$ === void 0 ? '' : _ref6$;
+	      return /*#__PURE__*/React.createElement(InputGroup, {
+	        basic: true
+	      }, /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, /*#__PURE__*/React.createElement(IngredientInput, {
+	        ingredientKey: ingredient && ingredient.key,
+	        ingredient: ingredient && ingredient.name
+	      })), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, /*#__PURE__*/React.createElement(TextInput, {
+	        className: "input-text--white",
+	        width: "small",
+	        name: "quantities",
+	        placeholder: "Qty",
+	        value: quantity
+	      })), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, RemoveButton), /*#__PURE__*/React.createElement(InputGroupInline, {
+	        style: {
+	          marginBottom: 0
+	        }
+	      }, InsertButton));
+	    }), /*#__PURE__*/React.createElement(InputGroup, {
+	      basic: true,
+	      style: {
+	        marginTop: 15,
+	        marginBottom: 7
+	      }
+	    }, RemoveGroupButton));
+	  }), /*#__PURE__*/React.createElement("input", {
 	    type: "hidden",
 	    name: "groupend",
 	    value: "true"

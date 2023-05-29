@@ -1,26 +1,34 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { BiPlus, BiTrash } from 'react-icons/bi';
+import { BiPlus, BiReply, BiTrash } from 'react-icons/bi';
 
 import Button from './Button';
 
 
-function DefaultRemoveButton({
-   onClick
-})
+function DefaultRemoveButton({ onClick })
 {
    return (
       <Button type="light" onClick={onClick}><BiTrash /></Button>
    );
 }
 
-
-function DefaultAddButton({
-   onClick
-})
+function DefaultAddButton({ onClick })
 {
    return (
       <Button type="light" onClick={onClick}><BiPlus /></Button>
    )
+}
+
+function DefaultInsertButton({ onClick })
+{
+   return (
+      <Button type="light" onClick={onClick}><BiReply /></Button>
+   )
+}
+
+
+function getUniqueKey(i)
+{
+   return i + '' + Number(new Date());
 }
 
 
@@ -31,16 +39,20 @@ function useInputList(initialList)
    const computedKeys = useMemo(() => {
       return list.map((_, i) => {
          return i;
+         // return i + '' + Number(new Date());
       });
    }, []);
    const [keys, setKeys] = useState(computedKeys);
 
-   function add() {
-      setList([...list, []]);
-      setKeys([
-         ...keys,
-         keys[keys.length - 1] !== undefined ? keys[keys.length - 1] + 1 : 0
-      ]);
+   function add(i) {
+      if (i === undefined) {
+         setList([...list, []]);
+         setKeys([...keys, getUniqueKey(keys.length)]);
+      }
+      else {
+         setList([...list.slice(0, i), [], ...list.slice(i)]);
+         setKeys([...keys.slice(0, i), getUniqueKey(i), ...keys.slice(i)]);
+      }
    }
 
    function remove(i) {
@@ -61,6 +73,7 @@ export default function InputList({
    list: initialList = [],
    focusInput = false,
    addButton,
+   insertButton,
    removeButton,
    children
 })
@@ -71,14 +84,29 @@ export default function InputList({
 
    useEffect(() => {
       if (focusInput && clicked.current) {
-         divElement.current.lastElementChild.getElementsByTagName('input')[0].focus();
+         console.log('current', divElement.current)
+         var inputElement;
+         if (clicked.focusIndex === null) {
+            inputElement = divElement.current.lastElementChild;
+         }
+         else {
+            inputElement = divElement.current.children[clicked.focusIndex];
+         }
+         inputElement.getElementsByTagName('input')[0].focus(); 
          clicked.current = false;
       }
    });
 
    function onClick() {
       clicked.current = true;
+      clicked.focusIndex = null;
       add();
+   }
+
+   function onInsertClick(i) {
+      clicked.current = true;
+      clicked.focusIndex = i;
+      add(i);
    }
 
    function onRemoveClick(i) {
@@ -87,6 +115,7 @@ export default function InputList({
 
    const AddButton = addButton ? addButton : DefaultAddButton;
    const RemoveButton = removeButton ? removeButton : DefaultRemoveButton;
+   const InsertButton = insertButton ? insertButton : DefaultInsertButton;
 
    return <>
       <div ref={divElement}>
@@ -94,7 +123,8 @@ export default function InputList({
             <React.Fragment key={keys[i]}>
                {children(
                   list[i],
-                  <RemoveButton onClick={() => {onRemoveClick(i)}} />
+                  <RemoveButton onClick={() => onRemoveClick(i)} />,
+                  <InsertButton onClick={() => onInsertClick(i)} />
                )}
             </React.Fragment>
          ))}
