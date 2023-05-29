@@ -1,28 +1,15 @@
-export interface RecipeItemFormData {
-   name: string;
-   ingredients: string[];
-   quantities: string[];
-}
-
-export interface RecipeItem {
-   name: string;
-   ingredients: IDBValidKey[];
-   quantities: string[];
-}
-
-export interface RecipeItemProcessed extends RecipeItem {
-   ingredients: (number | string)[];
-}
-
 export interface ItemWithName {
    key: IDBValidKey,
    name: string
 }
 
-export interface RecipeItemForUpdate extends Omit<RecipeItem, 'ingredients'> {
-   ingredients: ItemWithName[];
-}
 
+/* Form Data */
+export interface RecipeItemFormData {
+   name: string;
+   ingredients: string[];
+   quantities: string[];
+}
 
 export interface RecipeFormData {
    name: string;
@@ -32,6 +19,15 @@ export interface RecipeFormData {
    instructions: string;
    review: string;
    yield: string;
+}
+/* Form Data */
+
+
+/* Recipe records */
+export interface RecipeItem {
+   name: string;
+   ingredients: IDBValidKey[];
+   quantities: string[];
 }
 
 export interface Recipe {
@@ -47,14 +43,43 @@ export interface Recipe {
    previous: IDBValidKey | null;
    next: IDBValidKey | null;
 }
+/* Recipe records */
 
-export interface RecipeProcessed extends Omit<Recipe, 'dateCreated'> {
+
+/* Recipe representation for 'All Recipes' pages */
+export interface RecipeCompact extends Omit<Recipe, 'dateCreated'> {
    dateCreated: Date;
    category: string;
-   items: RecipeItemProcessed[];
+}
+/* Recipe representation for 'All Recipes' page */
+
+
+/* Recipe representation for 'Update' page */
+interface RecipeItemForUpdate extends Omit<RecipeItem, 'ingredients'> {
+   ingredients: ItemWithName[];
 }
 
-export interface RecipeDetailed extends RecipeProcessed {
+export interface RecipeForUpdate extends Omit<RecipeCompact, 'category' | 'items'> {
+   category: ItemWithName;
+   items: RecipeItemForUpdate[]
+}
+/* Recipe representation for 'Update' page */
+
+
+/* Recipe representation for 'Recipe' page */
+export type RecipeDetailedIngredientStatus = 'inc' | 'dec' | 'new' | 'same';
+
+export interface RecipeDetailedIngredient {
+   name: string,
+   status: RecipeDetailedIngredientStatus
+}
+
+interface RecipeDetailedItem extends Omit<RecipeItem, 'ingredients'> {
+   ingredients: RecipeDetailedIngredient[]
+}
+
+export interface RecipeDetailed extends Omit<RecipeCompact, 'items'> {
+   items: RecipeDetailedItem[];
    iterations: {
       current: number,
       total: number,
@@ -62,8 +87,11 @@ export interface RecipeDetailed extends RecipeProcessed {
       previous: IDBValidKey | null
    } | null;
 }
+/* Recipe representation for 'Recipe' page */
 
-export interface RecipeDetailedForUpdate extends Omit<RecipeProcessed, 'category' | 'items'> {
-   category: ItemWithName;
-   items: RecipeItemForUpdate[]
+
+/* Quantity decomposed */
+export interface QuantityDecomposed {
+   mantissa: number,
+   unit: string | null
 }

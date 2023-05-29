@@ -165,21 +165,43 @@ Recipe view
    margin-top: 15px
 }
 
-.recipe li ol li {
+.recipe .ingredient {
    @extend %recipe-text;
    margin: 10px 0;
    padding-left: 24px;
    position: relative;
+}
 
-   &:before {
-      content: '';
-      position: absolute;
-      padding: 3px;
-      background-color: $colors-primary;
-      left: 4px;
-      top: 11px;
-      border-radius: 3px
-   }
+.recipe .ingredient--same:before {
+   content: '';
+   position: absolute;
+   padding: 3px;
+   background-color: $colors-primary;
+   left: 3px;
+   top: 11px;
+   border-radius: 3px
+}
+
+.recipe .ingredient .icon {
+   position: absolute;
+   left: -1px;
+   top: 5px;
+   font-size: 15px;
+   color: white;
+   line-height: 0;
+   border-radius: 50px;
+}
+
+.recipe .ingredient--inc .icon {
+   background-color: #23a323
+}
+
+.recipe .ingredient--new .icon {
+   background-color: $colors-primary
+}
+
+.recipe .ingredient--dec .icon {
+   background-color: $colors-secondary
 }
 
 .recipe h4 {

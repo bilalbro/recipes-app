@@ -56,6 +56,18 @@ h1 + form {
    // background-color: greenyellow;
 }
 
+.main--loading {
+   opacity: 0.2;
+}
+
+.main--loading > .icon {
+   position: absolute;
+   transform: translate(-50%, -50%);
+   left: 50%;
+   top: 200px;
+   font-size: 30px;
+}
+
 h1 {
    margin-bottom: 30px;
 }

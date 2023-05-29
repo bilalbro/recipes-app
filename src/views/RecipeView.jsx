@@ -3,10 +3,13 @@ import { useLoaderData, Link, Form, useHref } from 'react-router-dom';
 import {
    BiChevronRightCircle,
    BiCopyAlt,
+   BiDownArrowAlt,
    BiLeftArrowAlt,
    BiPencil,
+   BiPlus,
    BiRightArrowAlt,
-   BiTrash
+   BiTrash,
+   BiUpArrowAlt
 } from 'react-icons/bi'
 
 import { recipeList } from '../model';
@@ -21,6 +24,19 @@ import { useModal } from '../helpers/modal';
 import { classNames } from '../components/helper';
 
 
+function getIcon(status) {
+   switch (status) {
+      case 'inc':
+         return <BiUpArrowAlt/>;
+      case 'dec':
+         return <BiDownArrowAlt/>;
+      case 'new':
+         return <BiPlus/>;
+      default:
+         return '';
+   }
+}
+
 function IngredientsGroup({
    name,
    ingredients,
@@ -32,7 +48,13 @@ function IngredientsGroup({
          <h4>{name}</h4>
          <ol>
             {ingredients.map((_, i) => (
-               <li key={i}>{ingredients[i]} - {quantities[i]}</li>
+               <li key={i} className={classNames({
+                  'ingredient': true,
+                  [`ingredient--${ingredients[i].status}`]: ingredients[i].status
+               })}>
+                  <div className="icon">{getIcon(ingredients[i].status)}</div>
+                  {ingredients[i].name} - {quantities[i]}
+               </li>
             ))}
          </ol>
       </li>

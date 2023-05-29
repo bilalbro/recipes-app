@@ -33455,6 +33455,82 @@
 	  };
 	  return _extends.apply(this, arguments);
 	}
+	function _toConsumableArray(arr) {
+	  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+	}
+	function _arrayWithoutHoles(arr) {
+	  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+	}
+	function _iterableToArray(iter) {
+	  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+	}
+	function _unsupportedIterableToArray(o, minLen) {
+	  if (!o) return;
+	  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+	  var n = Object.prototype.toString.call(o).slice(8, -1);
+	  if (n === "Object" && o.constructor) n = o.constructor.name;
+	  if (n === "Map" || n === "Set") return Array.from(o);
+	  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+	}
+	function _arrayLikeToArray(arr, len) {
+	  if (len == null || len > arr.length) len = arr.length;
+	  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+	  return arr2;
+	}
+	function _nonIterableSpread() {
+	  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	}
+	function _createForOfIteratorHelper(o, allowArrayLike) {
+	  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+	  if (!it) {
+	    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+	      if (it) o = it;
+	      var i = 0;
+	      var F = function () {};
+	      return {
+	        s: F,
+	        n: function () {
+	          if (i >= o.length) return {
+	            done: true
+	          };
+	          return {
+	            done: false,
+	            value: o[i++]
+	          };
+	        },
+	        e: function (e) {
+	          throw e;
+	        },
+	        f: F
+	      };
+	    }
+	    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	  }
+	  var normalCompletion = true,
+	    didErr = false,
+	    err;
+	  return {
+	    s: function () {
+	      it = it.call(o);
+	    },
+	    n: function () {
+	      var step = it.next();
+	      normalCompletion = step.done;
+	      return step;
+	    },
+	    e: function (e) {
+	      didErr = true;
+	      err = e;
+	    },
+	    f: function () {
+	      try {
+	        if (!normalCompletion && it.return != null) it.return();
+	      } finally {
+	        if (didErr) throw err;
+	      }
+	    }
+	  };
+	}
 
 	function TextInput({
 	  name,
@@ -33920,6 +33996,20 @@
 	    }]
 	  })(props);
 	}
+	function BiDownArrowAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "m18.707 12.707-1.414-1.414L13 15.586V6h-2v9.586l-4.293-4.293-1.414 1.414L12 19.414z"
+	      }
+	    }]
+	  })(props);
+	}
 	function BiLeftArrowAlt(props) {
 	  return GenIcon({
 	    "tag": "svg",
@@ -34005,6 +34095,20 @@
 	      "tag": "path",
 	      "attr": {
 	        "d": "M9 10h2v8H9zm4 0h2v8h-2z"
+	      }
+	    }]
+	  })(props);
+	}
+	function BiUpArrowAlt(props) {
+	  return GenIcon({
+	    "tag": "svg",
+	    "attr": {
+	      "viewBox": "0 0 24 24"
+	    },
+	    "child": [{
+	      "tag": "path",
+	      "attr": {
+	        "d": "M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z"
 	      }
 	    }]
 	  })(props);
@@ -34967,6 +35071,69 @@
 	  return clone;
 	}
 
+	var unitMap = {
+	  'tsp': 1,
+	  // Goes to 'tsp'
+	  'tbsp': 3,
+	  // Goes to 'tsp'
+	  'cup': 48,
+	  // Goes to 'tsp'
+	  'cups': 48,
+	  // Goes to 'tsp'
+	  'g': 1
+	};
+	function getStatus(mantissa, previousMantissa) {
+	  if (mantissa > previousMantissa) {
+	    return 'inc';
+	  } else if (mantissa < previousMantissa) {
+	    return 'dec';
+	  } else {
+	    return 'same';
+	  }
+	}
+	function mantissaAfterUnitNormalization(quantityDecomposed) {
+	  return unitMap[quantityDecomposed.unit] * quantityDecomposed.mantissa;
+	}
+	function processMantissa(values) {
+	  // Throw away the first value since we don't need that.
+	  values.shift();
+	  var mantissa = 0;
+	  var _iterator = _createForOfIteratorHelper(values),
+	    _step;
+	  try {
+	    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+	      var value = _step.value;
+	      if (value !== undefined) {
+	        mantissa += new Function("return ".concat(value))();
+	      }
+	    }
+	  } catch (err) {
+	    _iterator.e(err);
+	  } finally {
+	    _iterator.f();
+	  }
+	  return mantissa;
+	}
+	function decomposeQuantity(quantity) {
+	  var mantissaMatch = quantity.match(/^(\d+(?:\/\d+)?)(?: (\d+(?:\/\d+)?))?/);
+	  var unitMatch = quantity.match(/[a-zA-Z]+$/);
+	  var mantissa = processMantissa(_toConsumableArray(mantissaMatch));
+	  return {
+	    mantissa: mantissa,
+	    unit: unitMatch && unitMatch[0]
+	  };
+	}
+	function diffQuantities(quantity, previousQuantity) {
+	  var quantityDecomposed = decomposeQuantity(quantity);
+	  var previousQuantityDecomposed = decomposeQuantity(previousQuantity);
+	  if (!quantityDecomposed.unit) {
+	    return getStatus(quantityDecomposed.mantissa, previousQuantityDecomposed.mantissa);
+	  } else {
+	    // Normalize unit
+	    return getStatus(mantissaAfterUnitNormalization(quantityDecomposed), mantissaAfterUnitNormalization(previousQuantityDecomposed));
+	  }
+	}
+
 	class RecipeList {
 	  data = {};
 	  // Fill the local list with records from the underlying IndexedDB store, or
@@ -35107,16 +35274,44 @@
 	    recordProcessed.category = (await categorySet.get(record.category)).name;
 	    return recordProcessed;
 	  }
+	  async compareIngredient(key, itemIndex, ingredientKey) {
+	    await this.init();
+	    var record = this.data[key];
+	    if (record.previous) {
+	      var previousRecord = this.data[record.previous];
+	      var ingredients = record.items[itemIndex].ingredients;
+	      var previousIngredients = previousRecord.items[itemIndex].ingredients;
+
+	      // First, determine if the current ingredient is 'new'.
+	      if (!previousIngredients.includes(ingredientKey)) {
+	        return 'new';
+	      } else {
+	        // Given that the current ingredient is not 'new', further check if
+	        // it has increased or decreased in quantity.
+
+	        var quantity = record.items[itemIndex].quantities[ingredients.indexOf(ingredientKey)];
+	        var previousQuantity = previousRecord.items[itemIndex].quantities[previousIngredients.indexOf(ingredientKey)];
+	        return diffQuantities(quantity, previousQuantity);
+	      }
+	    } else {
+	      return 'same';
+	    }
+	  }
 	  async getRecipeDetailed(key) {
 	    await this.init();
 	    var record = await this.getRecipe(key);
 
 	    // Process ingredients
+	    var itemIndex = 0;
 	    for (var item of record.items) {
 	      var ingredients = item.ingredients;
 	      for (var i = 0, len = ingredients.length; i < len; i++) {
-	        ingredients[i] = (await ingredientSet.get(ingredients[i])).name;
+	        ingredients[i] = {
+	          name: (await ingredientSet.get(ingredients[i])).name,
+	          status: await this.compareIngredient(key, itemIndex, ingredients[i])
+	        };
 	      }
+	      itemIndex++;
 	    }
 	    record.iterations = await this.getIterationDetails(key);
 	    return record;
@@ -35486,13 +35681,20 @@
 	  element
 	}) {
 	  const [classApplied, setClassApplied] = reactExports.useState(false);
+	  const navigation = useNavigation();
+	  const isLoading = navigation.state !== 'idle';
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Overlay, null), /*#__PURE__*/React.createElement(Modal, null), /*#__PURE__*/React.createElement(Alert, null), /*#__PURE__*/React.createElement(Header, {
 	    setClassApplied: setClassApplied
 	  }), /*#__PURE__*/React.createElement(SideBar, {
 	    classApplied: classApplied
 	  }), /*#__PURE__*/React.createElement("div", {
-	    className: "main"
-	  }, element), /*#__PURE__*/React.createElement("div", {
+	    className: classNames({
+	      'main': true,
+	      'main--loading': isLoading
+	    })
+	  }, element, isLoading && /*#__PURE__*/React.createElement("div", {
+	    className: "icon btn--loading"
+	  }, /*#__PURE__*/React.createElement(BiLoaderAlt, null))), /*#__PURE__*/React.createElement("div", {
 	    style: {
 	      clear: 'both'
 	    }
@@ -35580,14 +35782,32 @@
 	  }, "Add Recipe"), " to add a new recipe."));
 	}
 
+	function getIcon(status) {
+	  switch (status) {
+	    case 'inc':
+	      return /*#__PURE__*/React.createElement(BiUpArrowAlt, null);
+	    case 'dec':
+	      return /*#__PURE__*/React.createElement(BiDownArrowAlt, null);
+	    case 'new':
+	      return /*#__PURE__*/React.createElement(BiPlus, null);
+	    default:
+	      return '';
+	  }
+	}
 	function IngredientsGroup({
 	  name,
 	  ingredients,
 	  quantities
 	}) {
 	  return /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h4", null, name), /*#__PURE__*/React.createElement("ol", null, ingredients.map((_, i) => /*#__PURE__*/React.createElement("li", {
-	    key: i
-	  }, ingredients[i], " - ", quantities[i]))));
+	    key: i,
+	    className: classNames({
+	      'ingredient': true,
+	      [`ingredient--${ingredients[i].status}`]: ingredients[i].status
+	    })
+	  }, /*#__PURE__*/React.createElement("div", {
+	    className: "icon"
+	  }, getIcon(ingredients[i].status)), ingredients[i].name, " - ", quantities[i]))));
 	}
 	function DeleteRecipeForm() {
 	  const {

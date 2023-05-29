@@ -13,11 +13,13 @@ import {
    Recipe,
    RecipeItem,
    RecipeFormData,
-   RecipeProcessed,
+   RecipeCompact,
    RecipeDetailed,
-   RecipeDetailedForUpdate
+   RecipeForUpdate,
+   RecipeDetailedIngredientStatus
 } from './types';
 import deepClone from '../helpers/deepClone';
+import diffQuantities from './differ';
 
 
 class RecipeList
@@ -210,7 +212,7 @@ class RecipeList
       await this.init();
 
       var record = this.data[key];
-      var recordProcessed: RecipeProcessed = deepClone(record);
+      var recordProcessed: RecipeCompact = deepClone(record);
 
       // Process data
       recordProcessed.dateCreated = new Date(record.dateCreated);
@@ -220,20 +222,62 @@ class RecipeList
 
       return recordProcessed;
    }
+   
+
+   private async compareIngredient(
+      key: string,
+      itemIndex: number,
+      ingredientKey: string
+   ): Promise<RecipeDetailedIngredientStatus>
+   {
+      await this.init();
+
+      var record = this.data[key];
+      if (record.previous) {
+         var previousRecord = this.data[record.previous as string];
+         var ingredients = record.items[itemIndex].ingredients;
+         var previousIngredients = previousRecord.items[itemIndex].ingredients;
+
+         // First, determine if the current ingredient is 'new'.
+         if (!previousIngredients.includes(ingredientKey)) {
+            return 'new';
+         }
+         else {
+            // Given that the current ingredient is not 'new', further check if
+            // it has increased or decreased in quantity.
+
+            var quantity = record.items[itemIndex].quantities[ingredients
+               .indexOf(ingredientKey)];
+            var previousQuantity = previousRecord.items[itemIndex].quantities[
+               previousIngredients.indexOf(ingredientKey)];
+
+            return diffQuantities(quantity, previousQuantity);
+         }
+      }
+
+      else {
+         return 'same';
+      }
+   }
 
 
    async getRecipeDetailed(key: string)
    {
       await this.init();
 
-      var record = await this.getRecipe(key) as RecipeDetailed;
+      var record: RecipeDetailed = await this.getRecipe(key) as any;
 
       // Process ingredients
+      var itemIndex = 0;
       for (var item of record.items) {
          var ingredients = item.ingredients;
          for (var i = 0, len = ingredients.length; i < len; i++) {
-            ingredients[i] = (await ingredientSet.get(ingredients[i])).name
+            ingredients[i] = {
+               name: (await ingredientSet.get(ingredients[i] as any)).name,
+               status: await this.compareIngredient(key, itemIndex, ingredients[i] as any)
+            }
          }
+         itemIndex++;
       }
 
       record.iterations = await this.getIterationDetails(key);
@@ -246,7 +290,7 @@ class RecipeList
    {
       await this.init();
 
-      var record: RecipeDetailedForUpdate = deepClone(this.data[key]);
+      var record: RecipeForUpdate = deepClone(this.data[key]);
 
       // Process category
       (record as any).category = await categorySet.getForUpdate(record.category as any);
@@ -379,7 +423,7 @@ class RecipeList
    {
       await this.init();
 
-      var results: RecipeProcessed[] = [];
+      var results: RecipeCompact[] = [];
       for (var key in this.data) {
          var record = this.data[key];
          if (record.name.toLowerCase().includes(query.toLowerCase())) {
