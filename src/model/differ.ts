@@ -44,10 +44,14 @@ function processMantissa(values: string[])
 }
 
 
-function decomposeQuantity(quantity: string): QuantityDecomposed
+function decomposeQuantity(quantity: string): QuantityDecomposed | null
 {
    var mantissaMatch = quantity.match(/^(\d+(?:\/\d+)?)(?: (\d+(?:\/\d+)?))?/);
    var unitMatch = quantity.match(/[a-zA-Z]+$/);
+
+   if (!mantissaMatch) {
+      return null;
+   }
 
    var mantissa = processMantissa([...mantissaMatch!]);
 
@@ -66,15 +70,18 @@ export default function diffQuantities(
    var quantityDecomposed = decomposeQuantity(quantity);
    var previousQuantityDecomposed = decomposeQuantity(previousQuantity);
 
-   if (!quantityDecomposed.unit) {
+   if (!quantityDecomposed) {
+      return 'same';
+   }
+   else if (!quantityDecomposed.unit) {
       return getStatus(quantityDecomposed.mantissa, 
-         previousQuantityDecomposed.mantissa);
+         previousQuantityDecomposed!.mantissa);
    }
    else {
       // Normalize unit
       return getStatus(
          mantissaAfterUnitNormalization(quantityDecomposed),
-         mantissaAfterUnitNormalization(previousQuantityDecomposed),
+         mantissaAfterUnitNormalization(previousQuantityDecomposed!),
       )
    }
 }
