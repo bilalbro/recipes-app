@@ -32824,7 +32824,7 @@
 	    formData
 	  };
 	}
-	const _excluded$1 = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
+	const _excluded$b = ["onClick", "relative", "reloadDocument", "replace", "state", "target", "to", "preventScrollReset"],
 	  _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to", "children"],
 	  _excluded3 = ["reloadDocument", "replace", "method", "action", "onSubmit", "fetcherKey", "routeId", "relative", "preventScrollReset"];
 	function createBrowserRouter(routes, opts) {
@@ -32889,7 +32889,7 @@
 	      to,
 	      preventScrollReset
 	    } = _ref4,
-	    rest = _objectWithoutPropertiesLoose$1(_ref4, _excluded$1);
+	    rest = _objectWithoutPropertiesLoose$1(_ref4, _excluded$b);
 	  let {
 	    basename
 	  } = reactExports.useContext(NavigationContext); // Rendered into <a href> for absolute URLs
@@ -33588,6 +33588,15 @@
 	    }
 	  }, exports;
 	}
+	function _typeof(obj) {
+	  "@babel/helpers - typeof";
+
+	  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	  }, _typeof(obj);
+	}
 	function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
 	  try {
 	    var info = gen[key](arg);
@@ -33951,7 +33960,8 @@
 	// i.e. when the overlay is clicked and when some function manually triggers it,
 	// we create a separate function for it to keep things DRY.
 	function hideOverlay() {
-	  hideFunctionRef.current?.();
+	  var _hideFunctionRef$curr, _hideFunctionRef2;
+	  (_hideFunctionRef$curr = (_hideFunctionRef2 = hideFunctionRef).current) === null || _hideFunctionRef$curr === void 0 ? void 0 : _hideFunctionRef$curr.call(_hideFunctionRef2);
 	  hideFunctionRef.current = null;
 	  setShown(false);
 	}
@@ -33968,24 +33978,27 @@
 	}
 	function Overlay() {
 	  overlayRendered = true;
-	  const [shown, _setShown] = reactExports.useState(false);
-	  const _hideFunctionRef = reactExports.useRef();
-	  const _widthRef = reactExports.useRef();
-	  reactExports.useEffect(() => {
+	  var _useState = reactExports.useState(false),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    shown = _useState2[0],
+	    _setShown = _useState2[1];
+	  var _hideFunctionRef = reactExports.useRef();
+	  var _widthRef = reactExports.useRef();
+	  reactExports.useEffect(function () {
 	    setShown = _setShown;
 	    hideFunctionRef = _hideFunctionRef;
 	    widthRef = _widthRef;
 	  }, []);
-	  reactExports.useEffect(() => {
+	  reactExports.useEffect(function () {
 	    if (shown && widthRef.current) {
 	      window.addEventListener('resize', resizeHandler);
-	      return () => {
+	      return function () {
 	        window.removeEventListener('resize', resizeHandler);
 	      };
 	    }
 	  }, [_widthRef.current]);
-	  const location = useLocation();
-	  reactExports.useEffect(() => {
+	  var location = useLocation();
+	  reactExports.useEffect(function () {
 	    hideOverlay();
 	  }, [location]);
 	  function onClick() {
@@ -34000,17 +34013,26 @@
 	  });
 	}
 
-	function TextInput({
-	  name,
-	  className,
-	  value = '',
-	  width = 'small',
-	  size,
-	  onChange = x => x,
-	  ...props
-	}) {
-	  const [_value, setValue] = reactExports.useState(value);
-	  reactExports.useEffect(() => {
+	var _excluded$a = ["name", "className", "value", "width", "size", "onChange"];
+	function TextInput(_ref) {
+	  var _classNames;
+	  var name = _ref.name,
+	    className = _ref.className,
+	    _ref$value = _ref.value,
+	    value = _ref$value === void 0 ? '' : _ref$value,
+	    _ref$width = _ref.width,
+	    width = _ref$width === void 0 ? 'small' : _ref$width,
+	    size = _ref.size,
+	    _ref$onChange = _ref.onChange,
+	    onChange = _ref$onChange === void 0 ? function (x) {
+	      return x;
+	    } : _ref$onChange,
+	    props = _objectWithoutProperties(_ref, _excluded$a);
+	  var _useState = reactExports.useState(value),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    _value = _useState2[0],
+	    setValue = _useState2[1];
+	  reactExports.useEffect(function () {
 	    setValue(value);
 	  }, [value]);
 	  function _onChange(e) {
@@ -34021,28 +34043,33 @@
 	    type: "text",
 	    value: _value,
 	    name: name,
-	    className: classNames({
-	      'input-text': true,
-	      [className]: className,
-	      [`input-size--${size}`]: size,
-	      [`input-width--${width}`]: width
-	    })
+	    className: classNames((_classNames = {
+	      'input-text': true
+	    }, _defineProperty(_classNames, className, className), _defineProperty(_classNames, "input-size--".concat(size), size), _defineProperty(_classNames, "input-width--".concat(width), width), _classNames))
 	  }, props, {
 	    onChange: _onChange,
 	    autoComplete: "off"
 	  })));
 	}
 
-	function TextAreaInput({
-	  name,
-	  className,
-	  size,
-	  value = '',
-	  onChange = x => x,
-	  ...props
-	}) {
-	  const [_value, setValue] = reactExports.useState(value);
-	  reactExports.useEffect(() => {
+	var _excluded$9 = ["name", "className", "size", "value", "onChange"];
+	function TextAreaInput(_ref) {
+	  var _classNames;
+	  var name = _ref.name,
+	    className = _ref.className,
+	    size = _ref.size,
+	    _ref$value = _ref.value,
+	    value = _ref$value === void 0 ? '' : _ref$value,
+	    _ref$onChange = _ref.onChange,
+	    onChange = _ref$onChange === void 0 ? function (x) {
+	      return x;
+	    } : _ref$onChange,
+	    props = _objectWithoutProperties(_ref, _excluded$9);
+	  var _useState = reactExports.useState(value),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    _value = _useState2[0],
+	    setValue = _useState2[1];
+	  reactExports.useEffect(function () {
 	    setValue(value);
 	  }, [value]);
 	  function _onChange(e) {
@@ -34053,43 +34080,53 @@
 	    type: "text",
 	    value: _value,
 	    name: name,
-	    className: classNames({
-	      'input-textarea': true,
-	      [`input-textarea--${size}`]: size,
-	      [className]: className
-	    })
+	    className: classNames((_classNames = {
+	      'input-textarea': true
+	    }, _defineProperty(_classNames, "input-textarea--".concat(size), size), _defineProperty(_classNames, className, className), _classNames))
 	  }, props, {
 	    onChange: _onChange,
 	    autoComplete: "off"
 	  })));
 	}
 
-	function RatingInput({
-	  rating: _rating,
-	  stars = 5
-	}) {
-	  const [previousRating, setPreviousRating] = reactExports.useState(_rating);
-	  const [rating, setRating] = reactExports.useState(_rating);
+	function RatingInput(_ref) {
+	  var _rating = _ref.rating,
+	    _ref$stars = _ref.stars,
+	    stars = _ref$stars === void 0 ? 5 : _ref$stars;
+	  var _useState = reactExports.useState(_rating),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    previousRating = _useState2[0],
+	    setPreviousRating = _useState2[1];
+	  var _useState3 = reactExports.useState(_rating),
+	    _useState4 = _slicedToArray(_useState3, 2),
+	    rating = _useState4[0],
+	    setRating = _useState4[1];
 	  return /*#__PURE__*/React.createElement("div", {
 	    className: "input-group input-group--basic input-rating"
 	  }, /*#__PURE__*/React.createElement("input", {
 	    name: "rating",
 	    type: "hidden",
 	    value: previousRating
-	  }), new Array(stars).fill().map((_, i) => /*#__PURE__*/React.createElement("button", {
-	    type: "button",
-	    key: i,
-	    onMouseEnter: () => setRating(i + 1),
-	    onMouseLeave: () => setRating(previousRating),
-	    className: classNames({
-	      'star-input': true,
-	      'star-input--sel': i < rating
-	    }),
-	    onClick: () => {
-	      setPreviousRating(i + 1);
-	      setRating(i + 1);
-	    }
-	  }, /*#__PURE__*/React.createElement(FaStar, null))));
+	  }), new Array(stars).fill().map(function (_, i) {
+	    return /*#__PURE__*/React.createElement("button", {
+	      type: "button",
+	      key: i,
+	      onMouseEnter: function onMouseEnter() {
+	        return setRating(i + 1);
+	      },
+	      onMouseLeave: function onMouseLeave() {
+	        return setRating(previousRating);
+	      },
+	      className: classNames({
+	        'star-input': true,
+	        'star-input--sel': i < rating
+	      }),
+	      onClick: function onClick() {
+	        setPreviousRating(i + 1);
+	        setRating(i + 1);
+	      }
+	    }, /*#__PURE__*/React.createElement(FaStar, null));
+	  }));
 	}
 
 	function loadData(_x, _x2, _x3) {
@@ -34177,7 +34214,7 @@
 	  return data.filter(state.filterFunction.bind(null, value));
 	}
 	function handleNavigation(state, direction) {
-	  const suggestions = state.suggestions;
+	  var suggestions = state.suggestions;
 	  var entrySelected = state.entrySelected;
 	  if (!suggestions.length) {
 	    return -1;
@@ -34200,40 +34237,35 @@
 	      if (action.value === '' && !state.allOnEmpty) {
 	        isShown = false;
 	      }
-	      return {
-	        ...state,
-	        isShown,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
+	        isShown: isShown,
 	        entrySelected: -1,
 	        suggestions: handleInput(state, action.value, action.data)
-	      };
+	      });
 	    case 'navigation':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        entrySelected: handleNavigation(state, action.direction)
-	      };
+	      });
 	    case 'inputBlur':
 	    case 'entryClick':
 	    case 'escPress':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        entrySelected: -1,
 	        isShown: false
-	      };
+	      });
 	    case 'inputFocus':
 	      var isShown = true;
 	      if (action.value === '' && !state.allOnEmpty) {
 	        isShown = false;
 	      }
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        suggestions: handleInput(state, action.value, action.data),
-	        isShown
-	      };
+	        isShown: isShown
+	      });
 	    case 'dataLoad':
-	      return {
-	        ...state,
+	      return _objectSpread2(_objectSpread2({}, state), {}, {
 	        suggestions: handleInput(state, action.value, action.data)
-	      };
+	      });
 	  }
 	}
 
@@ -34246,33 +34278,31 @@
 	  var elementOffsetBottom = parent.offsetHeight - (elementOffsetTop + element.offsetHeight);
 	  return [0 <= elementOffsetTop && 0 <= elementOffsetBottom, elementOffsetTop < 0 ? elementOffsetTop : -elementOffsetBottom];
 	}
-	function SuggestionsBox({
-	  autocompleter,
-	  dispatchForAutocompleter,
-	  suggestionsBox,
-	  dispatchForSuggestionsBox
-	}) {
-	  const {
-	    data,
-	    value
-	  } = autocompleter;
-	  const {
-	    suggestions,
-	    entrySelected,
-	    isShown,
-	    noMatchText,
-	    getSuggestionValue
-	  } = suggestionsBox;
-	  const suggestionsBoxElement = reactExports.useRef();
-	  reactExports.useEffect(() => {
+	function SuggestionsBox(_ref) {
+	  var autocompleter = _ref.autocompleter,
+	    dispatchForAutocompleter = _ref.dispatchForAutocompleter,
+	    suggestionsBox = _ref.suggestionsBox,
+	    dispatchForSuggestionsBox = _ref.dispatchForSuggestionsBox;
+	  var data = autocompleter.data,
+	    value = autocompleter.value;
+	  var suggestions = suggestionsBox.suggestions,
+	    entrySelected = suggestionsBox.entrySelected,
+	    isShown = suggestionsBox.isShown,
+	    noMatchText = suggestionsBox.noMatchText,
+	    getSuggestionValue = suggestionsBox.getSuggestionValue;
+	  var suggestionsBoxElement = reactExports.useRef();
+	  reactExports.useEffect(function () {
 	    if (entrySelected !== -1) {
-	      const selectedSuggestionElement = suggestionsBoxElement.current.querySelectorAll('.autocomplete_suggestion')[entrySelected];
+	      var selectedSuggestionElement = suggestionsBoxElement.current.querySelectorAll('.autocomplete_suggestion')[entrySelected];
 	      if (!isElementInViewport(suggestionsBoxElement.current)) {
 	        suggestionsBoxElement.current.scrollIntoView({
 	          block: 'center'
 	        });
 	      }
-	      const [elementIsVisible, additionalScrollTop] = isElementInParent(selectedSuggestionElement, suggestionsBoxElement.current);
+	      var _isElementInParent = isElementInParent(selectedSuggestionElement, suggestionsBoxElement.current),
+	        _isElementInParent2 = _slicedToArray(_isElementInParent, 2),
+	        elementIsVisible = _isElementInParent2[0],
+	        additionalScrollTop = _isElementInParent2[1];
 	      if (!elementIsVisible) {
 	        suggestionsBoxElement.current.scrollTop += additionalScrollTop;
 	      }
@@ -34285,7 +34315,7 @@
 	    dispatchForAutocompleter({
 	      type: 'entryClick',
 	      entryClicked: i,
-	      suggestion
+	      suggestion: suggestion
 	    });
 	    dispatchForSuggestionsBox({
 	      type: 'entryClick'
@@ -34297,19 +34327,23 @@
 	    onMouseDown: onMouseDown
 	  }, data instanceof Promise ? /*#__PURE__*/React.createElement("div", {
 	    className: "autocomplete_text"
-	  }, "Loading...") : suggestions.length ? suggestions.map((suggestion, i) => /*#__PURE__*/React.createElement("div", {
-	    key: i,
-	    onClick: () => onSuggestionClick(i, suggestion),
-	    className: classNames({
-	      'autocomplete_suggestion': true,
-	      'autocomplete_suggestion--sel': i === entrySelected
-	    })
-	  }, getSuggestionValue(suggestion))) : /*#__PURE__*/React.createElement("div", {
+	  }, "Loading...") : suggestions.length ? suggestions.map(function (suggestion, i) {
+	    return /*#__PURE__*/React.createElement("div", {
+	      key: i,
+	      onClick: function onClick() {
+	        return onSuggestionClick(i, suggestion);
+	      },
+	      className: classNames({
+	        'autocomplete_suggestion': true,
+	        'autocomplete_suggestion--sel': i === entrySelected
+	      })
+	    }, getSuggestionValue(suggestion));
+	  }) : /*#__PURE__*/React.createElement("div", {
 	    className: "autocomplete_text"
 	  }, typeof noMatchText === 'function' ? noMatchText(value) : noMatchText));
 	}
 
-	var _excluded = ["value", "hiddenValue", "name", "data", "allOnEmpty", "hideOnEsc", "noMatchText", "getInputValue", "getHiddenInputValue", "getSuggestionValue", "filterFunction", "className"];
+	var _excluded$8 = ["value", "hiddenValue", "name", "data", "allOnEmpty", "hideOnEsc", "noMatchText", "getInputValue", "getHiddenInputValue", "getSuggestionValue", "filterFunction", "className"];
 	function AutocompleteInput(_ref) {
 	  var _ref$value = _ref.value,
 	    value = _ref$value === void 0 ? '' : _ref$value,
@@ -34339,7 +34373,7 @@
 	      return s.toLowerCase().indexOf(value.toLowerCase()) !== -1;
 	    } : _ref$filterFunction,
 	    className = _ref.className,
-	    props = _objectWithoutProperties(_ref, _excluded);
+	    props = _objectWithoutProperties(_ref, _excluded$8);
 	  var _useReducer = reactExports.useReducer(autocompleterReducer, {
 	      value: value,
 	      hiddenValue: hiddenValue || value,
@@ -34632,24 +34666,24 @@
 	  })(props);
 	}
 
-	function Button({
-	  submit = false,
-	  type = 'primary',
-	  small,
-	  error,
-	  children,
-	  className = '',
-	  ...props
-	}) {
+	var _excluded$7 = ["submit", "type", "small", "error", "children", "className"];
+	function Button(_ref) {
+	  var _classNames;
+	  var _ref$submit = _ref.submit,
+	    submit = _ref$submit === void 0 ? false : _ref$submit,
+	    _ref$type = _ref.type,
+	    type = _ref$type === void 0 ? 'primary' : _ref$type,
+	    small = _ref.small,
+	    error = _ref.error,
+	    children = _ref.children,
+	    _ref$className = _ref.className,
+	    className = _ref$className === void 0 ? '' : _ref$className,
+	    props = _objectWithoutProperties(_ref, _excluded$7);
 	  return /*#__PURE__*/React.createElement("button", _extends({
 	    type: submit ? 'submit' : 'button',
-	    className: classNames({
-	      'btn': true,
-	      [`btn--${type}`]: type,
-	      'btn--small': small,
-	      'btn--error': error,
-	      [className]: true
-	    })
+	    className: classNames((_classNames = {
+	      'btn': true
+	    }, _defineProperty(_classNames, "btn--".concat(type), type), _defineProperty(_classNames, 'btn--small', small), _defineProperty(_classNames, 'btn--error', error), _defineProperty(_classNames, className, true), _classNames))
 	  }, props), children);
 	}
 
@@ -34780,23 +34814,25 @@
 	  }));
 	}
 
-	function InputGroup({
-	  label,
-	  inline = false,
-	  basic = false,
-	  bg = false,
-	  className,
-	  children,
-	  ...props
-	}) {
+	var _excluded$6 = ["label", "inline", "basic", "bg", "className", "children"];
+	function InputGroup(_ref) {
+	  var label = _ref.label,
+	    _ref$inline = _ref.inline,
+	    inline = _ref$inline === void 0 ? false : _ref$inline,
+	    _ref$basic = _ref.basic,
+	    basic = _ref$basic === void 0 ? false : _ref$basic,
+	    _ref$bg = _ref.bg,
+	    bg = _ref$bg === void 0 ? false : _ref$bg,
+	    className = _ref.className,
+	    children = _ref.children,
+	    props = _objectWithoutProperties(_ref, _excluded$6);
 	  return /*#__PURE__*/React.createElement("div", _extends({
-	    className: classNames({
+	    className: classNames(_defineProperty({
 	      'input-group': !inline,
 	      'input-group--inline': inline,
 	      'input-group--basic': basic,
-	      'input-group--bg': bg,
-	      [className]: className
-	    })
+	      'input-group--bg': bg
+	    }, className, className))
 	  }, props), label && /*#__PURE__*/React.createElement("div", {
 	    className: "input-label"
 	  }, label), children);
@@ -34807,12 +34843,12 @@
 	  }, props));
 	}
 
-	function LinkButton({
-	  to,
-	  children,
-	  ...props
-	}) {
-	  const navigate = useNavigate();
+	var _excluded$5 = ["to", "children"];
+	function LinkButton(_ref) {
+	  var to = _ref.to,
+	    children = _ref.children,
+	    props = _objectWithoutProperties(_ref, _excluded$5);
+	  var navigate = useNavigate();
 	  function onClick() {
 	    if (to) {
 	      navigate(to);
@@ -34824,20 +34860,34 @@
 	  }, props), children);
 	}
 
-	function LoadingButton({
-	  children,
-	  loader,
-	  loadingText = '',
-	  disabled,
-	  ...props
-	}) {
-	  const [loading, setLoading] = reactExports.useState(false);
+	var _excluded$4 = ["children", "loader", "loadingText", "disabled"];
+	function LoadingButton(_ref) {
+	  var children = _ref.children,
+	    loader = _ref.loader,
+	    _ref$loadingText = _ref.loadingText,
+	    loadingText = _ref$loadingText === void 0 ? '' : _ref$loadingText,
+	    disabled = _ref.disabled,
+	    props = _objectWithoutProperties(_ref, _excluded$4);
+	  var _useState = reactExports.useState(false),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    loading = _useState2[0],
+	    setLoading = _useState2[1];
 	  function onClick() {
-	    (async () => {
-	      setLoading(true);
-	      await loader();
-	      setLoading(false);
-	    })();
+	    _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+	      return _regeneratorRuntime().wrap(function _callee$(_context) {
+	        while (1) switch (_context.prev = _context.next) {
+	          case 0:
+	            setLoading(true);
+	            _context.next = 3;
+	            return loader();
+	          case 3:
+	            setLoading(false);
+	          case 4:
+	          case "end":
+	            return _context.stop();
+	        }
+	      }, _callee);
+	    }))();
 	  }
 	  return /*#__PURE__*/React.createElement(Button, _extends({
 	    onClick: onClick,
@@ -34848,20 +34898,23 @@
 	  }, props), loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(BiLoaderAlt, null), "\xA0", loadingText) : children);
 	}
 
-	function LoadingSubmitButton({
-	  children,
-	  onLoad = x => x,
-	  ...props
-	}) {
-	  const navigation = useNavigation();
-	  const loadingRef = reactExports.useRef(null);
-	  const loading = navigation.state !== 'idle' && navigation.formData
+	var _excluded$3 = ["children", "onLoad"];
+	function LoadingSubmitButton(_ref) {
+	  var children = _ref.children,
+	    _ref$onLoad = _ref.onLoad,
+	    onLoad = _ref$onLoad === void 0 ? function (x) {
+	      return x;
+	    } : _ref$onLoad,
+	    props = _objectWithoutProperties(_ref, _excluded$3);
+	  var navigation = useNavigation();
+	  var loadingRef = reactExports.useRef(null);
+	  var loading = navigation.state !== 'idle' && navigation.formData
 	  /* && navigation.formData.get(props.name) === String(props.value) */;
 
 	  if (loading) {
 	    loadingRef.current = true;
 	  }
-	  reactExports.useEffect(() => {
+	  reactExports.useEffect(function () {
 	    if (!loading && loadingRef.current) {
 	      onLoad();
 	      loadingRef.current = null;
@@ -34876,14 +34929,23 @@
 	  }, props), loading ? /*#__PURE__*/React.createElement(BiLoaderAlt, null) : children);
 	}
 
-	function FileInput({
-	  onLoad = x => x,
-	  onClear = x => x,
-	  ...props
-	}) {
-	  const [file, setFile] = reactExports.useState(null);
-	  const fileInputElement = reactExports.useRef();
-	  reactExports.useEffect(() => {
+	var _excluded$2 = ["onLoad", "onClear"];
+	function FileInput(_ref) {
+	  var _ref$onLoad = _ref.onLoad,
+	    onLoad = _ref$onLoad === void 0 ? function (x) {
+	      return x;
+	    } : _ref$onLoad,
+	    _ref$onClear = _ref.onClear,
+	    onClear = _ref$onClear === void 0 ? function (x) {
+	      return x;
+	    } : _ref$onClear,
+	    props = _objectWithoutProperties(_ref, _excluded$2);
+	  var _useState = reactExports.useState(null),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    file = _useState2[0],
+	    setFile = _useState2[1];
+	  var fileInputElement = reactExports.useRef();
+	  reactExports.useEffect(function () {
 	    if (file) {
 	      var fr = new FileReader();
 	      fr.onload = function () {
@@ -34906,7 +34968,7 @@
 	    disabled: true,
 	    width: "medium",
 	    onClick: onClick,
-	    value: file?.name || 'No file selected'
+	    value: (file === null || file === void 0 ? void 0 : file.name) || 'No file selected'
 	  })), /*#__PURE__*/React.createElement(InputGroupInline, null, /*#__PURE__*/React.createElement(Button, _extends({
 	    onClick: onClick
 	  }, props), /*#__PURE__*/React.createElement(FaFolder, null))), /*#__PURE__*/React.createElement("input", {
@@ -35010,10 +35072,10 @@
 	  }));
 	}
 
-	const DB_NAME = 'recipes-app';
-	const CATEGORIES_STORE_NAME = 'categories';
-	const RECIPES_STORE_NAME = 'recipes';
-	const INGREDIENTS_STORE_NAME = 'ingredients';
+	var DB_NAME = 'recipes-app';
+	var CATEGORIES_STORE_NAME = 'categories';
+	var RECIPES_STORE_NAME = 'recipes';
+	var INGREDIENTS_STORE_NAME = 'ingredients';
 
 	function intersection(a, b) {
 	  // If intersecting an array with undefined, return that array as it is.
@@ -35523,124 +35585,395 @@
 	var FrontendDB$1 = FrontendDB;
 
 	var openDBRequest;
-	function getDatabase(getNew = false) {
-	  return new Promise((resolve, reject) => {
+	function getDatabase() {
+	  var getNew = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+	  return new Promise(function (resolve, reject) {
 	    if (!openDBRequest || getNew) {
 	      openDBRequest = FrontendDB$1.open(DB_NAME);
 	    }
-	    openDBRequest.then(db => {
+	    openDBRequest.then(function (db) {
 	      resolve(db);
 	    });
 	  });
 	}
 
-	class ItemSet {
-	  data = {};
-	  constructor(storeName) {
+	var ItemSet = /*#__PURE__*/function () {
+	  function ItemSet(storeName) {
+	    _classCallCheck(this, ItemSet);
+	    _defineProperty(this, "db", void 0);
+	    _defineProperty(this, "store", void 0);
+	    _defineProperty(this, "data", {});
+	    _defineProperty(this, "storeName", void 0);
 	    this.storeName = storeName;
 	  }
-	  async init() {
-	    this.db = await getDatabase();
-	    if (!(await this.db.existsStore(this.storeName))) {
-	      await this.db.createStore(this.storeName, {}, true, ['name']);
-	    }
-	    this.store = await this.db.getStore(this.storeName);
-	    var records = await this.store.getAllRecordsWithKeys();
-	    for (var record of records) {
-	      this.data[record[0]] = {
-	        name: record[1].name,
-	        usage: record[1].usage
-	      };
-	    }
-	  }
-	  async add(name) {
-	    await this.init();
-	    var record = {
-	      name,
-	      usage: 0
-	    };
-	    var key = await this.store.addRecord(record);
-	    this.data[key] = record;
-	    return key;
-	  }
-	  async get(key) {
-	    await this.init();
-	    return this.data[key];
-	  }
-	  async getForUpdate(key) {
-	    await this.init();
-	    return {
-	      key,
-	      name: this.data[key].name
-	    };
-	  }
-	  async getAll() {
-	    await this.init();
-	    var data = [];
-	    for (var [key, value] of Object.entries(this.data)) {
-	      data.push([key, value]);
-	    }
-	    return data;
-	  }
-	  async getAllForUpdate() {
-	    await this.init();
-	    var data = [];
-	    for (var [key, value] of Object.entries(this.data)) {
-	      data.push({
-	        key,
-	        name: value.name
-	      });
-	    }
-	    return data;
-	  }
-	  async remove(key) {
-	    await this.init();
-	    await this.store.deleteRecord(Number(key));
-	    delete this.data[key];
-	  }
-	  async update(key, newName) {
-	    await this.init();
-	    await this.store.updateRecord(Number(key), {
-	      name: newName
-	    });
-	    this.data[key].name = newName;
-	  }
-	  async use(key) {
-	    await this.init();
-	    var newUsage = this.data[key].usage + 1;
-	    await this.store.updateRecord(key, {
-	      usage: newUsage
-	    });
-	    this.data[key].usage = newUsage;
-	  }
-	  async unUse(key) {
-	    await this.init();
-	    var newUsage = this.data[key].usage - 1;
-	    await this.store.updateRecord(key, {
-	      usage: newUsage
-	    });
-	    this.data[key].usage = newUsage;
-	  }
-	  async isInUse(key) {
-	    await this.init();
-	    return this.data[key].usage !== 0;
-	  }
-	  async deleteAll() {
-	    this.data = {};
-	  }
-	}
+	  _createClass(ItemSet, [{
+	    key: "init",
+	    value: function () {
+	      var _init = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+	        var records, _iterator, _step, record;
+	        return _regeneratorRuntime().wrap(function _callee$(_context) {
+	          while (1) switch (_context.prev = _context.next) {
+	            case 0:
+	              _context.next = 2;
+	              return getDatabase();
+	            case 2:
+	              this.db = _context.sent;
+	              _context.next = 5;
+	              return this.db.existsStore(this.storeName);
+	            case 5:
+	              if (_context.sent) {
+	                _context.next = 8;
+	                break;
+	              }
+	              _context.next = 8;
+	              return this.db.createStore(this.storeName, {}, true, ['name']);
+	            case 8:
+	              _context.next = 10;
+	              return this.db.getStore(this.storeName);
+	            case 10:
+	              this.store = _context.sent;
+	              _context.next = 13;
+	              return this.store.getAllRecordsWithKeys();
+	            case 13:
+	              records = _context.sent;
+	              _iterator = _createForOfIteratorHelper(records);
+	              try {
+	                for (_iterator.s(); !(_step = _iterator.n()).done;) {
+	                  record = _step.value;
+	                  this.data[record[0]] = {
+	                    name: record[1].name,
+	                    usage: record[1].usage
+	                  };
+	                }
+	              } catch (err) {
+	                _iterator.e(err);
+	              } finally {
+	                _iterator.f();
+	              }
+	            case 16:
+	            case "end":
+	              return _context.stop();
+	          }
+	        }, _callee, this);
+	      }));
+	      function init() {
+	        return _init.apply(this, arguments);
+	      }
+	      return init;
+	    }()
+	  }, {
+	    key: "add",
+	    value: function () {
+	      var _add = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(name) {
+	        var record, key;
+	        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+	          while (1) switch (_context2.prev = _context2.next) {
+	            case 0:
+	              _context2.next = 2;
+	              return this.init();
+	            case 2:
+	              record = {
+	                name: name,
+	                usage: 0
+	              };
+	              _context2.next = 5;
+	              return this.store.addRecord(record);
+	            case 5:
+	              key = _context2.sent;
+	              this.data[key] = record;
+	              return _context2.abrupt("return", key);
+	            case 8:
+	            case "end":
+	              return _context2.stop();
+	          }
+	        }, _callee2, this);
+	      }));
+	      function add(_x) {
+	        return _add.apply(this, arguments);
+	      }
+	      return add;
+	    }()
+	  }, {
+	    key: "get",
+	    value: function () {
+	      var _get = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(key) {
+	        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+	          while (1) switch (_context3.prev = _context3.next) {
+	            case 0:
+	              _context3.next = 2;
+	              return this.init();
+	            case 2:
+	              return _context3.abrupt("return", this.data[key]);
+	            case 3:
+	            case "end":
+	              return _context3.stop();
+	          }
+	        }, _callee3, this);
+	      }));
+	      function get(_x2) {
+	        return _get.apply(this, arguments);
+	      }
+	      return get;
+	    }()
+	  }, {
+	    key: "getForUpdate",
+	    value: function () {
+	      var _getForUpdate = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(key) {
+	        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+	          while (1) switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.next = 2;
+	              return this.init();
+	            case 2:
+	              return _context4.abrupt("return", {
+	                key: key,
+	                name: this.data[key].name
+	              });
+	            case 3:
+	            case "end":
+	              return _context4.stop();
+	          }
+	        }, _callee4, this);
+	      }));
+	      function getForUpdate(_x3) {
+	        return _getForUpdate.apply(this, arguments);
+	      }
+	      return getForUpdate;
+	    }()
+	  }, {
+	    key: "getAll",
+	    value: function () {
+	      var _getAll = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+	        var data, _i, _Object$entries, _Object$entries$_i, key, value;
+	        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+	          while (1) switch (_context5.prev = _context5.next) {
+	            case 0:
+	              _context5.next = 2;
+	              return this.init();
+	            case 2:
+	              data = [];
+	              for (_i = 0, _Object$entries = Object.entries(this.data); _i < _Object$entries.length; _i++) {
+	                _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2), key = _Object$entries$_i[0], value = _Object$entries$_i[1];
+	                data.push([key, value]);
+	              }
+	              return _context5.abrupt("return", data);
+	            case 5:
+	            case "end":
+	              return _context5.stop();
+	          }
+	        }, _callee5, this);
+	      }));
+	      function getAll() {
+	        return _getAll.apply(this, arguments);
+	      }
+	      return getAll;
+	    }()
+	  }, {
+	    key: "getAllForUpdate",
+	    value: function () {
+	      var _getAllForUpdate = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+	        var data, _i2, _Object$entries2, _Object$entries2$_i, key, value;
+	        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+	          while (1) switch (_context6.prev = _context6.next) {
+	            case 0:
+	              _context6.next = 2;
+	              return this.init();
+	            case 2:
+	              data = [];
+	              for (_i2 = 0, _Object$entries2 = Object.entries(this.data); _i2 < _Object$entries2.length; _i2++) {
+	                _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2), key = _Object$entries2$_i[0], value = _Object$entries2$_i[1];
+	                data.push({
+	                  key: key,
+	                  name: value.name
+	                });
+	              }
+	              return _context6.abrupt("return", data);
+	            case 5:
+	            case "end":
+	              return _context6.stop();
+	          }
+	        }, _callee6, this);
+	      }));
+	      function getAllForUpdate() {
+	        return _getAllForUpdate.apply(this, arguments);
+	      }
+	      return getAllForUpdate;
+	    }()
+	  }, {
+	    key: "remove",
+	    value: function () {
+	      var _remove = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(key) {
+	        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+	          while (1) switch (_context7.prev = _context7.next) {
+	            case 0:
+	              _context7.next = 2;
+	              return this.init();
+	            case 2:
+	              _context7.next = 4;
+	              return this.store.deleteRecord(Number(key));
+	            case 4:
+	              delete this.data[key];
+	            case 5:
+	            case "end":
+	              return _context7.stop();
+	          }
+	        }, _callee7, this);
+	      }));
+	      function remove(_x4) {
+	        return _remove.apply(this, arguments);
+	      }
+	      return remove;
+	    }()
+	  }, {
+	    key: "update",
+	    value: function () {
+	      var _update = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(key, newName) {
+	        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+	          while (1) switch (_context8.prev = _context8.next) {
+	            case 0:
+	              _context8.next = 2;
+	              return this.init();
+	            case 2:
+	              _context8.next = 4;
+	              return this.store.updateRecord(Number(key), {
+	                name: newName
+	              });
+	            case 4:
+	              this.data[key].name = newName;
+	            case 5:
+	            case "end":
+	              return _context8.stop();
+	          }
+	        }, _callee8, this);
+	      }));
+	      function update(_x5, _x6) {
+	        return _update.apply(this, arguments);
+	      }
+	      return update;
+	    }()
+	  }, {
+	    key: "use",
+	    value: function () {
+	      var _use = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(key) {
+	        var newUsage;
+	        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+	          while (1) switch (_context9.prev = _context9.next) {
+	            case 0:
+	              _context9.next = 2;
+	              return this.init();
+	            case 2:
+	              newUsage = this.data[key].usage + 1;
+	              _context9.next = 5;
+	              return this.store.updateRecord(key, {
+	                usage: newUsage
+	              });
+	            case 5:
+	              this.data[key].usage = newUsage;
+	            case 6:
+	            case "end":
+	              return _context9.stop();
+	          }
+	        }, _callee9, this);
+	      }));
+	      function use(_x7) {
+	        return _use.apply(this, arguments);
+	      }
+	      return use;
+	    }()
+	  }, {
+	    key: "unUse",
+	    value: function () {
+	      var _unUse = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(key) {
+	        var newUsage;
+	        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+	          while (1) switch (_context10.prev = _context10.next) {
+	            case 0:
+	              _context10.next = 2;
+	              return this.init();
+	            case 2:
+	              newUsage = this.data[key].usage - 1;
+	              _context10.next = 5;
+	              return this.store.updateRecord(key, {
+	                usage: newUsage
+	              });
+	            case 5:
+	              this.data[key].usage = newUsage;
+	            case 6:
+	            case "end":
+	              return _context10.stop();
+	          }
+	        }, _callee10, this);
+	      }));
+	      function unUse(_x8) {
+	        return _unUse.apply(this, arguments);
+	      }
+	      return unUse;
+	    }()
+	  }, {
+	    key: "isInUse",
+	    value: function () {
+	      var _isInUse = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(key) {
+	        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+	          while (1) switch (_context11.prev = _context11.next) {
+	            case 0:
+	              _context11.next = 2;
+	              return this.init();
+	            case 2:
+	              return _context11.abrupt("return", this.data[key].usage !== 0);
+	            case 3:
+	            case "end":
+	              return _context11.stop();
+	          }
+	        }, _callee11, this);
+	      }));
+	      function isInUse(_x9) {
+	        return _isInUse.apply(this, arguments);
+	      }
+	      return isInUse;
+	    }()
+	  }, {
+	    key: "deleteAll",
+	    value: function () {
+	      var _deleteAll = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+	        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+	          while (1) switch (_context12.prev = _context12.next) {
+	            case 0:
+	              this.data = {};
+	            case 1:
+	            case "end":
+	              return _context12.stop();
+	          }
+	        }, _callee12, this);
+	      }));
+	      function deleteAll() {
+	        return _deleteAll.apply(this, arguments);
+	      }
+	      return deleteAll;
+	    }()
+	  }]);
+	  return ItemSet;
+	}();
 
 	function deepClone(obj) {
 	  // If obj is a primitive, just return it.
-	  if (typeof obj !== 'object' || obj === null) {
+	  if (_typeof(obj) !== 'object' || obj === null) {
 	    return obj;
 	  }
 
 	  // If obj is an array, deal with it specially.
 	  if (obj instanceof Array) {
 	    var clone = [];
-	    for (var item of obj) {
-	      clone.push(deepClone(item));
+	    var _iterator = _createForOfIteratorHelper(obj),
+	      _step;
+	    try {
+	      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+	        var item = _step.value;
+	        clone.push(deepClone(item));
+	      }
+	    } catch (err) {
+	      _iterator.e(err);
+	    } finally {
+	      _iterator.f();
 	    }
 	    return clone;
 	  }
@@ -35697,6 +36030,9 @@
 	function decomposeQuantity(quantity) {
 	  var mantissaMatch = quantity.match(/^(\d+(?:\/\d+)?)(?: (\d+(?:\/\d+)?))?/);
 	  var unitMatch = quantity.match(/[a-zA-Z]+$/);
+	  if (!mantissaMatch) {
+	    return null;
+	  }
 	  var mantissa = processMantissa(_toConsumableArray(mantissaMatch));
 	  return {
 	    mantissa: mantissa,
@@ -35706,7 +36042,9 @@
 	function diffQuantities(quantity, previousQuantity) {
 	  var quantityDecomposed = decomposeQuantity(quantity);
 	  var previousQuantityDecomposed = decomposeQuantity(previousQuantity);
-	  if (!quantityDecomposed.unit) {
+	  if (!quantityDecomposed) {
+	    return 'same';
+	  } else if (!quantityDecomposed.unit) {
 	    return getStatus(quantityDecomposed.mantissa, previousQuantityDecomposed.mantissa);
 	  } else {
 	    // Normalize unit
@@ -36897,14 +37235,14 @@
 	  return RecipeList;
 	}();
 
-	const recipeList = new RecipeList();
-	const categorySet = new ItemSet(CATEGORIES_STORE_NAME);
-	const ingredientSet = new ItemSet(INGREDIENTS_STORE_NAME);
+	var recipeList = new RecipeList();
+	var categorySet = new ItemSet(CATEGORIES_STORE_NAME);
+	var ingredientSet = new ItemSet(INGREDIENTS_STORE_NAME);
 
-	function CategoryInput({
-	  category,
-	  ...props
-	}) {
+	var _excluded$1 = ["category"];
+	function CategoryInput(_ref) {
+	  var category = _ref.category,
+	    props = _objectWithoutProperties(_ref, _excluded$1);
 	  return /*#__PURE__*/React.createElement(AutocompleteInput, _extends({
 	    className: "input-text",
 	    name: "category",
@@ -36913,19 +37251,29 @@
 	    placeholder: "Category",
 	    allOnEmpty: true,
 	    data: categorySet.getAllForUpdate(),
-	    filterFunction: (value, entry) => entry.name.indexOf(value) !== -1,
-	    getSuggestionValue: entry => entry.name,
-	    getInputValue: entry => entry.name,
-	    noMatchText: value => `Category '${value}' will be added`,
-	    getHiddenInputValue: entry => entry.key
+	    filterFunction: function filterFunction(value, entry) {
+	      return entry.name.indexOf(value) !== -1;
+	    },
+	    getSuggestionValue: function getSuggestionValue(entry) {
+	      return entry.name;
+	    },
+	    getInputValue: function getInputValue(entry) {
+	      return entry.name;
+	    },
+	    noMatchText: function noMatchText(value) {
+	      return "Category '".concat(value, "' will be added");
+	    },
+	    getHiddenInputValue: function getHiddenInputValue(entry) {
+	      return entry.key;
+	    }
 	  }, props));
 	}
 
-	function IngredientInput({
-	  ingredientKey,
-	  ingredient,
-	  ...props
-	}) {
+	var _excluded = ["ingredientKey", "ingredient"];
+	function IngredientInput(_ref) {
+	  var ingredientKey = _ref.ingredientKey,
+	    ingredient = _ref.ingredient,
+	    props = _objectWithoutProperties(_ref, _excluded);
 	  return /*#__PURE__*/React.createElement(AutocompleteInput, _extends({
 	    className: "input-text input-text--white",
 	    name: "ingredients",
@@ -36934,22 +37282,34 @@
 	    allOnEmpty: true,
 	    placeholder: "Ingredient",
 	    data: ingredientSet.getAll(),
-	    filterFunction: (value, entry) => entry[1].name.toLowerCase().indexOf(value.toLowerCase()) !== -1,
-	    getSuggestionValue: entry => entry[1].name,
-	    getInputValue: entry => entry[1].name,
-	    noMatchText: value => `Ingredient '${value}' will be added`,
-	    getHiddenInputValue: entry => entry[0]
+	    filterFunction: function filterFunction(value, entry) {
+	      return entry[1].name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+	    },
+	    getSuggestionValue: function getSuggestionValue(entry) {
+	      return entry[1].name;
+	    },
+	    getInputValue: function getInputValue(entry) {
+	      return entry[1].name;
+	    },
+	    noMatchText: function noMatchText(value) {
+	      return "Ingredient '".concat(value, "' will be added");
+	    },
+	    getHiddenInputValue: function getHiddenInputValue(entry) {
+	      return entry[0];
+	    }
 	  }, props));
 	}
 
-	function Header({
-	  setClassApplied
-	}) {
-	  const [showOverlay, hideOverlay] = useOverlayFunctions(() => {
-	    setClassApplied(true);
-	  }, () => {
-	    setClassApplied(false);
-	  }, 850);
+	function Header(_ref) {
+	  var setClassApplied = _ref.setClassApplied;
+	  var _useOverlayFunctions = useOverlayFunctions(function () {
+	      setClassApplied(true);
+	    }, function () {
+	      setClassApplied(false);
+	    }, 850),
+	    _useOverlayFunctions2 = _slicedToArray(_useOverlayFunctions, 2),
+	    showOverlay = _useOverlayFunctions2[0];
+	    _useOverlayFunctions2[1];
 	  function onClick() {
 	    showOverlay();
 	  }
@@ -36964,11 +37324,10 @@
 	  }, /*#__PURE__*/React.createElement(FaBars, null)));
 	}
 
-	function SideBarLink({
-	  href,
-	  children
-	}) {
-	  const _href = useHref();
+	function SideBarLink(_ref) {
+	  var href = _ref.href,
+	    children = _ref.children;
+	  var _href = useHref();
 	  return /*#__PURE__*/React.createElement("li", {
 	    className: classNames({
 	      'sidebar_entry': true,
@@ -36978,11 +37337,12 @@
 	    to: href
 	  }, children));
 	}
-	function SideBar({
-	  classApplied
-	}) {
-	  const [searchParams] = useSearchParams();
-	  const query = searchParams.get('q') || '';
+	function SideBar(_ref2) {
+	  var classApplied = _ref2.classApplied;
+	  var _useSearchParams = useSearchParams(),
+	    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+	    searchParams = _useSearchParams2[0];
+	  var query = searchParams.get('q') || '';
 	  return /*#__PURE__*/React.createElement("section", {
 	    className: classNames({
 	      'sidebar': true,
@@ -37019,14 +37379,16 @@
 
 	var setModal = null;
 	function useModal() {
-	  const [showOverlay, hideOverlay] = useOverlayFunctions(() => {}, hideModal);
-	  function showModal({
-	    title,
-	    body
-	  }) {
+	  var _useOverlayFunctions = useOverlayFunctions(function () {}, hideModal),
+	    _useOverlayFunctions2 = _slicedToArray(_useOverlayFunctions, 2),
+	    showOverlay = _useOverlayFunctions2[0],
+	    hideOverlay = _useOverlayFunctions2[1];
+	  function showModal(_ref) {
+	    var title = _ref.title,
+	      body = _ref.body;
 	    setModal({
-	      title,
-	      body
+	      title: title,
+	      body: body
 	    });
 	    showOverlay();
 	  }
@@ -37034,32 +37396,30 @@
 	    setModal(null);
 	  }
 	  return {
-	    showModal,
+	    showModal: showModal,
 	    // When a piece of code wants to hide the modal, it actually hides the 
 	    // overlay, which in this case is configured to automatically hide the 
 	    // modal as well. Think out of the box!
 	    hideModal: hideOverlay
 	  };
 	}
-	function ModalBox({
-	  content
-	}) {
-	  const {
-	    hideModal
-	  } = useModal();
-	  const keyDownHandler = reactExports.useCallback(e => {
+	function ModalBox(_ref2) {
+	  var content = _ref2.content;
+	  var _useModal = useModal(),
+	    hideModal = _useModal.hideModal;
+	  var keyDownHandler = reactExports.useCallback(function (e) {
 	    if (e.keyCode === 27) {
 	      hideModal();
 	    }
 	  }, []);
-	  const modalDivElement = reactExports.useRef();
-	  reactExports.useEffect(() => {
+	  var modalDivElement = reactExports.useRef();
+	  reactExports.useEffect(function () {
 	    window.addEventListener('keydown', keyDownHandler);
-	    return () => {
+	    return function () {
 	      window.removeEventListener('keydown', keyDownHandler);
 	    };
 	  }, []);
-	  reactExports.useEffect(() => {
+	  reactExports.useEffect(function () {
 	    var inputElement = modalDivElement.current.querySelector('input[type="text"]');
 	    if (inputElement) {
 	      inputElement.focus();
@@ -37073,8 +37433,11 @@
 	  }, content.title), content.body);
 	}
 	function Modal() {
-	  const [modal, _setModal] = reactExports.useState(null);
-	  reactExports.useEffect(() => {
+	  var _useState = reactExports.useState(null),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    modal = _useState2[0],
+	    _setModal = _useState2[1];
+	  reactExports.useEffect(function () {
 	    setModal = _setModal;
 	  }, []);
 	  return modal ? /*#__PURE__*/React.createElement(ModalBox, {
@@ -37091,16 +37454,22 @@
 	  };
 	}
 	function Alert() {
-	  const [alertMessage, _setAlertMessage] = reactExports.useState(null);
-	  const [alertShown, _setAlertShown] = reactExports.useState(false);
-	  const timeoutRef = reactExports.useRef();
-	  reactExports.useEffect(() => {
+	  var _useState = reactExports.useState(null),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    alertMessage = _useState2[0],
+	    _setAlertMessage = _useState2[1];
+	  var _useState3 = reactExports.useState(false),
+	    _useState4 = _slicedToArray(_useState3, 2),
+	    alertShown = _useState4[0],
+	    _setAlertShown = _useState4[1];
+	  var timeoutRef = reactExports.useRef();
+	  reactExports.useEffect(function () {
 	    setAlertShown = _setAlertShown;
 	    setAlertMessage = _setAlertMessage;
 	  }, []);
-	  reactExports.useEffect(() => {
+	  reactExports.useEffect(function () {
 	    clearTimeout(timeoutRef.current);
-	    timeoutRef.current = setTimeout(() => {
+	    timeoutRef.current = setTimeout(function () {
 	      _setAlertShown(false);
 	    }, 3000);
 	  });
@@ -37144,33 +37513,31 @@
 	  });
 	}
 
-	function Rating({
-	  rating
-	}) {
-	  return new Array(5).fill().map((_, i) => /*#__PURE__*/React.createElement(FaStar, {
-	    key: i,
-	    className: classNames({
-	      'star': true,
-	      'star--sel': i < rating
-	    })
-	  }));
+	function Rating(_ref) {
+	  var rating = _ref.rating;
+	  return new Array(5).fill().map(function (_, i) {
+	    return /*#__PURE__*/React.createElement(FaStar, {
+	      key: i,
+	      className: classNames({
+	        'star': true,
+	        'star--sel': i < rating
+	      })
+	    });
+	  });
 	}
 
-	function RecipeCard({
-	  data
-	}) {
-	  const {
-	    id,
-	    dateCreated,
-	    name,
-	    rating,
-	    category
-	  } = data;
+	function RecipeCard(_ref) {
+	  var data = _ref.data;
+	  var id = data.id,
+	    dateCreated = data.dateCreated,
+	    name = data.name,
+	    rating = data.rating,
+	    category = data.category;
 	  return /*#__PURE__*/React.createElement("div", {
 	    className: "recipe-card-wrapper"
 	  }, /*#__PURE__*/React.createElement(Link, {
 	    className: "recipe-card",
-	    to: `/recipe/${id}`
+	    to: "/recipe/".concat(id)
 	  }, /*#__PURE__*/React.createElement("h4", {
 	    className: "recipe-card_category"
 	  }, category), /*#__PURE__*/React.createElement("div", {
@@ -37182,10 +37549,9 @@
 	  }, dateCreated.toDateString()), /*#__PURE__*/React.createElement("h2", null, name)));
 	}
 
-	function Recipes({
-	  list
-	}) {
-	  return /*#__PURE__*/React.createElement(React.Fragment, null, list.map(record => {
+	function Recipes(_ref) {
+	  var list = _ref.list;
+	  return /*#__PURE__*/React.createElement(React.Fragment, null, list.map(function (record) {
 	    return /*#__PURE__*/React.createElement(RecipeCard, {
 	      key: record.id,
 	      data: record
@@ -37196,9 +37562,8 @@
 	    }
 	  }));
 	}
-	function RecipeCardList({
-	  list
-	}) {
+	function RecipeCardList(_ref2) {
+	  var list = _ref2.list;
 	  return /*#__PURE__*/React.createElement("div", {
 	    className: "recipe-cards"
 	  }, /*#__PURE__*/React.createElement(Recipes, {
@@ -37207,7 +37572,7 @@
 	}
 
 	function Home() {
-	  const recipes = useLoaderData();
+	  var recipes = useLoaderData();
 	  return recipes.length ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Home ", /*#__PURE__*/React.createElement("span", {
 	    className: "light"
 	  }, "(", recipes && recipes.length, ")")), /*#__PURE__*/React.createElement(RecipeCardList, {
@@ -37358,10 +37723,9 @@
 	  }, "Review"), /*#__PURE__*/React.createElement("p", null, review || '-')));
 	}
 
-	function RecipeForm({
-	  action,
-	  data
-	}) {
+	function RecipeForm(_ref) {
+	  var action = _ref.action,
+	    data = _ref.data;
 	  var isAddForm = false;
 	  if (!data) {
 	    isAddForm = true;
@@ -37369,7 +37733,7 @@
 	      name: '',
 	      category: '',
 	      rating: 0,
-	      yield: '',
+	      "yield": '',
 	      items: [],
 	      instructions: '',
 	      review: ''
@@ -37400,7 +37764,7 @@
 	    label: "Yield"
 	  }, /*#__PURE__*/React.createElement(TextInput, {
 	    name: "yield",
-	    value: data.yield,
+	    value: data["yield"],
 	    width: "medium"
 	  }))), /*#__PURE__*/React.createElement(InputGroup, {
 	    label: "Ingredients"
@@ -37423,7 +37787,7 @@
 	}
 
 	function UpdateRecipeView() {
-	  const recipe = useLoaderData();
+	  var recipe = useLoaderData();
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Update Recipe"), /*#__PURE__*/React.createElement(RecipeForm, {
 	    data: recipe
 	  }));
@@ -37435,15 +37799,13 @@
 	  }));
 	}
 
-	function ItemForm({
-	  buttonValue,
-	  name,
-	  itemKey
-	}) {
-	  const {
-	    hideModal
-	  } = useModal();
-	  const href = useHref();
+	function ItemForm(_ref) {
+	  var buttonValue = _ref.buttonValue,
+	    name = _ref.name,
+	    itemKey = _ref.itemKey;
+	  var _useModal = useModal(),
+	    hideModal = _useModal.hideModal;
+	  var href = useHref();
 	  return /*#__PURE__*/React.createElement(Form, {
 	    method: "post",
 	    action: href
@@ -37462,48 +37824,47 @@
 	  }, /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    error: true,
-	    onClick: () => {
+	    onClick: function onClick() {
 	      hideModal();
 	    }
 	  }, "Cancel"), "\xA0\xA0", /*#__PURE__*/React.createElement(LoadingSubmitButton, {
 	    submit: true,
 	    value: itemKey,
 	    name: buttonValue.toLowerCase(),
-	    onLoad: () => {/* hideModal() */}
+	    onLoad: function onLoad() {/* hideModal() */}
 	  }, buttonValue)));
 	}
-	function ItemTableRow({
-	  item
-	}) {
-	  const {
-	    showModal
-	  } = useModal();
-	  const showAlert = useAlert();
-	  const [itemKey, {
-	    name,
-	    usage
-	  }] = item;
+	function ItemTableRow(_ref2) {
+	  var item = _ref2.item;
+	  var _useModal2 = useModal(),
+	    showModal = _useModal2.showModal;
+	  var showAlert = useAlert();
+	  var _item = _slicedToArray(item, 2),
+	    itemKey = _item[0],
+	    _item$ = _item[1],
+	    name = _item$.name,
+	    usage = _item$.usage;
 	  function onUpdateClick() {
 	    showModal({
 	      title: 'Updating item',
 	      body: /*#__PURE__*/React.createElement(ItemForm, {
 	        buttonValue: "Update",
-	        name,
-	        itemKey
+	        name: name,
+	        itemKey: itemKey
 	      })
 	    });
 	  }
 	  function onRemoveClick() {
 	    if (usage !== 0) {
-	      showAlert(`'${name}' is still in use in some recipes. Hence, it can't be deleted.`);
+	      showAlert("'".concat(name, "' is still in use in some recipes. Hence, it can't be deleted."));
 	      return;
 	    }
 	    showModal({
 	      title: 'Remove item?',
 	      body: /*#__PURE__*/React.createElement(ItemForm, {
 	        buttonValue: "Delete",
-	        name,
-	        itemKey
+	        name: name,
+	        itemKey: itemKey
 	      })
 	    });
 	  }
@@ -37522,21 +37883,21 @@
 	    onClick: onRemoveClick
 	  }, /*#__PURE__*/React.createElement(BiTrash, null), " ", /*#__PURE__*/React.createElement("span", null, "Delete"))));
 	}
-	function ItemTable({
-	  entries
-	}) {
+	function ItemTable(_ref3) {
+	  var entries = _ref3.entries;
 	  return /*#__PURE__*/React.createElement("table", {
 	    className: "table"
-	  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Item name"), /*#__PURE__*/React.createElement("th", null, "Usage"), /*#__PURE__*/React.createElement("th", null, "Actions"))), /*#__PURE__*/React.createElement("tbody", null, entries.map(entry => /*#__PURE__*/React.createElement(ItemTableRow, {
-	    key: entry[0],
-	    item: entry
-	  }))));
+	  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Item name"), /*#__PURE__*/React.createElement("th", null, "Usage"), /*#__PURE__*/React.createElement("th", null, "Actions"))), /*#__PURE__*/React.createElement("tbody", null, entries.map(function (entry) {
+	    return /*#__PURE__*/React.createElement(ItemTableRow, {
+	      key: entry[0],
+	      item: entry
+	    });
+	  })));
 	}
 	function AddItemForm() {
-	  const {
-	    hideModal
-	  } = useModal();
-	  const href = useHref();
+	  var _useModal3 = useModal(),
+	    hideModal = _useModal3.hideModal;
+	  var href = useHref();
 	  return /*#__PURE__*/React.createElement(Form, {
 	    method: "post",
 	    action: href
@@ -37554,25 +37915,23 @@
 	  }, /*#__PURE__*/React.createElement(Button, {
 	    type: "secondary",
 	    error: true,
-	    onClick: () => {
+	    onClick: function onClick() {
 	      hideModal();
 	    }
 	  }, "Cancel"), "\xA0\xA0", /*#__PURE__*/React.createElement(LoadingSubmitButton, {
 	    submit: true,
 	    value: "true",
 	    name: "add",
-	    onLoad: () => {
+	    onLoad: function onLoad() {
 	      hideModal();
 	    }
 	  }, "Add")));
 	}
-	function ItemList({
-	  title
-	}) {
-	  const entries = useLoaderData();
-	  const {
-	    showModal
-	  } = useModal();
+	function ItemList(_ref4) {
+	  var title = _ref4.title;
+	  var entries = useLoaderData();
+	  var _useModal4 = useModal(),
+	    showModal = _useModal4.showModal;
 	  function onAddItem() {
 	    showModal({
 	      title: 'Add Item',
@@ -37590,10 +37949,9 @@
 	}
 
 	function Search() {
-	  const {
-	    query,
-	    results
-	  } = useLoaderData();
+	  var _useLoaderData = useLoaderData(),
+	    query = _useLoaderData.query,
+	    results = _useLoaderData.results;
 	  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Search for ", /*#__PURE__*/React.createElement("span", {
 	    className: "light"
 	  }, "\"", query, "\"")), results.length ? /*#__PURE__*/React.createElement(RecipeCardList, {
@@ -37604,8 +37962,14 @@
 	}
 
 	function RestoreSection() {
-	  const [disabled, setDisabled] = reactExports.useState(true);
-	  const [fileText, setFileText] = reactExports.useState(null);
+	  var _useState = reactExports.useState(true),
+	    _useState2 = _slicedToArray(_useState, 2),
+	    disabled = _useState2[0],
+	    setDisabled = _useState2[1];
+	  var _useState3 = reactExports.useState(null),
+	    _useState4 = _slicedToArray(_useState3, 2),
+	    fileText = _useState4[0],
+	    setFileText = _useState4[1];
 	  function onLoad(result) {
 	    setFileText(result);
 	    setDisabled(false);
@@ -37639,7 +38003,7 @@
 	}
 
 	function Error$1() {
-	  const error = useRouteError();
+	  var error = useRouteError();
 	  return /*#__PURE__*/React.createElement("div", {
 	    className: "centered"
 	  }, /*#__PURE__*/React.createElement("h2", null, "Oops!"), /*#__PURE__*/React.createElement("p", null, error.status && error.status === 404 ? 'The requested page does not exist!' : /*#__PURE__*/React.createElement(React.Fragment, null, "An internal error occured in the system.", /*#__PURE__*/React.createElement("br", null), "Try refreshing the browser to rectify it.")));
@@ -37654,26 +38018,37 @@
 	  var recipe = {};
 	  var processingIngredients = false;
 	  recipe.items = [];
-	  for (var [key, value] of formData) {
-	    if (key === 'group') {
-	      processingIngredients = true;
-	    } else if (key === 'groupend') {
-	      processingIngredients = false;
-	      continue;
-	    }
-	    if (processingIngredients) {
+	  var _iterator = _createForOfIteratorHelper(formData),
+	    _step;
+	  try {
+	    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+	      var _step$value = _slicedToArray(_step.value, 2),
+	        key = _step$value[0],
+	        value = _step$value[1];
 	      if (key === 'group') {
-	        recipe.items.push({
-	          name: value,
-	          ingredients: [],
-	          quantities: []
-	        });
-	      } else {
-	        recipe.items[recipe.items.length - 1][key].push(value);
+	        processingIngredients = true;
+	      } else if (key === 'groupend') {
+	        processingIngredients = false;
+	        continue;
 	      }
-	    } else {
-	      recipe[key] = value;
+	      if (processingIngredients) {
+	        if (key === 'group') {
+	          recipe.items.push({
+	            name: value,
+	            ingredients: [],
+	            quantities: []
+	          });
+	        } else {
+	          recipe.items[recipe.items.length - 1][key].push(value);
+	        }
+	      } else {
+	        recipe[key] = value;
+	      }
 	    }
+	  } catch (err) {
+	    _iterator.e(err);
+	  } finally {
+	    _iterator.f();
 	  }
 	  return recipe;
 	}
@@ -37684,109 +38059,284 @@
 	      title: title,
 	      key: title
 	    }),
-	    loader: async function () {
-	      return await itemSet.getAll();
-	    },
-	    action: function ({
-	      params,
-	      request
-	    }) {
-	      return new Promise(resolve => {
-	        var resolvingValue = null;
-	        (async function () {
-	          var formData = await request.formData();
-	          // Delete item
-	          if (formData.has('delete')) {
-	            var itemExists = await recipeList[isItemInUseMethodName](formData.get('delete'));
-	            if (!itemExists) {
-	              itemSet.remove(formData.get('delete'));
-	            } else {
-	              resolvingValue = false;
-	            }
-	          } else if (formData.has('update')) {
-	            itemSet.update(formData.get('update'), formData.get('name'));
-	          } else if (formData.has('add')) {
-	            itemSet.add(formData.get('name'));
+	    loader: function () {
+	      var _loader = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+	        return _regeneratorRuntime().wrap(function _callee$(_context) {
+	          while (1) switch (_context.prev = _context.next) {
+	            case 0:
+	              _context.next = 2;
+	              return itemSet.getAll();
+	            case 2:
+	              return _context.abrupt("return", _context.sent);
+	            case 3:
+	            case "end":
+	              return _context.stop();
 	          }
-	        })();
-	        setTimeout(() => {
+	        }, _callee);
+	      }));
+	      function loader() {
+	        return _loader.apply(this, arguments);
+	      }
+	      return loader;
+	    }(),
+	    action: function action(_ref) {
+	      _ref.params;
+	        var request = _ref.request;
+	      return new Promise(function (resolve) {
+	        var resolvingValue = null;
+	        _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+	          var formData, itemExists;
+	          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+	            while (1) switch (_context2.prev = _context2.next) {
+	              case 0:
+	                _context2.next = 2;
+	                return request.formData();
+	              case 2:
+	                formData = _context2.sent;
+	                if (!formData.has('delete')) {
+	                  _context2.next = 10;
+	                  break;
+	                }
+	                _context2.next = 6;
+	                return recipeList[isItemInUseMethodName](formData.get('delete'));
+	              case 6:
+	                itemExists = _context2.sent;
+	                if (!itemExists) {
+	                  itemSet.remove(formData.get('delete'));
+	                } else {
+	                  resolvingValue = false;
+	                }
+	                _context2.next = 11;
+	                break;
+	              case 10:
+	                if (formData.has('update')) {
+	                  itemSet.update(formData.get('update'), formData.get('name'));
+	                } else if (formData.has('add')) {
+	                  itemSet.add(formData.get('name'));
+	                }
+	              case 11:
+	              case "end":
+	                return _context2.stop();
+	            }
+	          }, _callee2);
+	        }))();
+	        setTimeout(function () {
 	          resolve(resolvingValue);
 	        }, 1000);
 	      });
 	    }
 	  };
 	}
-	const router = createBrowserRouter([{
+	var router = createBrowserRouter([{
 	  path: '/',
 	  element: /*#__PURE__*/React.createElement(RootView, null),
 	  errorElement: /*#__PURE__*/React.createElement(ErrorView, null),
 	  children: [{
 	    path: '/',
 	    element: /*#__PURE__*/React.createElement(Home, null),
-	    loader: async function () {
-	      return await recipeList.getAllRecipes();
-	    },
-	    action: async function ({
-	      params,
-	      request
-	    }) {
-	      await recipeList.addRecipe(processRecipeForm(await request.formData()));
-	      return null;
-	    }
+	    loader: function () {
+	      var _loader2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+	        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+	          while (1) switch (_context3.prev = _context3.next) {
+	            case 0:
+	              _context3.next = 2;
+	              return recipeList.getAllRecipes();
+	            case 2:
+	              return _context3.abrupt("return", _context3.sent);
+	            case 3:
+	            case "end":
+	              return _context3.stop();
+	          }
+	        }, _callee3);
+	      }));
+	      function loader() {
+	        return _loader2.apply(this, arguments);
+	      }
+	      return loader;
+	    }(),
+	    action: function () {
+	      var _action = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_ref3) {
+	        var request;
+	        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+	          while (1) switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _ref3.params, request = _ref3.request;
+	              _context4.t0 = recipeList;
+	              _context4.t1 = processRecipeForm;
+	              _context4.next = 5;
+	              return request.formData();
+	            case 5:
+	              _context4.t2 = _context4.sent;
+	              _context4.t3 = (0, _context4.t1)(_context4.t2);
+	              _context4.next = 9;
+	              return _context4.t0.addRecipe.call(_context4.t0, _context4.t3);
+	            case 9:
+	              return _context4.abrupt("return", null);
+	            case 10:
+	            case "end":
+	              return _context4.stop();
+	          }
+	        }, _callee4);
+	      }));
+	      function action(_x) {
+	        return _action.apply(this, arguments);
+	      }
+	      return action;
+	    }()
 	  }, {
 	    path: '/recipe/:recipeId',
 	    children: [{
 	      path: '',
 	      element: /*#__PURE__*/React.createElement(Recipe, null),
-	      loader: async function ({
-	        params
-	      }) {
-	        return await recipeList.getRecipeDetailed(params.recipeId);
-	      }
+	      loader: function () {
+	        var _loader3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(_ref4) {
+	          var params;
+	          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+	            while (1) switch (_context5.prev = _context5.next) {
+	              case 0:
+	                params = _ref4.params;
+	                _context5.next = 3;
+	                return recipeList.getRecipeDetailed(params.recipeId);
+	              case 3:
+	                return _context5.abrupt("return", _context5.sent);
+	              case 4:
+	              case "end":
+	                return _context5.stop();
+	            }
+	          }, _callee5);
+	        }));
+	        function loader(_x2) {
+	          return _loader3.apply(this, arguments);
+	        }
+	        return loader;
+	      }()
 	    }, {
 	      path: 'delete',
-	      loader: async function ({
-	        params,
-	        request
-	      }) {
-	        await recipeList.removeRecipe(params.recipeId);
-	        return redirect('/');
-	      }
+	      loader: function () {
+	        var _loader4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(_ref5) {
+	          var params;
+	          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+	            while (1) switch (_context6.prev = _context6.next) {
+	              case 0:
+	                params = _ref5.params, _ref5.request;
+	                _context6.next = 3;
+	                return recipeList.removeRecipe(params.recipeId);
+	              case 3:
+	                return _context6.abrupt("return", redirect('/'));
+	              case 4:
+	              case "end":
+	                return _context6.stop();
+	            }
+	          }, _callee6);
+	        }));
+	        function loader(_x3) {
+	          return _loader4.apply(this, arguments);
+	        }
+	        return loader;
+	      }()
 	    }, {
 	      path: 'update',
 	      element: /*#__PURE__*/React.createElement(UpdateRecipeView, null),
-	      loader: async function ({
-	        params,
-	        request
-	      }) {
-	        return await recipeList.getRecipeForUpdate(params.recipeId);
-	      },
-	      action: async function ({
-	        params,
-	        request
-	      }) {
-	        var formDataMap = processRecipeForm(await request.formData());
-	        await recipeList.updateRecipe(params.recipeId, formDataMap);
-	        return redirect(`/recipe/${params.recipeId}`);
-	      }
+	      loader: function () {
+	        var _loader5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(_ref6) {
+	          var params;
+	          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+	            while (1) switch (_context7.prev = _context7.next) {
+	              case 0:
+	                params = _ref6.params, _ref6.request;
+	                _context7.next = 3;
+	                return recipeList.getRecipeForUpdate(params.recipeId);
+	              case 3:
+	                return _context7.abrupt("return", _context7.sent);
+	              case 4:
+	              case "end":
+	                return _context7.stop();
+	            }
+	          }, _callee7);
+	        }));
+	        function loader(_x4) {
+	          return _loader5.apply(this, arguments);
+	        }
+	        return loader;
+	      }(),
+	      action: function () {
+	        var _action2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(_ref7) {
+	          var params, request, formDataMap;
+	          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+	            while (1) switch (_context8.prev = _context8.next) {
+	              case 0:
+	                params = _ref7.params, request = _ref7.request;
+	                _context8.t0 = processRecipeForm;
+	                _context8.next = 4;
+	                return request.formData();
+	              case 4:
+	                _context8.t1 = _context8.sent;
+	                formDataMap = (0, _context8.t0)(_context8.t1);
+	                _context8.next = 8;
+	                return recipeList.updateRecipe(params.recipeId, formDataMap);
+	              case 8:
+	                return _context8.abrupt("return", redirect("/recipe/".concat(params.recipeId)));
+	              case 9:
+	              case "end":
+	                return _context8.stop();
+	            }
+	          }, _callee8);
+	        }));
+	        function action(_x5) {
+	          return _action2.apply(this, arguments);
+	        }
+	        return action;
+	      }()
 	    }, {
 	      path: 'iterate',
-	      loader: async function ({
-	        params,
-	        request
-	      }) {
-	        var key = await recipeList.makeIteration(params.recipeId);
-	        return redirect(`/recipe/${key}/update`);
-	      }
+	      loader: function () {
+	        var _loader6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(_ref8) {
+	          var params, key;
+	          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+	            while (1) switch (_context9.prev = _context9.next) {
+	              case 0:
+	                params = _ref8.params, _ref8.request;
+	                _context9.next = 3;
+	                return recipeList.makeIteration(params.recipeId);
+	              case 3:
+	                key = _context9.sent;
+	                return _context9.abrupt("return", redirect("/recipe/".concat(key, "/update")));
+	              case 5:
+	              case "end":
+	                return _context9.stop();
+	            }
+	          }, _callee9);
+	        }));
+	        function loader(_x6) {
+	          return _loader6.apply(this, arguments);
+	        }
+	        return loader;
+	      }()
 	    }, {
 	      path: 'copy',
-	      loader: async function ({
-	        params,
-	        request
-	      }) {
-	        var key = await recipeList.cloneRecipe(params.recipeId);
-	        return redirect(`/recipe/${key}/update`);
-	      }
+	      loader: function () {
+	        var _loader7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(_ref9) {
+	          var params, key;
+	          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+	            while (1) switch (_context10.prev = _context10.next) {
+	              case 0:
+	                params = _ref9.params, _ref9.request;
+	                _context10.next = 3;
+	                return recipeList.cloneRecipe(params.recipeId);
+	              case 3:
+	                key = _context10.sent;
+	                return _context10.abrupt("return", redirect("/recipe/".concat(key, "/update")));
+	              case 5:
+	              case "end":
+	                return _context10.stop();
+	            }
+	          }, _callee10);
+	        }));
+	        function loader(_x7) {
+	          return _loader7.apply(this, arguments);
+	        }
+	        return loader;
+	      }()
 	    }]
 	  }, {
 	    path: '/add',
@@ -37794,25 +38344,39 @@
 	  }, {
 	    path: '/search',
 	    element: /*#__PURE__*/React.createElement(Search, null),
-	    loader: async function ({
-	      params,
-	      request
-	    }) {
-	      var url = new URL(request.url);
-	      var query = url.searchParams.get('q');
-	      var results = await recipeList.searchRecipe(query);
-	      return {
-	        query,
-	        results
-	      };
-	    }
-	  }, {
-	    path: '/ingredients',
-	    ...itemListOptions('Ingredients', ingredientSet, 'isIngredientInUse')
-	  }, {
-	    path: '/categories',
-	    ...itemListOptions('Categories', categorySet, 'isCategoryInUse')
-	  }, {
+	    loader: function () {
+	      var _loader8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(_ref10) {
+	        var request, url, query, results;
+	        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+	          while (1) switch (_context11.prev = _context11.next) {
+	            case 0:
+	              _ref10.params, request = _ref10.request;
+	              url = new URL(request.url);
+	              query = url.searchParams.get('q');
+	              _context11.next = 5;
+	              return recipeList.searchRecipe(query);
+	            case 5:
+	              results = _context11.sent;
+	              return _context11.abrupt("return", {
+	                query: query,
+	                results: results
+	              });
+	            case 7:
+	            case "end":
+	              return _context11.stop();
+	          }
+	        }, _callee11);
+	      }));
+	      function loader(_x8) {
+	        return _loader8.apply(this, arguments);
+	      }
+	      return loader;
+	    }()
+	  }, _objectSpread2({
+	    path: '/ingredients'
+	  }, itemListOptions('Ingredients', ingredientSet, 'isIngredientInUse')), _objectSpread2({
+	    path: '/categories'
+	  }, itemListOptions('Categories', categorySet, 'isCategoryInUse')), {
 	    path: '/backup',
 	    element: /*#__PURE__*/React.createElement(BackupView, null)
 	  }]
