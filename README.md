@@ -2,6 +2,8 @@
 
 A fully-fledged recipe-managing SPA, built using React and [FrontendDB](https://github.com/bilalbro/frontend-db).
 
+https://github.com/bilalbro/recipes-app/assets/98707204/cefa4f34-dd44-494d-b93c-368ae5076c05
+
 ## Running the app on your end
 
 Since this entire app runs on the frontend, there is nothing that you need to set up on your end, such as database systems, to get it into action.
